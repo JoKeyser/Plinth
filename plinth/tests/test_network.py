@@ -23,11 +23,17 @@ import copy
 import os
 import time
 import unittest
+import mock
 
 
 euid = os.geteuid()
 if euid == 0:
     from plinth import network
+
+    @mock.patch('network._callback')
+    def _callback(self, mocked):
+        print("Inside test's overridden _callback")
+
 
 ethernet_settings = {
     'common': {
@@ -98,6 +104,7 @@ class TestNetwork(unittest.TestCase):
 
     @classmethod
     def setUp(cls):
+        print("Running network test setUp(), adding connections...")
         cls.ethernet_uuid = network.add_connection(ethernet_settings)
         cls.wifi_uuid = network.add_connection(wifi_settings)
         cls.pppoe_uuid = network.add_connection(pppoe_settings)

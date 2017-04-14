@@ -63,6 +63,7 @@ def ipv4_int_to_string(address_int):
 
 def _callback(source_object, result, user_data):
     """Called when an operation is completed."""
+    print("Inside network.py's original _callback()")
     del source_object  # Unused
     del result  # Unused
     del user_data  # Unused
@@ -439,6 +440,7 @@ def add_connection(settings):
 
     Return the UUID for the connection.
     """
+    print("Inside add_connection()")
     connection_uuid = str(uuid.uuid4())
     connection = _update_settings(None, connection_uuid, settings)
     client = nm.Client.new(None)
