@@ -30,6 +30,7 @@ import uuid
 from plinth.utils import import_from_gi
 glib = import_from_gi('GLib', '2.0')
 nm = import_from_gi('NM', '1.0')
+gio = import_from_gi('Gio', '2.0')
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +61,7 @@ def ipv4_int_to_string(address_int):
     """Return an string equivalent of a integer IPv4 address."""
     return socket.inet_ntoa(struct.pack('=I', address_int))
 
-
+# Gio.AsyncReadyCallback(source_object, res, user_data)
 def _callback(source_object, result, user_data):
     """Called when an operation is completed."""
     print("Inside network.py's original _callback()")
@@ -444,7 +445,10 @@ def add_connection(settings):
     connection_uuid = str(uuid.uuid4())
     connection = _update_settings(None, connection_uuid, settings)
     client = nm.Client.new(None)
-    client.add_connection_async(connection, True, None, _callback, None)
+    rofl = lambda a,b,c : print("rofl")
+         # add_connection_async(connection, save_to_disk, cancellable, callback, *user_data)
+    #a = gio.AsyncReadyCallback
+    client.add_connection_async(connection, True, None, rofl, None)
     return connection_uuid
 
 
