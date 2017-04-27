@@ -25,10 +25,14 @@ from importlib import import_module
 import os
 import subprocess
 import sys
+import logging
 
+from plinth import errors
 from plinth import cfg
 
 LOCK_FILE = '/var/lib/dpkg/lock'
+
+logger = logging.getLogger(__name__)
 
 
 def parse_arguments():
@@ -85,6 +89,33 @@ def subcommand_install(arguments):
     _run_apt_command(['install'] + arguments.packages)
 
 
+def _get_version_info(packages):
+    """Return versions of module packages, installed and candidate(s)."""
+    versions = {package: {'installed': None,
+                          'candidate': None} for package in packages}
+    for package in packages:
+        command = ['apt-cache', 'policy', package]
+        try:
+            process = subprocess.run(command, stdout=subprocess.PIPE,
+                                     check=True)
+        except subprocess.CalledProcessError as exception:
+            logger.exception('Error getting package information: %s',
+                             exception)
+            return {}
+
+        output = process.stdout.decode()
+        # assume lines 0) package name, 1) installed version, 2) candidate ver
+        lines = output.splitlines()
+        if len(lines) < 3:
+            logger.exception('Error parsing package version for "%s"',
+                             package)
+            raise errors.ActionError(
+                  'Error parsing package version for: "{0}"'.format(package))
+        versions[package]['installed'] = lines[1].split()[1]
+        versions[package]['candidate'] = lines[2].split()[1]
+    return versions
+
+
 def _assert_managed_packages(module, packages):
     """Check that list of packages are in fact managed by module."""
     cfg.read()
@@ -116,4 +147,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    print(_get_version_info(['ejabberd', 'tor']))
