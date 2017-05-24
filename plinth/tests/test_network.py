@@ -21,7 +21,6 @@ Test module for network configuration utilities.
 
 import copy
 import os
-import time
 import unittest
 import mock
 
@@ -110,7 +109,6 @@ class TestNetwork(unittest.TestCase):
         cls.pppoe_uuid = network.add_connection(pppoe_settings)
         # XXX: Handle this properly by waiting for asynchronous add_connection
         # to complete.
-        time.sleep(0.1)
 
     @classmethod
     def tearDown(cls):
