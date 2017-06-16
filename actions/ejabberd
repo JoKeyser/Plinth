@@ -262,6 +262,35 @@ def subcommand_mam(argument):
         action_utils.service_restart('ejabberd')
 
 
+def subcommand_LErenew(arguments):
+
+    for domain in RENEWED_DOMAINS:
+        if domain == 'example.com':
+            daemon_cert_root = '/etc/some-daemon/certs'
+
+            # Make sure the certificate and private key files are
+            # never world readable, even just for an instant while
+            # we're copying them into daemon_cert_root.
+            os.umask(0o077)
+
+            shutil.copyfile('$RENEWED_LINEAGE/fullchain.pem',
+                            '$daemon_cert_root/$domain.cert')
+            shutil.copyfile('$RENEWED_LINEAGE/privkey.pem',
+                            '$daemon_cert_root/$domain.key')
+
+            # Apply the proper file ownership and permissions for
+            # the daemon to read its certificate and key.
+            shutil.chown('$daemon_cert_root/$domain.cert',
+                         user='ejabberd', group='ejabberd')
+            shutil.chown('$daemon_cert_root/$domain.key',
+                         user='ejabberd', group='ejabberd')
+            os.chmod(path='$daemon_cert_root/$domain.cert', mode=0o400)
+            os.chmod(path='$daemon_cert_root/$domain.key', mode=0o400)
+
+            if action_utils.service_is_running('ejabberd'):
+                action_utils.service_restart('ejabberd')
+
+
 def main():
     """Parse arguments and perform all duties"""
     arguments = parse_arguments()
