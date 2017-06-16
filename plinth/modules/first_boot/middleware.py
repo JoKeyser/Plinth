@@ -22,10 +22,10 @@ yet.
 
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
+from django.conf import settings
 import logging
 
-from plinth import kvstore
-
+from plinth.modules import first_boot
 
 LOGGER = logging.getLogger(__name__)
 
@@ -36,20 +36,31 @@ class FirstBootMiddleware(object):
     @staticmethod
     def process_request(request):
         """Handle a request as Django middleware request handler."""
-        state = kvstore.get_default('firstboot_state', 0)
+        # Don't interfere with login page
+        user_requests_login = request.path.startswith(
+            reverse(settings.LOGIN_URL))
+        if user_requests_login:
+            return
 
-        firstboot_index_url = reverse('first_boot:index')
-        user_requests_firstboot = request.path.startswith(firstboot_index_url)
+        # Don't interfere with help pages
+        user_requests_help = request.path.startswith(reverse('help:index'))
+        if user_requests_help:
+            return
 
-        help_index_url = reverse('help:index')
-        user_requests_help = request.path.startswith(help_index_url)
+        firstboot_completed = first_boot.is_completed()
+        user_requests_firstboot = first_boot.is_firstboot_url(request.path)
 
-        # Setup is complete: Forbid accessing firstboot
-        if state >= 10 and user_requests_firstboot:
+        # Redirect to first boot if requesting normal page and first
+        # boot is not complete.
+        if not firstboot_completed and not user_requests_firstboot:
+            next_step = first_boot.next_step_or_none()
+            if next_step:
+                return HttpResponseRedirect(reverse(next_step))
+            else:
+                # No more steps in first boot
+                first_boot.set_completed()
+
+        # Redirect to index page if request firstboot after it is
+        # finished.
+        if firstboot_completed and user_requests_firstboot:
             return HttpResponseRedirect(reverse('index'))
-
-        # Setup is not complete: Forbid accessing anything but
-        # firstboot or help
-        if state < 10 and not user_requests_firstboot and \
-           not user_requests_help:
-            return HttpResponseRedirect(reverse('first_boot:state%d' % state))

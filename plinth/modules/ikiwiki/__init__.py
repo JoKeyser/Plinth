@@ -23,13 +23,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from plinth import actions
 from plinth import action_utils
-from plinth import cfg
+from plinth import frontpage
 from plinth import service as service_module
+from plinth.menu import main_menu
 
 
 version = 1
-
-depends = ['apps']
 
 managed_packages = ['ikiwiki', 'libdigest-sha-perl', 'libxml-writer-perl',
                     'xapian-omega', 'libsearch-xapian-perl',
@@ -50,20 +49,40 @@ description = [
 
 def init():
     """Initialize the ikiwiki module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-edit', 'ikiwiki:index')
 
     global service
-    service = service_module.Service(
-        'ikiwiki', title, ports=['http', 'https'], is_external=True,
-        is_enabled=is_enabled, enable=enable, disable=disable)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            'ikiwiki', title, ports=['http', 'https'], is_external=True,
+            is_enabled=is_enabled, enable=enable, disable=disable)
+
+        if is_enabled():
+            add_shortcuts()
 
 
 def setup(helper, old_version=None):
     """Install and configure the module."""
     helper.install(managed_packages)
     helper.call('post', actions.superuser_run, 'ikiwiki', ['setup'])
+    global service
+    if service is None:
+        service = service_module.Service(
+            'ikiwiki', title, ports=['http', 'https'], is_external=True,
+            is_enabled=is_enabled, enable=enable, disable=disable)
     helper.call('post', service.notify_enabled, None, True)
+    helper.call('post', add_shortcuts)
+
+
+def add_shortcuts():
+    sites = actions.run('ikiwiki', ['get-sites']).split('\n')
+    sites = [name for name in sites if name != '']
+    for site in sites:
+        frontpage.add_shortcut(
+            'ikiwiki_' + site, site, url='/ikiwiki/' + site,
+            login_required=False, icon='ikiwiki')
 
 
 def is_enabled():
@@ -74,11 +93,13 @@ def is_enabled():
 def enable():
     """Enable the module."""
     actions.superuser_run('ikiwiki', ['enable'])
+    add_shortcuts()
 
 
 def disable():
     """Enable the module."""
     actions.superuser_run('ikiwiki', ['disable'])
+    frontpage.remove_shortcut('ikiwiki*')
 
 
 def diagnose():

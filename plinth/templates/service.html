@@ -36,27 +36,33 @@
 
   {% block status %}
     {% if show_status_block %}
-      <h3>Status</h3>
+      <h3>{% trans "Status" %}</h3>
       <p class="running-status-parent">
-        {% if service.is_running %}
-          <span class="running-status active"></span>
-          Service <i>{{ service.name }}</i> {% trans "is running" %}
-        {% else %}
-          <span class="running-status inactive"></span>
-          Service <i>{{ service.name }}</i> {% trans "is not running" %}
-        {% endif %}
+        {% with service_name=service.name %}
+          {% if service.is_running %}
+            <span class="running-status active"></span>
+            {% blocktrans trimmed %}
+              Service <em>{{ service_name }}</em> is running.
+            {% endblocktrans %}
+          {% else %}
+            <span class="running-status inactive"></span>
+            {% blocktrans trimmed %}
+              Service <em>{{ service_name }}</em> is not running.
+            {% endblocktrans %}
+          {% endif %}
+        {% endwith %}
       </p>
     {% endif %}
   {% endblock %}
 
   {% block diagnostics %}
     {% if diagnostics_module_name %}
-      {% include "diagnostics_button.html" with module=diagnostics_module_name %}
+      {% include "diagnostics_button.html" with module=diagnostics_module_name enabled=service.is_running %}
     {% endif %}
   {% endblock %}
 
   {% block configuration %}
-    <h3>Configuration</h3>
+    <h3>{% trans "Configuration" %}</h3>
 
     <form class="form" method="post">
       {% csrf_token %}

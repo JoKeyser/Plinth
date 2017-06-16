@@ -22,6 +22,7 @@ Plinth setup file
 
 from distutils import log
 from distutils.command.build import build
+from distutils.dir_util import remove_tree
 from distutils.command.clean import clean
 from distutils.command.install_data import install_data
 from distutils.core import Command
@@ -43,8 +44,8 @@ DIRECTORIES_TO_CREATE = [
 ]
 
 DIRECTORIES_TO_COPY = [
-    ('/usr/share/plinth/static', 'static'),
     ('/usr/share/doc/plinth', 'doc'),
+    ('/usr/share/plinth/static', 'static'),
 ]
 
 LOCALE_PATHS = [
@@ -112,6 +113,7 @@ class CustomClean(clean):
         """Execute clean command"""
         subprocess.check_call(['rm', '-rf', 'Plinth.egg-info/'])
         subprocess.check_call(['make', '-C', 'doc', 'clean'])
+
         for dir_path, dir_names, file_names in os.walk('plinth/locale/'):
             for file_name in file_names:
                 if file_name.endswith('.mo'):
@@ -139,14 +141,16 @@ class CustomInstallData(install_data):
                 log.info("creating directory '%s'", directory)
                 os.makedirs(directory)
 
-        # Recursively copy directories
+        # Recursively overwrite directories
         for target, source in DIRECTORIES_TO_COPY:
             if self.root:
                 target = change_root(self.root, target)
 
-            if not os.path.exists(target):
-                log.info("recursive copy '%s' to '%s'", source, target)
-                shutil.copytree(source, target, symlinks=True)
+            if os.path.exists(target):
+                remove_tree(target)
+
+            log.info("recursive copy '%s' to '%s'", source, target)
+            shutil.copytree(source, target, symlinks=True)
 
 
 find_packages = setuptools.PEP420PackageFinder.find
@@ -184,6 +188,7 @@ setuptools.setup(
         'django-bootstrap-form',
         'django-stronghold',
         'psutil',
+        'python-apt',
         'python-augeas',
         'requests',
         'ruamel.yaml',
@@ -191,6 +196,7 @@ setuptools.setup(
     tests_require=['coverage >= 3.7'],
     include_package_data=True,
     package_data={'plinth': ['templates/*',
+                             'modules/*/static/*',
                              'modules/*/templates/*',
                              'locale/*/LC_MESSAGES/*.[pm]o']},
     data_files=[('/usr/lib/firewalld/services/',
@@ -198,11 +204,13 @@ setuptools.setup(
                 ('/usr/lib/freedombox/setup.d/',
                  ['data/usr/lib/freedombox/setup.d/86_plinth']),
                 ('/usr/lib/freedombox/first-run.d',
-                 ['data/usr/lib/freedombox/first-run.d/90_firewall']),
+                 glob.glob('data/usr/lib/freedombox/first-run.d/*')),
                 ('/etc/apache2/conf-available',
                  glob.glob('data/etc/apache2/conf-available/*.conf')),
                 ('/etc/apache2/sites-available',
                  glob.glob('data/etc/apache2/sites-available/*.conf')),
+                ('/etc/apache2/includes',
+                 glob.glob('data/etc/apache2/includes/*.conf')),
                 ('/etc/ikiwiki',
                  glob.glob('data/etc/ikiwiki/*.setup')),
                 ('/etc/NetworkManager/dispatcher.d/',
@@ -212,6 +220,8 @@ setuptools.setup(
                  ['data/lib/systemd/system/plinth.service']),
                 ('/usr/share/plinth/actions',
                  glob.glob(os.path.join('actions', '*'))),
+                ('/usr/share/polkit-1/rules.d',
+                 ['data/usr/share/polkit-1/rules.d/50-plinth.rules']),
                 ('/usr/share/man/man1', ['doc/plinth.1']),
                 ('/etc/plinth', ['data/etc/plinth/plinth.config']),
                 ('/usr/share/augeas/lenses',
@@ -222,7 +232,10 @@ setuptools.setup(
                  glob.glob('data/usr/share/pam-configs/*-freedombox')),
                 ('/etc/plinth/modules-enabled',
                  glob.glob(os.path.join('data/etc/plinth/modules-enabled',
-                                        '*')))],
+                                        '*'))),
+                ('/var/lib/polkit-1/localauthority/10-vendor.d',
+                 ['data/var/lib/polkit-1/localauthority/10-vendor.d/'
+                  'org.freedombox.NetworkManager.pkla'])],
     cmdclass={
         'build': CustomBuild,
         'clean': CustomClean,

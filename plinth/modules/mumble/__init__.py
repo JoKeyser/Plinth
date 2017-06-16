@@ -19,19 +19,20 @@
 Plinth module to configure Mumble server
 """
 
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from plinth import actions
 from plinth import action_utils
-from plinth import cfg
+from plinth import frontpage
 from plinth import service as service_module
+from plinth.menu import main_menu
 from plinth.views import ServiceView
 
 
 version = 1
 
-depends = ['apps']
-
-title = _('Voice Chat (Mumble)')
+title = _('Voice Chat \n (Mumble)')
 
 service = None
 
@@ -48,15 +49,24 @@ description = [
       'from your desktop and Android devices are available.')
 ]
 
+reserved_usernames = ['mumble-server']
+
 
 def init():
     """Intialize the Mumble module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-headphones', 'mumble:index')
 
     global service
-    service = service_module.Service(
-        managed_services[0], title, ports=['mumble-plinth'], is_external=True)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            managed_services[0], title, ports=['mumble-plinth'],
+            is_external=True,
+            enable=enable, disable=disable)
+
+        if service.is_enabled():
+            add_shortcut()
 
 
 class MumbleServiceView(ServiceView):
@@ -68,7 +78,33 @@ class MumbleServiceView(ServiceView):
 def setup(helper, old_version=None):
     """Install and configure the module."""
     helper.install(managed_packages)
+    global service
+    if service is None:
+        service = service_module.Service(
+            managed_services[0], title, ports=['mumble-plinth'],
+            is_external=True,
+            enable=enable, disable=disable)
     helper.call('post', service.notify_enabled, None, True)
+    helper.call('post', add_shortcut)
+
+
+def add_shortcut():
+    frontpage.add_shortcut('mumble', title,
+                           details=description,
+                           configure_url=reverse_lazy('mumble:index'),
+                           login_required=False)
+
+
+def enable():
+    """Enable the module."""
+    actions.superuser_run('service', ['enable', managed_services[0]])
+    add_shortcut()
+
+
+def disable():
+    """Disable the module."""
+    actions.superuser_run('service', ['disable', managed_services[0]])
+    frontpage.remove_shortcut('mumble')
 
 
 def diagnose():

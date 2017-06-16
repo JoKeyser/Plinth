@@ -29,6 +29,7 @@ import os
 import re
 import socket
 import time
+import subprocess
 
 from plinth import action_utils
 from plinth.modules.tor.utils import get_real_apt_uri_path, iter_apt_uris, \
@@ -36,9 +37,9 @@ from plinth.modules.tor.utils import get_real_apt_uri_path, iter_apt_uris, \
                                      APT_TOR_PREFIX
 
 SERVICE_FILE = '/etc/firewalld/services/tor-{0}.xml'
-TOR_CONFIG = '/files/etc/tor/torrc'
-TOR_STATE_FILE = '/var/lib/tor/state'
-TOR_AUTH_COOKIE = '/var/run/tor/control.authcookie'
+TOR_CONFIG = '/files/etc/tor/instances/plinth/torrc'
+TOR_STATE_FILE = '/var/lib/tor-instances/plinth/state'
+TOR_AUTH_COOKIE = '/var/run/tor-instances/plinth/control.authcookie'
 
 
 def parse_arguments():
@@ -62,24 +63,46 @@ def parse_arguments():
     configure.add_argument('--apt-transport-tor',
                            choices=['enable', 'disable'],
                            help='Configure package download over Tor')
+    configure.add_argument('--use-upstream-bridges',
+                           choices=['enable', 'disable'],
+                           help='Configure use of upstream bridges')
+    configure.add_argument('--upstream-bridges',
+                           help='Set list of upstream bridges to use')
 
+    subparsers.add_parser('restart', help='Restart Tor')
+
+    subparsers.required = True
     return parser.parse_args()
 
 
 def subcommand_setup(_):
     """Setup Tor configuration after installing it."""
+
+    # Disable default tor service. We will use tor@plinth instance
+    # instead.
+    _disable_apt_transport_tor()
+    action_utils.service_disable('tor')
+
+    subprocess.run(['tor-instance-create', 'plinth'], check=True)
+
+    # Remove line starting with +SocksPort, since our augeas lens
+    # doesn't handle it correctly.
+    with open('/etc/tor/instances/plinth/torrc', 'r') as torrc:
+        torrc_lines = torrc.readlines()
+    with open('/etc/tor/instances/plinth/torrc', 'w') as torrc:
+        for line in torrc_lines:
+            if not line.startswith('+'):
+                torrc.write(line)
+
     aug = augeas_load()
 
-    aug.set(TOR_CONFIG + '/#comment[last() + 1]',
-            'Run as non-exit bridge relay')
     aug.set(TOR_CONFIG + '/SocksPort[1]', '[::]:9050')
     aug.set(TOR_CONFIG + '/SocksPort[2]', '0.0.0.0:9050')
     aug.set(TOR_CONFIG + '/ControlPort', '9051')
-    _enable_relay(relay='enable', bridge='enable', restart=False, aug=aug)
+    _enable_relay(relay='enable', bridge='enable', aug=aug)
     aug.set(TOR_CONFIG + '/ExitPolicy[1]', 'reject *:*')
     aug.set(TOR_CONFIG + '/ExitPolicy[2]', 'reject6 *:*')
 
-    aug.set(TOR_CONFIG + '/#comment[last() + 1]', 'Enable transparent proxy')
     aug.set(TOR_CONFIG + '/VirtualAddrNetworkIPv4', '10.192.0.0/10')
     aug.set(TOR_CONFIG + '/AutomapHostsOnResolve', '1')
     aug.set(TOR_CONFIG + '/TransPort[1]', '127.0.0.1:9040')
@@ -88,7 +111,7 @@ def subcommand_setup(_):
     aug.set(TOR_CONFIG + '/DNSPort[2]', '[::1]:9053')
 
     aug.set(TOR_CONFIG + '/HiddenServiceDir',
-            '/var/lib/tor/hidden_service')
+            '/var/lib/tor-instances/plinth/hidden_service')
     aug.set(TOR_CONFIG + '/HiddenServicePort[1]',
             '22 127.0.0.1:22')
     aug.set(TOR_CONFIG + '/HiddenServicePort[2]',
@@ -98,7 +121,8 @@ def subcommand_setup(_):
 
     aug.save()
 
-    action_utils.service_restart('tor')
+    action_utils.service_enable('tor@plinth')
+    action_utils.service_restart('tor@plinth')
     _update_ports()
 
     # wait until hidden service information is available
@@ -118,17 +142,26 @@ def subcommand_get_status(_):
 
 def subcommand_configure(arguments):
     """Configure Tor."""
+    aug = augeas_load()
+
     if arguments.service == 'disable':
         _disable()
 
-    restart = arguments.service is None and arguments.hidden_service is None
-    _enable_relay(arguments.relay, arguments.bridge_relay, restart=restart)
+    _use_upstream_bridges(arguments.use_upstream_bridges, aug=aug)
 
-    restart = arguments.service is None
+    if arguments.use_upstream_bridges == 'enable':
+        arguments.relay = 'disable'
+        arguments.bridge_relay = 'disable'
+
+    if arguments.upstream_bridges:
+        _set_upstream_bridges(arguments.upstream_bridges, aug=aug)
+
+    _enable_relay(arguments.relay, arguments.bridge_relay, aug=aug)
+
     if arguments.hidden_service == 'enable':
-        _enable_hs(restart=restart)
+        _enable_hs(aug=aug)
     elif arguments.hidden_service == 'disable':
-        _disable_hs(restart=restart)
+        _disable_hs(aug=aug)
 
     if arguments.service == 'enable':
         _enable()
@@ -139,13 +172,44 @@ def subcommand_configure(arguments):
         _disable_apt_transport_tor()
 
 
+def subcommand_restart(_):
+    """Restart Tor."""
+    if is_enabled() and is_running():
+        action_utils.service_restart('tor@plinth')
+
+        aug = augeas_load()
+        if aug.get(TOR_CONFIG + '/HiddenServiceDir'):
+            # wait until hidden service information is available
+            tries = 0
+            while not _get_hidden_service()['enabled']:
+                tries += 1
+                if tries >= 12:
+                    return
+                time.sleep(10)
+
+
 def get_status():
     """Return dict with Tor status."""
     aug = augeas_load()
-    return {'relay_enabled': _is_relay_enabled(aug),
+    return {'use_upstream_bridges': _are_upstream_bridges_enabled(aug),
+            'upstream_bridges': _get_upstream_bridges(aug),
+            'relay_enabled': _is_relay_enabled(aug),
             'bridge_relay_enabled': _is_bridge_relay_enabled(aug),
             'ports': _get_ports(),
             'hidden_service': _get_hidden_service(aug)}
+
+
+def _are_upstream_bridges_enabled(aug):
+    """Return whether upstream bridges are being used."""
+    use_bridges = aug.get(TOR_CONFIG + '/UseBridges')
+    return use_bridges == '1'
+
+
+def _get_upstream_bridges(aug):
+    """Return upstream bridges separated by newlines."""
+    matches = aug.match(TOR_CONFIG + '/Bridge')
+    bridges = [aug.get(match) for match in matches]
+    return '\n'.join(bridges)
 
 
 def _is_relay_enabled(aug):
@@ -236,17 +300,56 @@ def _get_hidden_service(aug=None):
 
 def _enable():
     """Enable and start the service."""
-    action_utils.service_enable('tor')
+    action_utils.service_enable('tor@plinth')
     _update_ports()
 
 
 def _disable():
     """Disable and stop the service."""
     _disable_apt_transport_tor()
-    action_utils.service_disable('tor')
+    action_utils.service_disable('tor@plinth')
 
 
-def _enable_relay(relay=None, bridge=None, restart=True, aug=None):
+def _use_upstream_bridges(use_upstream_bridges=None, aug=None):
+    """Enable use of upstream bridges."""
+    if use_upstream_bridges is None:
+        return
+
+    if not aug:
+        aug = augeas_load()
+
+    if use_upstream_bridges == 'enable':
+        aug.set(TOR_CONFIG + '/UseBridges', '1')
+    elif use_upstream_bridges == 'disable':
+        aug.set(TOR_CONFIG + '/UseBridges', '0')
+
+    aug.save()
+
+
+def _set_upstream_bridges(upstream_bridges=None, aug=None):
+    """Set list of upstream bridges."""
+    if upstream_bridges is None:
+        return
+
+    if not aug:
+        aug = augeas_load()
+
+    aug.remove(TOR_CONFIG + '/Bridge')
+    if upstream_bridges:
+        bridges = [bridge.strip() for bridge in upstream_bridges.split('\n')]
+        bridges = [bridge for bridge in bridges if bridge]
+        for bridge in bridges:
+            parts = [part for part in bridge.split() if part]
+            bridge = ' '.join(parts)
+            aug.set(TOR_CONFIG + '/Bridge[last() + 1]', bridge.strip())
+
+    aug.set(TOR_CONFIG + '/ClientTransportPlugin',
+            'obfs3,scramblesuit,obfs4 exec /usr/bin/obfs4proxy')
+
+    aug.save()
+
+
+def _enable_relay(relay=None, bridge=None, aug=None):
     """Enable Tor bridge relay."""
     if relay is None and bridge is None:
         return
@@ -254,12 +357,14 @@ def _enable_relay(relay=None, bridge=None, restart=True, aug=None):
     if not aug:
         aug = augeas_load()
 
-    if relay == 'enable':
+    use_upstream_bridges = _are_upstream_bridges_enabled(aug)
+
+    if relay == 'enable' and not use_upstream_bridges:
         aug.set(TOR_CONFIG + '/ORPort', 'auto')
     elif relay == 'disable':
         aug.remove(TOR_CONFIG + '/ORPort')
 
-    if bridge == 'enable':
+    if bridge == 'enable' and not use_upstream_bridges:
         aug.set(TOR_CONFIG + '/BridgeRelay', '1')
         aug.set(TOR_CONFIG + '/ServerTransportPlugin',
                 'obfs3,obfs4 exec /usr/bin/obfs4proxy')
@@ -271,20 +376,17 @@ def _enable_relay(relay=None, bridge=None, restart=True, aug=None):
 
     aug.save()
 
-    if restart:
-        if is_enabled() and is_running():
-            action_utils.service_restart('tor')
 
-
-def _enable_hs(restart=True):
+def _enable_hs(aug=None):
     """Enable Tor hidden service"""
-    aug = augeas_load()
+    if not aug:
+        aug = augeas_load()
 
     if _get_hidden_service(aug)['enabled']:
         return
 
     aug.set(TOR_CONFIG + '/HiddenServiceDir',
-            '/var/lib/tor/hidden_service')
+            '/var/lib/tor-instances/plinth/hidden_service')
     aug.set(TOR_CONFIG + '/HiddenServicePort[1]',
             '22 127.0.0.1:22')
     aug.set(TOR_CONFIG + '/HiddenServicePort[2]',
@@ -293,23 +395,11 @@ def _enable_hs(restart=True):
             '443 127.0.0.1:443')
     aug.save()
 
-    if restart:
-        if is_enabled() and is_running():
-            action_utils.service_restart('tor')
 
-            # wait until hidden service information is available
-            tries = 0
-            while not _get_hidden_service()['enabled']:
-                tries += 1
-                if tries >= 12:
-                    return
-
-                time.sleep(10)
-
-
-def _disable_hs(restart=True):
+def _disable_hs(aug=None):
     """Disable Tor hidden service"""
-    aug = augeas_load()
+    if not aug:
+        aug = augeas_load()
 
     if not _get_hidden_service(aug)['enabled']:
         return
@@ -317,10 +407,6 @@ def _disable_hs(restart=True):
     aug.remove(TOR_CONFIG + '/HiddenServiceDir')
     aug.remove(TOR_CONFIG + '/HiddenServicePort')
     aug.save()
-
-    if restart:
-        if is_enabled() and is_running():
-            action_utils.service_restart('tor')
 
 
 def _enable_apt_transport_tor():
@@ -399,7 +485,8 @@ def augeas_load():
     aug = augeas.Augeas(flags=augeas.Augeas.NO_LOAD +
                         augeas.Augeas.NO_MODL_AUTOLOAD)
     aug.set('/augeas/load/Tor/lens', 'Tor.lns')
-    aug.set('/augeas/load/Tor/incl[last() + 1]', '/etc/tor/torrc')
+    aug.set('/augeas/load/Tor/incl[last() + 1]',
+            '/etc/tor/instances/plinth/torrc')
     aug.load()
     return aug
 

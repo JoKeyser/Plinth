@@ -19,16 +19,19 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import (CreateView, DeleteView, UpdateView,
                                        FormView)
-from django.views.generic import ListView
+import django.views.generic
 from django.utils.translation import ugettext as _, ugettext_lazy
 
-from .forms import CreateUserForm, UserChangePasswordForm, UserUpdateForm
+from .forms import CreateUserForm, UserChangePasswordForm, UserUpdateForm, \
+    FirstBootForm
 from plinth import actions
 from plinth.errors import ActionError
-
+from plinth.modules import first_boot
+from plinth.utils import is_user_admin
 
 subsubmenu = [{'url': reverse_lazy('users:index'),
                'text': ugettext_lazy('Users')},
@@ -38,6 +41,7 @@ subsubmenu = [{'url': reverse_lazy('users:index'),
 
 class ContextMixin(object):
     """Mixin to add 'subsubmenu' and 'title' to the context."""
+
     def get_context_data(self, **kwargs):
         """Use self.title and the module-level subsubmenu"""
         context = super(ContextMixin, self).get_context_data(**kwargs)
@@ -62,7 +66,7 @@ class UserCreate(ContextMixin, SuccessMessageMixin, CreateView):
         return kwargs
 
 
-class UserList(ContextMixin, ListView):
+class UserList(ContextMixin, django.views.generic.ListView):
     """View to list users."""
     model = User
     template_name = 'users_list.html'
@@ -77,6 +81,14 @@ class UserUpdate(ContextMixin, SuccessMessageMixin, UpdateView):
     slug_field = 'username'
     success_message = ugettext_lazy('User %(username)s updated.')
     title = ugettext_lazy('Edit User')
+
+    def dispatch(self, request, *args, **kwargs):
+        """Handle a request and return a HTTP response."""
+        if self.request.user.get_username() != self.kwargs['slug'] \
+           and not is_user_admin(self.request):
+            raise PermissionDenied
+
+        return super().dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self):
         """Make the requst object available to the form."""
@@ -141,6 +153,14 @@ class UserChangePassword(ContextMixin, SuccessMessageMixin, FormView):
     title = ugettext_lazy('Change Password')
     success_message = ugettext_lazy('Password changed successfully.')
 
+    def dispatch(self, request, *args, **kwargs):
+        """Handle a request and return a HTTP response."""
+        if self.request.user.get_username() != self.kwargs['slug'] \
+           and not is_user_admin(self.request):
+            raise PermissionDenied
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_form_kwargs(self):
         """Make the user object available to the form."""
         kwargs = super(UserChangePassword, self).get_form_kwargs()
@@ -163,3 +183,20 @@ class UserChangePassword(ContextMixin, SuccessMessageMixin, FormView):
         form.save()
         update_session_auth_hash(self.request, form.user)
         return super(UserChangePassword, self).form_valid(form)
+
+
+class FirstBootView(django.views.generic.CreateView):
+    """Create user account and log the user in."""
+    template_name = 'users_firstboot.html'
+
+    form_class = FirstBootForm
+
+    def get_form_kwargs(self):
+        """Make request available to the form (to insert messages)"""
+        kwargs = super(FirstBootView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
+    def get_success_url(self):
+        """Return the next first boot step after valid form submission."""
+        return reverse(first_boot.next_step())

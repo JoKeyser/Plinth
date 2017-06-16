@@ -19,23 +19,23 @@
 Plinth module for repro.
 """
 
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from plinth import actions
 from plinth import action_utils
-from plinth import cfg
+from plinth import frontpage
 from plinth import service as service_module
+from plinth.menu import main_menu
 from plinth.views import ServiceView
 
-version = 1
-
-depends = ['apps']
+version = 2
 
 managed_services = ['repro']
 
 managed_packages = ['repro']
 
-title = _('SIP Server (repro)')
+title = _('SIP Server \n (repro)')
 
 description = [
     _('repro provides various SIP services that a SIP softphone can utilize '
@@ -58,18 +58,26 @@ description = [
       'service and re-enable it.'),
 ]
 
+reserved_usernames = ['repro']
+
 service = None
 
 
 def init():
     """Initialize the repro module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-phone-alt', 'repro:index')
 
     global service
-    service = service_module.Service(
-        managed_services[0], title, ports=['sip-plinth', 'sip-tls-plinth'],
-        is_external=True)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            managed_services[0], title,
+            ports=['sip', 'sips', 'rtp-plinth'],
+            is_external=True, enable=enable, disable=disable)
+
+        if service.is_enabled():
+            add_shortcut()
 
 
 class ReproServiceView(ServiceView):
@@ -82,7 +90,33 @@ def setup(helper, old_version=None):
     """Install and configure the module."""
     helper.install(managed_packages)
     helper.call('post', actions.superuser_run, 'repro', ['setup'])
+    global service
+    if service is None:
+        service = service_module.Service(
+            managed_services[0], title,
+            ports=['sip', 'sips', 'rtp-plinth'],
+            is_external=True, enable=enable, disable=disable)
     helper.call('post', service.notify_enabled, None, True)
+    helper.call('post', add_shortcut)
+
+
+def add_shortcut():
+    frontpage.add_shortcut('repro', title,
+                           details=description,
+                           configure_url=reverse_lazy('repro:index'),
+                           login_required=True)
+
+
+def enable():
+    """Enable the module."""
+    actions.superuser_run('service', ['enable', managed_services[0]])
+    add_shortcut()
+
+
+def disable():
+    """Disable the module."""
+    actions.superuser_run('service', ['disable', managed_services[0]])
+    frontpage.remove_shortcut('repro')
 
 
 def diagnose():

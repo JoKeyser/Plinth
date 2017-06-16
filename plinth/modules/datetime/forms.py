@@ -21,10 +21,13 @@ Forms for configuring date and time
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-import glob
-import re
+import logging
+import subprocess
 
 from plinth.forms import ServiceForm
+
+
+logger = logging.getLogger(__name__)
 
 
 class DateTimeForm(ServiceForm):
@@ -32,7 +35,7 @@ class DateTimeForm(ServiceForm):
     time_zone = forms.ChoiceField(
         label=_('Time Zone'),
         help_text=_('Set your time zone to get accurate timestamps. \
-This will set the systemwide time zone.'))
+This will set the system-wide time zone.'))
 
     def __init__(self, *args, **kwargs):
         """Initialize the date/time form."""
@@ -41,30 +44,24 @@ This will set the systemwide time zone.'))
         time_zone_options = [(zone, zone)
                              for zone in self.get_time_zones()]
         # Show not-set option only when time zone is not set
-        if self.initial.get('time_zone') == 'none':
+        current_time_zone = self.initial.get('time_zone')
+        if current_time_zone == 'none':
             time_zone_options.insert(0, ('none', _('-- no time zone set --')))
+        elif (current_time_zone, current_time_zone) not in time_zone_options:
+            time_zone_options.insert(0, (current_time_zone, current_time_zone))
 
         self.fields['time_zone'].choices = time_zone_options
 
     @staticmethod
     def get_time_zones():
-        """Return list of available time zones"""
-        time_zones = []
-        for line in open('/usr/share/zoneinfo/zone.tab'):
-            if re.match(r'^(#|\s*$)', line):
-                continue
+        """Return the list time zones."""
+        command = ['timedatectl', 'list-timezones']
+        try:
+            process = subprocess.run(command, stdout=subprocess.PIPE,
+                                     check=True)
+        except subprocess.CalledProcessError as exception:
+            logger.exception('Error getting time zones: %s', exception)
+            return []
 
-            try:
-                time_zones.append(line.split()[2])
-            except IndexError:
-                pass
-
-        time_zones.sort()
-
-        additional_time_zones = [
-            path[len('/usr/share/zoneinfo/'):]
-            for path in glob.glob('/usr/share/zoneinfo/Etc/*')]
-
-        # Add additional time zones at the top to make them more
-        # noticeable because people won't look for them
-        return additional_time_zones + time_zones
+        output = process.stdout.decode()
+        return output.splitlines()

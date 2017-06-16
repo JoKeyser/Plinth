@@ -21,20 +21,37 @@ Main Plinth views
 
 from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured
-from django.http.response import HttpResponseRedirect
+from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
-from django.urls import reverse
 from django.utils.translation import ugettext as _
+from stronghold.decorators import public
 import time
 
-from . import forms
+from . import forms, frontpage
 import plinth
+from plinth import actions
 
 
+@public
 def index(request):
     """Serve the main index page."""
-    return HttpResponseRedirect(reverse('apps:index'))
+    shortcuts = frontpage.get_shortcuts()
+    selection = request.GET.get('selected')
+
+    details, details_label, configure_url = None, None, None
+    if selection in frontpage.shortcuts:
+        details = frontpage.shortcuts[selection]['details']
+        details_label = frontpage.shortcuts[selection]['label']
+        configure_url = frontpage.shortcuts[selection]['configure_url']
+
+    return TemplateResponse(request, 'index.html',
+                            {'title': _('FreedomBox'),
+                             'shortcuts': shortcuts,
+                             'selected_id': selection,
+                             'details': details,
+                             'details_label': details_label,
+                             'configure_url': configure_url})
 
 
 class ServiceView(FormView):
@@ -106,84 +123,6 @@ class ServiceView(FormView):
         return context
 
 
-# TODO: remove this view once owncloud is gone.
-class ConfigurationView(FormView):
-    """A generic view for configuring simple modules."""
-    form_class = forms.ConfigurationForm
-    module_name = None
-
-    def __init__(self, module_name=None, *args, **kwargs):
-        """Set the module name on which this configuration view operates."""
-        self.instance_module_name = module_name
-
-    def get_module_name(self):
-        """Return the name of the module associated with the view."""
-        if not self.instance_module_name and not self.module_name:
-            raise ImproperlyConfigured(
-                'Using ConfigurationView without the "module_name" class '
-                'attribute or intialization attribute is prohibited.')
-        else:
-            return self.instance_module_name or self.module_name
-
-    def get_module(self):
-        """Return the module associated with the view."""
-        return plinth.module_loader.loaded_modules[self.get_module_name()]
-
-    def get_initial(self):
-        """Return the status of the module to fill in the form."""
-        return self.get_module().get_status()
-
-    def get_prefix(self):
-        """Return prefix for form used in the view."""
-        return self.get_module_name()
-
-    def get_template_names(self):
-        """Return the list of template names for the view."""
-        return [self.get_module_name() + '.html']
-
-    def get_context_data(self, **kwargs):
-        """Return the context data for rendering the template view."""
-        if 'title' not in kwargs:
-            kwargs['title'] = getattr(self.get_module(), 'title', None)
-
-        if 'description' not in kwargs:
-            kwargs['description'] = \
-                getattr(self.get_module(), 'description', None)
-
-        context = super().get_context_data(**kwargs)
-
-        if 'status' not in context:
-            context['status'] = context['form'].initial
-
-        return context
-
-    def form_valid(self, form):
-        """Perform operation when the form submission is valid."""
-        old_status = form.initial
-        new_status = form.cleaned_data
-
-        modified = self.apply_changes(old_status, new_status)
-        if not modified:
-            messages.info(self.request, _('Setting unchanged'))
-
-        context = self.get_context_data()
-        return self.render_to_response(context)
-
-    def apply_changes(self, old_status, new_status):
-        """Apply the changes submitted in the form."""
-        if old_status['enabled'] == new_status['enabled']:
-            return False
-
-        should_enable = new_status['enabled']
-        self.get_module().enable(should_enable)
-        if should_enable:
-            messages.success(self.request, _('Application enabled'))
-        else:
-            messages.success(self.request, _('Application disabled'))
-
-        return True
-
-
 class SetupView(TemplateView):
     """View to prompt and setup applications."""
     template_name = 'setup.html'
@@ -192,7 +131,16 @@ class SetupView(TemplateView):
         """Return the context data rendering the template."""
         context = super(SetupView, self).get_context_data(**kwargs)
         context['setup_helper'] = self.kwargs['setup_helper']
+        context['package_manager_is_busy'] = self.is_package_manager_busy()
         return context
+
+    def is_package_manager_busy(self):
+        """Return whether a package manager is running."""
+        try:
+            actions.superuser_run('packages', ['is-package-manager-busy'])
+            return True
+        except actions.ActionError:
+            return False
 
     def post(self, *args, **kwargs):
         """Handle installing/upgrading applications.

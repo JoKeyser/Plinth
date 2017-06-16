@@ -23,18 +23,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from plinth import cfg
 from plinth import service as service_module
+from plinth.menu import main_menu
 from plinth.utils import format_lazy
 
 
 version = 1
 
-depends = ['apps']
-
 managed_services = ['node-restore']
 
 managed_packages = ['node-restore']
 
-title = _('Unhosted Storage (reStore)')
+title = _('Unhosted Storage \n (reStore)')
 
 description = [
     format_lazy(
@@ -49,19 +48,29 @@ description = [
       '<a href=\'/restore/\'>reStore web-interface</a>.')
 ]
 
+reserved_usernames = ['node-restore']
+
 service = None
 
 
 def init():
     """Initialize the reStore module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-hdd', 'restore:index')
 
     global service
-    service = service_module.Service(
-        managed_services[0], title, ports=['http', 'https'], is_external=False)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            managed_services[0], title, ports=['http', 'https'],
+            is_external=False)
 
 
 def setup(helper, old_version=None):
     """Install and configure the module."""
     helper.install(managed_packages)
+    global service
+    if service is None:
+        service = service_module.Service(
+            managed_services[0], title, ports=['http', 'https'],
+            is_external=False)

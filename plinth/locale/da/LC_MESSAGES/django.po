@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreedomBox UI\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-20 09:43+0530\n"
+"POT-Creation-Date: 2017-06-10 09:50-0400\n"
 "PO-Revision-Date: 2016-07-03 21:44+0000\n"
 "Last-Translator: Mikkel Kirkgaard Nielsen <memb_weblate@mikini.dk>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/freedombox/plinth/"
@@ -21,98 +21,69 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.7-dev\n"
 
-#: plinth/action_utils.py:242
+#: plinth/action_utils.py:254
 #, python-brace-format
 msgid "Listening on {kind} port {listen_address}:{port}"
 msgstr "Lytter på {kind} port {listen_address}:{port}"
 
-#: plinth/action_utils.py:245
+#: plinth/action_utils.py:257
 #, python-brace-format
 msgid "Listening on {kind} port {port}"
 msgstr "Lytter på {kind} port {port}"
 
-#: plinth/action_utils.py:331
+#: plinth/action_utils.py:352
 #, python-brace-format
 msgid "Access URL {url} on tcp{kind}"
 msgstr "Tilgå URL {url} på tcp{kind}"
 
-#: plinth/action_utils.py:334
+#: plinth/action_utils.py:356
 #, python-brace-format
 msgid "Access URL {url}"
 msgstr "Tilgå URL {url}"
 
-#: plinth/action_utils.py:362
+#: plinth/action_utils.py:386
 #, python-brace-format
 msgid "Connect to {host}:{port}"
 msgstr "Forbind til {host}:{port}"
 
-#: plinth/action_utils.py:365
+#: plinth/action_utils.py:389
 #, python-brace-format
 msgid "Cannot connect to {host}:{port}"
 msgstr "Kan ikke forbinde til {host}:{port}"
 
-#: plinth/context_processors.py:36
+#: plinth/context_processors.py:38 plinth/views.py:49
 msgid "FreedomBox"
 msgstr "FreedomBox"
 
-#: plinth/forms.py:30 plinth/forms.py:37
+#: plinth/forms.py:31
 msgid "Enable application"
 msgstr "Aktiver applikation"
 
-#: plinth/middleware.py:59
+#: plinth/forms.py:45
+#, fuzzy
+#| msgid "Invalid domain name"
+msgid "Select the domain name to be used for this application"
+msgstr "Ugyldigt domænenavn"
+
+#: plinth/middleware.py:71
 msgid "Application installed."
 msgstr "Applikation installeret."
 
-#: plinth/middleware.py:65
+#: plinth/middleware.py:77
 #, python-brace-format
 msgid "Error installing application: {string} {details}"
 msgstr "Kunne ikke installere applikation: {string} {details}"
 
-#: plinth/middleware.py:69
+#: plinth/middleware.py:81
 #, python-brace-format
 msgid "Error installing application: {error}"
 msgstr "Kunne ikke installere applikation: {error}"
 
-#: plinth/modules/apps/apps.py:26
-msgid "Apps"
-msgstr "Apps"
-
-#: plinth/modules/apps/apps.py:32 plinth/templates/base.html:93
-msgid "Applications"
-msgstr "Applikationer"
-
-#: plinth/modules/apps/templates/apps.html:25
-msgid "Services and Applications"
-msgstr "Tjenester og Applikationer"
-
-#: plinth/modules/apps/templates/apps.html:28
-#, python-format
-msgid ""
-"You can install and run various services and applications on your "
-"%(box_name)s. Click on any app page link on the left to read a description "
-"of the application and choose to install it."
-msgstr ""
-"Du kan installere og køre forskellige tjenester og applikationer på din "
-"%(box_name)s. Klik på et af App-linkene til venstre, for at læse mere om den "
-"enkelte applikation eller installere den."
-
-#: plinth/modules/apps/templates/apps.html:36
-msgid ""
-"This box can be your photo sharing site, your instant messaging site, your "
-"social networking site, your news site.  Remember web portals?  We can be "
-"one of those too.  Many of the services you use on the web could soon be on "
-"site and under your control!"
-msgstr ""
-"Denne box kan blive din fotodelingstjeneste, din instant messagingtjeneste, "
-"dit sociale medie, dit nyhedsmedie. Kender du web-portaler? Sådan en kan den "
-"også være. Mange af de tjenester du bruger på webbet kan snart være "
-"tilgængelig her og under din kontrol!"
-
-#: plinth/modules/avahi/__init__.py:41
+#: plinth/modules/avahi/__init__.py:40
 msgid "Service Discovery"
 msgstr "Tjenestesøgning"
 
-#: plinth/modules/avahi/__init__.py:45
+#: plinth/modules/avahi/__init__.py:44
 #, python-brace-format
 msgid ""
 "Service discovery allows other devices on the network to discover your "
@@ -129,16 +100,83 @@ msgstr ""
 "Deaktivering vil forbedre sikkerheden, specielt hvis du forbinder til et "
 "fjendtligt lokalnetværk."
 
-#: plinth/modules/config/config.py:87 plinth/modules/config/config.py:124
+#: plinth/modules/bind/__init__.py:34
+msgid ""
+"Domain Name Server \n"
+" (BIND)"
+msgstr ""
+
+#: plinth/modules/bind/__init__.py:43
+msgid ""
+"BIND is open source software that enables you to publish your Domain Name "
+"System (DNS) information on the Internet, and to resolve DNS queries for "
+"your users."
+msgstr ""
+
+#: plinth/modules/bind/__init__.py:47
+msgid ""
+"BIND is by far the most widely used DNS software on the Internet, providing "
+"a robust and stable platform on top of which organizations can build "
+"distributed computing systems with the knowledge that those systems are "
+"fully compliant with published DNS standards."
+msgstr ""
+
+#: plinth/modules/bind/forms.py:38
+#, fuzzy
+#| msgid "Enable Tor"
+msgid "Enable forwarding"
+msgstr "Aktiver Tor"
+
+#: plinth/modules/bind/forms.py:40
+msgid "Enable forwarding on your BIND server"
+msgstr ""
+
+#: plinth/modules/bind/forms.py:43
+#, fuzzy
+#| msgid "Enable Dynamic DNS"
+msgid "Enable DNSSEC"
+msgstr "Aktiver Dynamisk DNS"
+
+#: plinth/modules/bind/forms.py:45
+msgid "Enable Domain Name System Security Extensions"
+msgstr ""
+
+#: plinth/modules/bind/forms.py:50
+msgid "A list of IP addresses, separated by space"
+msgstr ""
+
+#: plinth/modules/bind/views.py:58
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "Set forwarding configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/bind/views.py:66
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "Enable DNSSEC configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/bind/views.py:74
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "DNS server configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/bind/views.py:79
+msgid "Enable forwarding to set forwarding DNS servers"
+msgstr ""
+
+#: plinth/modules/config/config.py:88 plinth/modules/config/config.py:125
 #: plinth/modules/dynamicdns/dynamicdns.py:140
 msgid "Invalid domain name"
 msgstr "Ugyldigt domænenavn"
 
-#: plinth/modules/config/config.py:98
+#: plinth/modules/config/config.py:99
 msgid "Hostname"
 msgstr "Værtsnavn"
 
-#: plinth/modules/config/config.py:100
+#: plinth/modules/config/config.py:101
 #, python-brace-format
 msgid ""
 "Hostname is the local name by which other devices on the local network can "
@@ -151,17 +189,17 @@ msgstr ""
 "derimellem må kun være bogstaver, tal og bindestreger. Den samlede længde "
 "skal være 63 tegn eller derunder."
 
-#: plinth/modules/config/config.py:108
+#: plinth/modules/config/config.py:109
 msgid "Invalid hostname"
 msgstr "Ugyldigt værtsnavn"
 
-#: plinth/modules/config/config.py:111 plinth/modules/config/config.py:168
-#: plinth/modules/config/config.py:280
+#: plinth/modules/config/config.py:112 plinth/modules/config/config.py:169
+#: plinth/modules/config/config.py:285
 #: plinth/modules/dynamicdns/dynamicdns.py:135
 msgid "Domain Name"
 msgstr "Domænenavn"
 
-#: plinth/modules/config/config.py:113
+#: plinth/modules/config/config.py:114
 #, python-brace-format
 msgid ""
 "Domain name is the global name by which other devices on the Internet can "
@@ -177,48 +215,49 @@ msgstr ""
 "bogstaver, tal og bindestreger. Hvert ord skal være på 63 tegn eller "
 "derunder. Den samlede længde skal være 253 tegn eller derunder."
 
-#: plinth/modules/config/config.py:128
+#: plinth/modules/config/config.py:129
 msgid "Language"
 msgstr "Sprog"
 
-#: plinth/modules/config/config.py:130
+#: plinth/modules/config/config.py:131
 msgid "Language for this web administration interface"
 msgstr "Sprog i dette administrationsværktøj"
 
-#: plinth/modules/config/config.py:150
+#: plinth/modules/config/config.py:151
 #: plinth/modules/dynamicdns/dynamicdns.py:37
-#: plinth/modules/ikiwiki/views.py:36
+#: plinth/modules/ikiwiki/views.py:37
+#: plinth/modules/tahoe/templates/tahoe-pre-setup.html:39
 msgid "Configure"
 msgstr "Konfigurer"
 
-#: plinth/modules/config/config.py:191
+#: plinth/modules/config/config.py:192
 msgid "General Configuration"
 msgstr "Generel Konfiguration"
 
-#: plinth/modules/config/config.py:208
+#: plinth/modules/config/config.py:209
 #, python-brace-format
 msgid "Error setting hostname: {exception}"
 msgstr "Kunne ikke sætte værtsnavn: {exception}"
 
-#: plinth/modules/config/config.py:211
+#: plinth/modules/config/config.py:212
 msgid "Hostname set"
 msgstr "Værtsnavn gemt"
 
-#: plinth/modules/config/config.py:217
+#: plinth/modules/config/config.py:218
 #, python-brace-format
 msgid "Error setting domain name: {exception}"
 msgstr "Kunne ikke sætte domænenavn: {exception}"
 
-#: plinth/modules/config/config.py:220
+#: plinth/modules/config/config.py:221
 msgid "Domain name set"
 msgstr "Domænenavn gemt"
 
-#: plinth/modules/config/config.py:228
+#: plinth/modules/config/config.py:229
 #, python-brace-format
 msgid "Error setting language: {exception}"
 msgstr "Kunne ikke sætte sprog: {exception}"
 
-#: plinth/modules/config/config.py:231
+#: plinth/modules/config/config.py:232
 msgid "Language changed"
 msgstr "Sprog ændret"
 
@@ -227,35 +266,43 @@ msgstr "Sprog ændret"
 msgid "Submit"
 msgstr "Indsend"
 
-#: plinth/modules/datetime/__init__.py:39
+#: plinth/modules/datetime/__init__.py:37
 msgid "Date & Time"
 msgstr "Dato & Tid"
 
-#: plinth/modules/datetime/__init__.py:42
+#: plinth/modules/datetime/__init__.py:40
+#, fuzzy
+#| msgid ""
+#| "Network time server is a program that maintians the system time in "
+#| "synchronization with servers on the Internet."
 msgid ""
-"Network time server is a program that maintians the system time in "
+"Network time server is a program that maintains the system time in "
 "synchronization with servers on the Internet."
 msgstr ""
 "Netværkstidsserver er et program der holder systemets tid synkroniseret med "
 "servere på internettet."
 
-#: plinth/modules/datetime/__init__.py:83
+#: plinth/modules/datetime/__init__.py:87
 msgid "NTP client in contact with servers"
 msgstr "NTP-klient i kontakt med servere"
 
-#: plinth/modules/datetime/forms.py:33
+#: plinth/modules/datetime/forms.py:36
 msgid "Time Zone"
 msgstr "Tidszone"
 
-#: plinth/modules/datetime/forms.py:34
+#: plinth/modules/datetime/forms.py:37
+#, fuzzy
+#| msgid ""
+#| "Set your time zone to get accurate timestamps. This will set the "
+#| "systemwide time zone."
 msgid ""
-"Set your time zone to get accurate timestamps. This will set the systemwide "
+"Set your time zone to get accurate timestamps. This will set the system-wide "
 "time zone."
 msgstr ""
 "Sæt din tidszone for at få præcise tidsstempler. Dette vil ændre hele "
 "systemets tidszone."
 
-#: plinth/modules/datetime/forms.py:45
+#: plinth/modules/datetime/forms.py:49
 msgid "-- no time zone set --"
 msgstr "-- ingen tidszone valgt --"
 
@@ -268,15 +315,19 @@ msgstr "Kunne ikke sætte tidszone: {exception}"
 msgid "Time zone set"
 msgstr "Tidszone gemt"
 
-#: plinth/modules/deluge/__init__.py:40
-msgid "BitTorrent Web Client (Deluge)"
+#: plinth/modules/deluge/__init__.py:39
+#, fuzzy
+#| msgid "BitTorrent Web Client (Deluge)"
+msgid ""
+"BitTorrent Web Client \n"
+" (Deluge)"
 msgstr "BitTorrent Webklient (Deluge)"
 
-#: plinth/modules/deluge/__init__.py:43
+#: plinth/modules/deluge/__init__.py:42
 msgid "Deluge is a BitTorrent client that features a Web UI."
 msgstr "Deluge er en BitTorrent-klient som har et webbaseret brugerinterface."
 
-#: plinth/modules/deluge/__init__.py:45
+#: plinth/modules/deluge/__init__.py:44
 msgid ""
 "When enabled, the Deluge web client will be available from <a href=\"/deluge"
 "\">/deluge</a> path on the web server. The default password is 'deluge', but "
@@ -286,11 +337,11 @@ msgstr ""
 "deluge\">/deluge</a> på webserveren. Standardkodeordet er 'deluge', men du "
 "bør logge ind og ændre det med det samme du har aktiveret denne tjeneste."
 
-#: plinth/modules/diagnostics/__init__.py:31
+#: plinth/modules/diagnostics/__init__.py:32
 msgid "Diagnostics"
 msgstr "Diagnosticering"
 
-#: plinth/modules/diagnostics/__init__.py:34
+#: plinth/modules/diagnostics/__init__.py:35
 msgid ""
 "The system diagnostic test will run a number of checks on your system to "
 "confirm that applications and services are working as expected."
@@ -303,7 +354,8 @@ msgid "Diagnostic Test"
 msgstr "Diagnostisk Test"
 
 #: plinth/modules/diagnostics/templates/diagnostics.html:40
-#: plinth/modules/diagnostics/templates/diagnostics_button.html:27
+#: plinth/modules/diagnostics/templates/diagnostics_button.html:28
+#: plinth/modules/diagnostics/templates/diagnostics_button.html:31
 msgid "Run Diagnostics"
 msgstr "Kør Diagnostik"
 
@@ -341,7 +393,48 @@ msgstr "Test"
 msgid "Result"
 msgstr "Resultat"
 
-#: plinth/modules/disks/__init__.py:35 plinth/modules/disks/views.py:39
+#: plinth/modules/diaspora/__init__.py:61
+msgid ""
+"diaspora* is a decentralized social network where you can store and control "
+"your own data."
+msgstr ""
+
+#: plinth/modules/diaspora/forms.py:30
+#, fuzzy
+#| msgid "Invalid domain name"
+msgid "Select the domain name to be used for diaspora*"
+msgstr "Ugyldigt domænenavn"
+
+#: plinth/modules/diaspora/forms.py:32
+msgid ""
+"Warning! Do not change the FreedomBox domain name after setting up diaspora*"
+msgstr ""
+
+#: plinth/modules/diaspora/templates/diaspora-post-setup.html:32
+#, python-format
+msgid ""
+"The diaspora* pod domain is set to <b>%(domain_name)s</b>. User IDs will "
+"look like <i>username@diaspora.%(domain_name)s</i><br/> If the FreedomBox "
+"domain name is changed, all data of the users registered with the previous "
+"podname wouldn't be accessible. <br/> You can access the diaspora* pod at <a "
+"href=\"https://diaspora.%(domain_name)s\"> diaspora.%(domain_name)s </a>"
+msgstr ""
+
+#: plinth/modules/diaspora/templates/diaspora-pre-setup.html:58
+#: plinth/modules/dynamicdns/templates/dynamicdns_configure.html:40
+#: plinth/modules/ejabberd/templates/ejabberd.html:61
+#: plinth/modules/ikiwiki/templates/ikiwiki_create.html:32
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:63
+#: plinth/modules/openvpn/templates/openvpn.html:124
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:51
+#: plinth/modules/tahoe/templates/tahoe-pre-setup.html:58
+#: plinth/modules/tor/templates/tor.html:93
+#: plinth/modules/upgrades/templates/upgrades_configure.html:32
+#: plinth/templates/service.html:73
+msgid "Update setup"
+msgstr "Opdater indstillinger"
+
+#: plinth/modules/disks/__init__.py:33 plinth/modules/disks/views.py:39
 msgid "Disks"
 msgstr "Diske"
 
@@ -359,7 +452,7 @@ msgid "Mount Point"
 msgstr "Monteringspunkt"
 
 #: plinth/modules/disks/templates/disks.html:43
-#: plinth/modules/ikiwiki/forms.py:29
+#: plinth/modules/ikiwiki/forms.py:30
 #: plinth/modules/networks/templates/connection_show.html:98
 msgid "Type"
 msgstr "Type"
@@ -367,6 +460,10 @@ msgstr "Type"
 #: plinth/modules/disks/templates/disks.html:44
 msgid "Used"
 msgstr "Brugt"
+
+#: plinth/modules/disks/templates/disks.html:77
+msgid "Partition Expansion"
+msgstr ""
 
 #: plinth/modules/disks/templates/disks.html:80
 #, python-format
@@ -379,11 +476,18 @@ msgstr ""
 "Rod-partitionen kan udvides til også at inkludere denne plads.  Dette vil "
 "give dig yderligere fri plads til at gemme filer i."
 
-#: plinth/modules/disks/templates/disks.html:89
+#: plinth/modules/disks/templates/disks.html:90
+#: plinth/modules/disks/templates/disks.html:102
 #: plinth/modules/disks/templates/disks_expand.html:45
 #: plinth/modules/disks/views.py:56
 msgid "Expand Root Partition"
 msgstr "Udvid Rod-partition"
+
+#: plinth/modules/disks/templates/disks.html:94
+msgid ""
+"There is no unallocated space after your root partition. There is no need to "
+"expand it."
+msgstr ""
 
 #: plinth/modules/disks/templates/disks_expand.html:35
 #, python-format
@@ -406,28 +510,33 @@ msgid "Partition expanded successfully."
 msgstr "Partition blev udviddet."
 
 #: plinth/modules/disks/views.py:77
-#, python-brace-format
-msgid "{disk_size} bytes"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} bytes"
+msgid "{disk_size:.1f} bytes"
 msgstr "{disk_size} bytes"
 
 #: plinth/modules/disks/views.py:81
-#, python-brace-format
-msgid "{disk_size} KiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} KiB"
+msgid "{disk_size:.1f} KiB"
 msgstr "{disk_size} KiB"
 
 #: plinth/modules/disks/views.py:85
-#, python-brace-format
-msgid "{disk_size} MiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} MiB"
+msgid "{disk_size:.1f} MiB"
 msgstr "{disk_size} MiB"
 
 #: plinth/modules/disks/views.py:89
-#, python-brace-format
-msgid "{disk_size} GiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} GiB"
+msgid "{disk_size:.1f} GiB"
 msgstr "{disk_size} GiB"
 
 #: plinth/modules/disks/views.py:92
-#, python-brace-format
-msgid "{disk_size} TiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} TiB"
+msgid "{disk_size:.1f} TiB"
 msgstr "{disk_size} TiB"
 
 #: plinth/modules/dynamicdns/__init__.py:33
@@ -462,16 +571,16 @@ msgstr ""
 "opdatere dit DNS-navn med den nye IP-adresse, således at hvis nogen på "
 "internettet spørger til adressen vil de få din aktuelle IP-adresse."
 
-#: plinth/modules/dynamicdns/dynamicdns.py:35 plinth/modules/help/help.py:39
+#: plinth/modules/dynamicdns/dynamicdns.py:35 plinth/modules/help/help.py:40
 msgid "About"
 msgstr "Om"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:39
-#: plinth/modules/firewall/templates/firewall.html:46
+#: plinth/modules/firewall/templates/firewall.html:47
 #: plinth/modules/networks/templates/connection_show.html:261
 #: plinth/modules/openvpn/templates/openvpn.html:67
-#: plinth/modules/tor/templates/tor.html:51
-#: plinth/modules/tor/templates/tor.html:82
+#: plinth/modules/tor/templates/tor.html:35
+#: plinth/modules/tor/templates/tor.html:65 plinth/templates/service.html:39
 msgid "Status"
 msgstr "Status"
 
@@ -571,17 +680,17 @@ msgid "Use HTTP basic authentication"
 msgstr "Brug basal (\"basic\") HTTP-autentifikation"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:143
-#: plinth/modules/networks/forms.py:168 plinth/modules/transmission/forms.py:37
+#: plinth/modules/networks/forms.py:227 plinth/modules/transmission/forms.py:37
 msgid "Username"
 msgstr "Brugernavn"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:146
-#: plinth/modules/networks/forms.py:169 plinth/modules/transmission/forms.py:41
+#: plinth/modules/networks/forms.py:228 plinth/modules/transmission/forms.py:41
 msgid "Password"
 msgstr "Kodeord"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:149
-#: plinth/modules/networks/forms.py:171
+#: plinth/modules/networks/forms.py:230
 msgid "Show password"
 msgstr "Vis kodeord"
 
@@ -614,7 +723,7 @@ msgid "Dynamic DNS Status"
 msgstr "Dynamisk DNS Status"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:364
-#: plinth/modules/openvpn/views.py:142 plinth/modules/transmission/views.py:72
+#: plinth/modules/openvpn/views.py:143 plinth/modules/transmission/views.py:72
 msgid "Configuration updated"
 msgstr "Konfiguration opdateret"
 
@@ -649,15 +758,6 @@ msgstr ""
 "Din browser har ikke aktiveret JavaScript. Dynamiske indtastningsfelter og "
 "hjælpefunktionalitet virker formentlig ikke (men grundfunktionaliteten burde "
 "fungere)."
-
-#: plinth/modules/dynamicdns/templates/dynamicdns_configure.html:40
-#: plinth/modules/ikiwiki/templates/ikiwiki_create.html:32
-#: plinth/modules/openvpn/templates/openvpn.html:124
-#: plinth/modules/tor/templates/tor.html:110
-#: plinth/modules/upgrades/templates/upgrades_configure.html:32
-#: plinth/templates/service.html:67
-msgid "Update setup"
-msgstr "Opdater indstillinger"
 
 #: plinth/modules/dynamicdns/templates/dynamicdns_status.html:25
 msgid "NAT type"
@@ -698,6 +798,96 @@ msgstr ""
 msgid "Last update"
 msgstr "Seneste opdatering"
 
+#: plinth/modules/ejabberd/__init__.py:42
+#, fuzzy
+#| msgid "Chat Server (XMPP)"
+msgid ""
+"Chat Server \n"
+" (ejabberd)"
+msgstr "Chat-server (XMPP)"
+
+#: plinth/modules/ejabberd/__init__.py:45
+msgid ""
+"XMPP is an open and standardized communication protocol. Here you can run "
+"and configure your XMPP server, called ejabberd."
+msgstr ""
+"XMPP er en åben og standardiseret kommunikationsprotokol. Her kan du "
+"aktivere og konfigurere din XMPP-server, kaldet ejabberd."
+
+#: plinth/modules/ejabberd/__init__.py:48
+#, fuzzy
+#| msgid ""
+#| "To actually communicate, you can use the <a href='/jwchat'>web client</a> "
+#| "or any other <a href='http://xmpp.org/xmpp-software/clients/' "
+#| "target='_blank'>XMPP client</a>."
+msgid ""
+"To actually communicate, you can use the web client or any other <a "
+"href='http://xmpp.org/xmpp-software/clients/' target='_blank'>XMPP client</"
+"a>."
+msgstr ""
+"For rent faktisk at kommunikere, kan du bruge <a href='/jwchat'>web-"
+"klienten</a> eller enhver anden <a href='http://xmpp.org/xmpp-software/"
+"clients/' target='_blank'>XMPP-klient</a>."
+
+#: plinth/modules/ejabberd/forms.py:33
+msgid "Enable Message Archive Management"
+msgstr ""
+
+#: plinth/modules/ejabberd/forms.py:36
+#, python-brace-format
+msgid ""
+"If enabled, your {box_name} will store chat message histories. This allows "
+"synchronization of conversations between multiple clients, and reading the "
+"history of a multi-user chat room. It depends on the client settings whether "
+"the histories are stored as plain text or encrypted."
+msgstr ""
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:33
+#, python-format
+msgid ""
+"Your XMPP server domain is set to <b>%(domainname)s</b>. User IDs will look "
+"like <i>username@%(domainname)s</i>. You can setup your domain on the system "
+"<a href=\"%(index_url)s\">Configure</a> page."
+msgstr ""
+"Domænet for din XMPP-server er sat til <b>%(domainname)s</b>. Brugernavne "
+"vil se ud som <i>brugernavn@%(domainname)s</i>. Du kan konfigurere systemets "
+"domæne på <a href=\"%(index_url)s\">Konfigurer</a> siden."
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:47
+#: plinth/modules/jsxc/templates/jsxc.html:32
+msgid "Launch web client"
+msgstr "Kør webklient"
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:53
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:31
+#: plinth/modules/openvpn/templates/openvpn.html:116
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:43
+#: plinth/modules/tor/templates/tor.html:85 plinth/templates/base.html:113
+#: plinth/templates/base.html:115 plinth/templates/service.html:65
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: plinth/modules/ejabberd/views.py:60 plinth/modules/openvpn/views.py:145
+#: plinth/modules/tor/views.py:134 plinth/views.py:103
+msgid "Setting unchanged"
+msgstr "Indstilling uændret"
+
+#: plinth/modules/ejabberd/views.py:64 plinth/views.py:107
+msgid "Application enabled"
+msgstr "Applikation aktiveret"
+
+#: plinth/modules/ejabberd/views.py:67 plinth/views.py:110
+msgid "Application disabled"
+msgstr "Applikation deaktiveret"
+
+#: plinth/modules/ejabberd/views.py:74
+msgid "Message Archive Management enabled"
+msgstr ""
+
+#: plinth/modules/ejabberd/views.py:78
+msgid "Message Archive Management disabled"
+msgstr ""
+
 #: plinth/modules/firewall/__init__.py:39
 msgid "Firewall"
 msgstr "Firewall"
@@ -731,39 +921,45 @@ msgstr ""
 "eller hvis systemet bruger systemd 'systemctl start firewalld'."
 
 #: plinth/modules/firewall/templates/firewall.html:45
+#, fuzzy
+#| msgid "Ports"
+msgid "Show Ports"
+msgstr "Porte"
+
+#: plinth/modules/firewall/templates/firewall.html:46
 msgid "Service/Port"
 msgstr "Tjeneste/Port"
 
-#: plinth/modules/firewall/templates/firewall.html:57
+#: plinth/modules/firewall/templates/firewall.html:65
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:68
 #: plinth/modules/names/templates/names.html:49
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: plinth/modules/firewall/templates/firewall.html:60
+#: plinth/modules/firewall/templates/firewall.html:68
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:70
 #: plinth/modules/names/templates/names.html:51
 #: plinth/modules/networks/forms.py:62
 msgid "Disabled"
 msgstr "Deaktiveret"
 
-#: plinth/modules/firewall/templates/firewall.html:71
+#: plinth/modules/firewall/templates/firewall.html:80
 msgid "Permitted"
 msgstr "Tilladt"
 
-#: plinth/modules/firewall/templates/firewall.html:74
+#: plinth/modules/firewall/templates/firewall.html:83
 msgid "Permitted (internal only)"
 msgstr "Tilladt (kun internt)"
 
-#: plinth/modules/firewall/templates/firewall.html:77
+#: plinth/modules/firewall/templates/firewall.html:86
 msgid "Permitted (external only)"
 msgstr "Tilladt (kun eksternt)"
 
-#: plinth/modules/firewall/templates/firewall.html:80
+#: plinth/modules/firewall/templates/firewall.html:89
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: plinth/modules/firewall/templates/firewall.html:94
+#: plinth/modules/firewall/templates/firewall.html:103
 msgid ""
 "The operation of the firewall is automatic. When you enable a service it is "
 "also permitted in the firewall and when you disable a service it is also "
@@ -773,70 +969,39 @@ msgstr ""
 "også blive åbnet i firewallen, og når du deaktiverer en tjeneste blokeres "
 "den igen."
 
-#: plinth/modules/first_boot/forms.py:61 plinth/modules/users/forms.py:119
-msgid "Creating LDAP user failed."
-msgstr "Kunne ikke oprette LDAP-bruger."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:29
+msgid "Setup Complete!"
+msgstr "Konfiguration er færdig!"
 
-#: plinth/modules/first_boot/forms.py:69
-msgid "Failed to add new user to admin group."
-msgstr "Kunne ikke tilføje ny bruger til admin-gruppen."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:32
+#, python-format
+msgid "Without any apps, your %(box_name)s cannot do very much."
+msgstr ""
 
-#: plinth/modules/first_boot/forms.py:84
+#: plinth/modules/first_boot/templates/firstboot_complete.html:39
+#, fuzzy
+#| msgid "Install"
+msgid "Install Apps"
+msgstr "Installer"
+
+#: plinth/modules/first_boot/templates/firstboot_complete.html:45
+#, python-format
 msgid ""
-"Console login access restricted to users in \"admin\" group. This can be "
-"configured in security settings."
+"You may want to check the <a href=\"%(networks_url)s\">network setup</a> and "
+"modify it if necessary."
 msgstr ""
-
-#: plinth/modules/first_boot/forms.py:90
-msgid "Failed to restrict console access."
-msgstr ""
-
-#: plinth/modules/first_boot/forms.py:102
-msgid "User account created, you are now logged in"
-msgstr "Brugerkonto oprettet, du er nu logget ind"
-
-#: plinth/modules/first_boot/forms.py:129
-#, python-brace-format
-msgid "The voucher you received with your {box_name} Danube Edition"
-msgstr "Rabatkuponen som du modtog sammen med din {box_name} Danube Edition"
-
-#: plinth/modules/first_boot/forms.py:134
-msgid "Subdomain"
-msgstr "Subdomæne"
-
-#: plinth/modules/first_boot/forms.py:136
-msgid "The subdomain you want to register"
-msgstr "Subdomænet du vil registrere"
-
-#: plinth/modules/first_boot/forms.py:159
-msgid "This code is not valid"
-msgstr "Denne kode er ikke gyldig"
-
-#: plinth/modules/first_boot/forms.py:165
-#, python-brace-format
-msgid "This code is bound to the domain {domain}."
-msgstr "Denne kode er specifik for domænet {domain}."
-
-#: plinth/modules/first_boot/forms.py:175
-msgid "The requested domain is already registered."
-msgstr "Det ønskede domæne er allerede registreret."
-
-#: plinth/modules/first_boot/forms.py:189
-#, python-brace-format
-msgid "Domain registration failed: {response}."
-msgstr "Domæneregistrering fejlede: {response}."
 
 #: plinth/modules/first_boot/templates/firstboot_navbar.html:23
 #: plinth/modules/help/templates/help_index.html:25
-#: plinth/templates/base.html:102
+#: plinth/templates/base.html:125
 msgid "Help"
 msgstr "Hjælp"
 
-#: plinth/modules/first_boot/templates/firstboot_state0.html:41
+#: plinth/modules/first_boot/templates/firstboot_welcome.html:44
 msgid "Start Setup"
 msgstr "Start Konfiguration"
 
-#: plinth/modules/first_boot/templates/firstboot_state0.html:45
+#: plinth/modules/first_boot/templates/firstboot_welcome.html:49
 #, python-format
 msgid ""
 "To complete the setup of your %(box_name)s, please provide some basic "
@@ -845,109 +1010,20 @@ msgstr ""
 "For at færdiggøre konfigurationen af din %(box_name)s, angiv venligst nogle "
 "grundlæggende informationer."
 
-#: plinth/modules/first_boot/templates/firstboot_state1.html:29
-msgid "Administrator Account"
-msgstr "Administratorkonto"
-
-#: plinth/modules/first_boot/templates/firstboot_state1.html:32
-msgid ""
-"Choose a username and password to access this web interface. The password "
-"can be changed later. This user will be granted administrative privileges. "
-"Other users can be added later."
-msgstr ""
-"Vælg et brugernavn og kodeord der skal have adgang til dette web-interface. "
-"Kodeordet kan ændres senere. Brugeren vil få tildelt "
-"administratorrettigheder. Andre brugere kan tilføjes senere."
-
-#: plinth/modules/first_boot/templates/firstboot_state1.html:45
-msgid "Box it up!"
-msgstr "Box den!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:29
-msgid "Setup Complete!"
-msgstr "Konfiguration er færdig!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:32
-#, python-format
-msgid ""
-"%(box_name)s setup is now complete.  To make your %(box_name)s functional, "
-"you need some applications.  They will be installed the first time you "
-"access them."
-msgstr ""
-"Konfiguration af %(box_name)s er nu færdig. For at kunne noget nyttigt skal "
-"du bruge nogle applikationer på din %(box_name)s. Disse installeres første "
-"gang du tilgår dem."
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:41
-msgid "Go to Apps"
-msgstr "Gå til Apps"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:44
-msgid "Current Network Configuration"
-msgstr "Nuværende Netværkskonfiguration"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:47
-msgid ""
-"You should check the network setup and modify it if necessary. Do not forget "
-"to change the default Wi-Fi passwords!"
-msgstr ""
-"Du bør kontrollere netværksopsætningen og tilpasse den hvis nødvendigt. Glem "
-"ikke at ændre standardkodeordene for Wi-Fi!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:57
-msgid "Go to Networks"
-msgstr "Gå til Netværk"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:27
-msgid "Setup a freedombox.me subdomain with your voucher"
-msgstr "Konfigurer et freedombox.me subdomæne med din rabatkupon"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:31
-#, python-format
-msgid ""
-"<a href=\"%(finish_firstboot_url)s\">Skip this step</a> if you do not have a "
-"voucher or want to configure PageKite later with a different domain or "
-"credentials."
-msgstr ""
-"<a href=\"%(finish_firstboot_url)s\">Spring dette over</a> hvis du ikke har "
-"en rabatkupon, eller vil konfigurere PageKite senere med et andet domænet "
-"eller konto."
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:39
-msgid ""
-"You can use an already redeemed voucher but it will only work with the "
-"initially registered subdomain."
-msgstr ""
-"Du vil kunne anvende en allerede indløst rabatkupon, men den vil kun fungere "
-"med det subdomæne den oprindeligt med registreret med."
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:55
-msgid "Register"
-msgstr "Registrer"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:59
-msgid "Skip Registration"
-msgstr "Udsæt Registrering"
-
-#: plinth/modules/first_boot/views.py:70
+#: plinth/modules/first_boot/views.py:56
 msgid "Setup Complete"
 msgstr "Konfiguration Færdig"
 
-#: plinth/modules/first_boot/views.py:94
-msgid "Pagekite setup finished. The HTTP and HTTPS services are activated now."
-msgstr ""
-"Konfiguration af PageKite er færdig. Servicerne for HTTP og HTTPS er blevet "
-"aktiveret."
-
-#: plinth/modules/help/help.py:33
+#: plinth/modules/help/help.py:34
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: plinth/modules/help/help.py:35
+#: plinth/modules/help/help.py:36
 msgid "Where to Get Help"
 msgstr "Få Hjælp"
 
-#: plinth/modules/help/help.py:37 plinth/modules/networks/forms.py:61
+#: plinth/modules/help/help.py:38 plinth/modules/networks/forms.py:61
+#: plinth/modules/networks/forms.py:101 plinth/templates/index.html:124
 msgid "Manual"
 msgstr "Brugermanual"
 
@@ -955,12 +1031,12 @@ msgstr "Brugermanual"
 msgid "Documentation and FAQ"
 msgstr "Dokumentation og OSS"
 
-#: plinth/modules/help/help.py:54
+#: plinth/modules/help/help.py:55
 #, python-brace-format
 msgid "About {box_name}"
 msgstr "Om {box_name}"
 
-#: plinth/modules/help/help.py:72
+#: plinth/modules/help/help.py:74
 #, python-brace-format
 msgid "{box_name} Manual"
 msgstr "{box_name} Brugervejledning"
@@ -1026,9 +1102,18 @@ msgid "Learn more &raquo;"
 msgstr "Lær mere &raquo;"
 
 #: plinth/modules/help/templates/help_about.html:76
-#, python-format
-msgid "You are running Plinth version %(version)s."
+#, fuzzy, python-format
+#| msgid "You are running Plinth version %(version)s."
+msgid "You are running %(os_release)s and Plinth version %(version)s."
 msgstr "Du kører Plinth version %(version)s."
+
+#: plinth/modules/help/templates/help_about.html:81
+msgid "There is a new Plinth version available."
+msgstr ""
+
+#: plinth/modules/help/templates/help_about.html:85
+msgid "Plinth is up to date."
+msgstr ""
 
 #: plinth/modules/help/templates/help_base.html:36
 #, python-format
@@ -1079,33 +1164,43 @@ msgstr ""
 "\"https://webchat.oftc.net/?randomnick=1&channels=freedombox&prompt=1\"> "
 "#freedombox</a> med IRC web-brugerfladen."
 
-#: plinth/modules/help/templates/statuslog.html:26
+#: plinth/modules/help/templates/statuslog.html:25
+#, fuzzy
+#| msgid "Status"
+msgid "Status Log"
+msgstr "Status"
+
+#: plinth/modules/help/templates/statuslog.html:28
 #, fuzzy, python-format
 #| msgid ""
 #| "This is an internal error and not something you caused or can fix.  "
 #| "Please report the error on the <a href=\"https://github.com/freedombox/"
 #| "Plinth/issues\">bug tracker</a> so we can fix it."
 msgid ""
-"This is the last %(num_lines)s lines of the status log for this web "
+"These are the last %(num_lines)s lines of the status log for this web "
 "interface. If you want to report a bug, please use the <a href=\"https://"
-"github.com/freedombox/Plinth/issues\">bugtracker</a> and attach this status "
+"github.com/freedombox/Plinth/issues\">bug tracker</a> and attach this status "
 "log to the bug report."
 msgstr ""
 "Dette er en intern fejl og ikke noget du forårsagede eller selv kan udbedre. "
 "Rapporter venligst fejlen i <a href=\"https://github.com/freedombox/Plinth/"
 "issues\">fejlhåndteringsvørktøjet</a> så vi kan rette den."
 
-#: plinth/modules/help/templates/statuslog.html:36
-msgid ""
-"Caution: Please remove any passwords or other personal information from the "
-"log, before submitting the bug report."
+#: plinth/modules/help/templates/statuslog.html:38
+msgid "Caution:"
 msgstr ""
 
-#: plinth/modules/ikiwiki/__init__.py:40
+#: plinth/modules/help/templates/statuslog.html:39
+msgid ""
+"Please remove any passwords or other personal information from the log "
+"before submitting the bug report."
+msgstr ""
+
+#: plinth/modules/ikiwiki/__init__.py:39
 msgid "Wiki and Blog (ikiwiki)"
 msgstr "Wiki og Blog (ikiwiki)"
 
-#: plinth/modules/ikiwiki/__init__.py:43
+#: plinth/modules/ikiwiki/__init__.py:42
 msgid ""
 "ikiwiki is a simple wiki and blog application. It supports several "
 "lightweight markup languages, including Markdown, and common blogging "
@@ -1117,16 +1212,20 @@ msgstr ""
 "kommentarer og RSS-feeds. Når aktiveret, vil blogge og wikier være "
 "tilgængelige på <a href=\"/ikiwiki\">/ikiwiki</a>."
 
-#: plinth/modules/ikiwiki/forms.py:32
+#: plinth/modules/ikiwiki/forms.py:34
 #: plinth/modules/networks/templates/connection_show.html:78
 msgid "Name"
 msgstr "Navn"
 
-#: plinth/modules/ikiwiki/forms.py:34
+#: plinth/modules/ikiwiki/forms.py:35
+msgid "Only alphanumeric characters are allowed."
+msgstr ""
+
+#: plinth/modules/ikiwiki/forms.py:38
 msgid "Admin Account Name"
 msgstr "Administratorkontonavn"
 
-#: plinth/modules/ikiwiki/forms.py:37
+#: plinth/modules/ikiwiki/forms.py:41
 msgid "Admin Account Password"
 msgstr "Administratorkontokodeord"
 
@@ -1173,69 +1272,115 @@ msgstr "Slet sitet %(site)s"
 msgid "Go to site %(site)s"
 msgstr "Gå til sitet %(site)s"
 
-#: plinth/modules/ikiwiki/views.py:38
+#: plinth/modules/ikiwiki/views.py:39
 msgid "Manage"
 msgstr "Administrer"
 
-#: plinth/modules/ikiwiki/views.py:40
+#: plinth/modules/ikiwiki/views.py:41
 msgid "Create"
 msgstr "Opret"
 
-#: plinth/modules/ikiwiki/views.py:63
+#: plinth/modules/ikiwiki/views.py:64
 msgid "Manage Wikis and Blogs"
 msgstr "Administrer Wikier og Blogs"
 
-#: plinth/modules/ikiwiki/views.py:89
+#: plinth/modules/ikiwiki/views.py:95
 msgid "Create Wiki or Blog"
 msgstr "Opret Wiki eller Blog"
 
-#: plinth/modules/ikiwiki/views.py:102
+#: plinth/modules/ikiwiki/views.py:108
 #, python-brace-format
 msgid "Created wiki {name}."
 msgstr "Wiki {name} oprettet."
 
-#: plinth/modules/ikiwiki/views.py:104
+#: plinth/modules/ikiwiki/views.py:110
 #, python-brace-format
 msgid "Could not create wiki: {error}"
 msgstr "Kunne ikke oprette wiki: {error}"
 
-#: plinth/modules/ikiwiki/views.py:116
+#: plinth/modules/ikiwiki/views.py:122
 #, python-brace-format
 msgid "Created blog {name}."
 msgstr "Blog {name} oprettet."
 
-#: plinth/modules/ikiwiki/views.py:118
+#: plinth/modules/ikiwiki/views.py:124
 #, python-brace-format
 msgid "Could not create blog: {error}"
 msgstr "Kunne ikke oprette blog: {error}"
 
-#: plinth/modules/ikiwiki/views.py:131
+#: plinth/modules/ikiwiki/views.py:137
 #, python-brace-format
 msgid "{name} deleted."
 msgstr "{name} slettet."
 
-#: plinth/modules/ikiwiki/views.py:133
+#: plinth/modules/ikiwiki/views.py:140
 #, python-brace-format
 msgid "Could not delete {name}: {error}"
 msgstr "Kunne ikke slette {name}: {error}"
 
-#: plinth/modules/ikiwiki/views.py:139
+#: plinth/modules/ikiwiki/views.py:146
 msgid "Delete Wiki or Blog"
 msgstr "Slet Wiki eller Blog"
 
-#: plinth/modules/letsencrypt/__init__.py:38
-#: plinth/modules/letsencrypt/__init__.py:63
+#: plinth/modules/infinoted/__init__.py:43
+msgid ""
+"Gobby Server \n"
+" (infinoted)"
+msgstr ""
+
+#: plinth/modules/infinoted/__init__.py:46
+msgid "infinoted is a server for Gobby, a collaborative text editor."
+msgstr ""
+
+#: plinth/modules/infinoted/__init__.py:49
+#, python-brace-format
+msgid ""
+"To use it, <a href=\"https://gobby.github.io/\">download Gobby</a>, desktop "
+"client and install it. Then start Gobby and select \"Connect to Server\" and "
+"enter your {box_name}'s domain name."
+msgstr ""
+
+#: plinth/modules/jsxc/__init__.py:36
+#, fuzzy
+#| msgid "IRC Client (Quassel)"
+msgid ""
+"Chat Client \n"
+" (JSXC)"
+msgstr "IRC-klient (Quassel)"
+
+#: plinth/modules/jsxc/__init__.py:40
+msgid ""
+"JSXC is a web client for XMPP. Typically it is used with an XMPP server "
+"running locally."
+msgstr ""
+
+#: plinth/modules/jsxc/__init__.py:78
+#, fuzzy
+#| msgid "IRC Client (Quassel)"
+msgid ""
+"Chat Client \n"
+" (jsxc)"
+msgstr "IRC-klient (Quassel)"
+
+#: plinth/modules/letsencrypt/__init__.py:39
+#: plinth/modules/letsencrypt/__init__.py:64
 msgid "Certificates (Let's Encrypt)"
 msgstr "Certifikater (Let's Encrypt)"
 
-#: plinth/modules/letsencrypt/__init__.py:42
-#, python-brace-format
+#: plinth/modules/letsencrypt/__init__.py:43
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "A digital certficate allows users of a web service to verify the identity "
+#| "of the service and to securely communicate with it. {box_name} can "
+#| "automatically obtain and setup digital certificates for each available "
+#| "domain.  It does so by proving itself to be the owner of a domain to "
+#| "Let's Encrypt, a certficate authority (CA)."
 msgid ""
-"A digital certficate allows users of a web service to verify the identity of "
-"the service and to securely communicate with it. {box_name} can "
+"A digital certificate allows users of a web service to verify the identity "
+"of the service and to securely communicate with it. {box_name} can "
 "automatically obtain and setup digital certificates for each available "
 "domain.  It does so by proving itself to be the owner of a domain to Let's "
-"Encrypt, a certficate authority (CA)."
+"Encrypt, a certificate authority (CA)."
 msgstr ""
 "Et digitalt certifikat gør det muligt for brugere af en web-service at "
 "bekræfte servicens identitet og kommunikere sikkert med den. {box_name} kan "
@@ -1243,7 +1388,7 @@ msgstr ""
 "Dette gøres ved at bekræfte overfor Let's Encrypt, en certifikat-autoritet "
 "(CA), at den har ejerskab over domænet."
 
-#: plinth/modules/letsencrypt/__init__.py:49
+#: plinth/modules/letsencrypt/__init__.py:50
 #, fuzzy
 #| msgid ""
 #| "Let's Encrypt is a free, automated, and open certificate authority, run "
@@ -1285,7 +1430,9 @@ msgid "Expires on %(expiry_date)s"
 msgstr "Udløbsdato %(expiry_date)s"
 
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:62
-msgid "No certficate"
+#, fuzzy
+#| msgid "No certficate"
+msgid "No certificate"
 msgstr "Intet certifikat"
 
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:79
@@ -1299,6 +1446,12 @@ msgstr "Generhverv"
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:92
 msgid "Obtain"
 msgstr "Erhverv"
+
+#: plinth/modules/letsencrypt/templates/letsencrypt.html:105
+msgid ""
+"No domains have been configured. Configure domains to be able to obtain "
+"certificates for them."
+msgstr ""
 
 #: plinth/modules/letsencrypt/views.py:55
 #, python-brace-format
@@ -1321,11 +1474,83 @@ msgid "Failed to obtain certificate for domain {domain}: {error}"
 msgstr ""
 "Fejl ved forsøg på at erhverve certifikatet for domænet {domain}: {error}"
 
-#: plinth/modules/minetest/__init__.py:41
-msgid "Block Sandbox (Minetest)"
+#: plinth/modules/matrixsynapse/__init__.py:41
+#, fuzzy
+#| msgid "Chat Server (XMPP)"
+msgid ""
+"Chat Server \n"
+" (Matrix Synapse)"
+msgstr "Chat-server (XMPP)"
+
+#: plinth/modules/matrixsynapse/__init__.py:44
+msgid ""
+"<a href=\"https://matrix.org/docs/guides/faq.html\">Matrix</a> is an new "
+"ecosystem for open, federated instant messaging and VoIP. Synapse is a "
+"server implementing the Matrix protocol. It provides chat groups, audio/"
+"video calls, end-to-end encryption, multiple device synchronization and does "
+"not require phone numbers to work. Users on a given Matrix server can "
+"converse with users on all other Matrix servers via federation."
+msgstr ""
+
+#: plinth/modules/matrixsynapse/__init__.py:52
+msgid ""
+"To communicate, you can use the <a href=\"https://matrix.org/docs/projects/"
+"\">available clients</a> for mobile, desktop and the web. <a href=\"https://"
+"riot.im/\">Riot</a> client is recommended."
+msgstr ""
+
+#: plinth/modules/matrixsynapse/forms.py:31
+#, fuzzy
+#| msgid "Invalid domain name"
+msgid "Select the domain name"
+msgstr "Ugyldigt domænenavn"
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:34
+msgid ""
+"Matrix service needs to be configured for a domain. Users on other Matrix "
+"servers will be able to reach users on this server using this domain name. "
+"Matrix user IDs will look like <em>@username:domainname</em>."
+msgstr ""
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:42
+msgid ""
+"\n"
+"      <strong>Warning!</strong> Changing the domain name after the initial\n"
+"      setup is currently not supported.\n"
+"    "
+msgstr ""
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:51
+#, python-format
+msgid ""
+"No domain(s) are available. <a href=\"%(config_url)s\">Configure</a> at "
+"least one domain to be able to use Matrix Synapse."
+msgstr ""
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse.html:30
+#, fuzzy, python-format
+#| msgid ""
+#| "Your XMPP server domain is set to <b>%(domainname)s</b>. User IDs will "
+#| "look like <i>username@%(domainname)s</i>. You can setup your domain on "
+#| "the system <a href=\"%(index_url)s\">Configure</a> page."
+msgid ""
+"The Matrix server domain is set to <em>%(domain_name)s</em>. User IDs will "
+"look like <em>@username:%(domain_name)s</em>. Changing the domain name after "
+"the initial setup is currently not supported."
+msgstr ""
+"Domænet for din XMPP-server er sat til <b>%(domainname)s</b>. Brugernavne "
+"vil se ud som <i>brugernavn@%(domainname)s</i>. Du kan konfigurere systemets "
+"domæne på <a href=\"%(index_url)s\">Konfigurer</a> siden."
+
+#: plinth/modules/minetest/__init__.py:48
+#, fuzzy
+#| msgid "Block Sandbox (Minetest)"
+msgid ""
+"Block Sandbox \n"
+" (Minetest)"
 msgstr "Block Testområde (Minetest)"
 
-#: plinth/modules/minetest/__init__.py:45
+#: plinth/modules/minetest/__init__.py:52
 #, python-brace-format
 msgid ""
 "Minetest is a multiplayer infinite-world block sandbox. This module enables "
@@ -1338,13 +1563,84 @@ msgstr ""
 "For at forbinde til serveren skal der bruges en <a href=\"http://www."
 "minetest.net/downloads/\">Minetest klient</a>."
 
-#: plinth/modules/monkeysphere/__init__.py:32
-#: plinth/modules/monkeysphere/__init__.py:58
+#: plinth/modules/minetest/forms.py:31
+msgid "Maximum number of players"
+msgstr ""
+
+#: plinth/modules/minetest/forms.py:35
+msgid ""
+"You can change the maximum number of players playing                      "
+"minetest at a single instance of time"
+msgstr ""
+
+#: plinth/modules/minetest/forms.py:39
+#, fuzzy
+#| msgid "Enable reStore"
+msgid "Enable creative mode"
+msgstr "Aktiver reStore"
+
+#: plinth/modules/minetest/forms.py:41
+msgid ""
+"Creative mode changes the rules of the game to make it                      "
+"more suitable for creative gameplay, rather than                      "
+"challenging \"survival\" gameplay."
+msgstr ""
+
+#: plinth/modules/minetest/forms.py:46
+#, fuzzy
+#| msgid "Enable XMPP"
+msgid "Enable PVP"
+msgstr "Aktiver XMPP"
+
+#: plinth/modules/minetest/forms.py:48
+msgid ""
+"Enabling Player Vs Player will allow players to damage                     "
+"other players"
+msgstr ""
+
+#: plinth/modules/minetest/forms.py:52
+#, fuzzy
+#| msgid "Enable PageKite"
+msgid "Enable damage"
+msgstr "Aktiver PageKite"
+
+#: plinth/modules/minetest/forms.py:54
+msgid ""
+"When disabled, players cannot die or receive damage of                     "
+"any kind"
+msgstr ""
+
+#: plinth/modules/minetest/views.py:58
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "Maximum players configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/minetest/views.py:66
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "Creative mode configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/minetest/views.py:74
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "PVP configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/minetest/views.py:82
+#, fuzzy
+#| msgid "Configuration updated"
+msgid "Damage configuration updated"
+msgstr "Konfiguration opdateret"
+
+#: plinth/modules/monkeysphere/__init__.py:31
+#: plinth/modules/monkeysphere/__init__.py:59
 #: plinth/modules/monkeysphere/templates/monkeysphere_details.html:26
 msgid "Monkeysphere"
 msgstr "Monkeysphere"
 
-#: plinth/modules/monkeysphere/__init__.py:35
+#: plinth/modules/monkeysphere/__init__.py:34
 msgid ""
 "With Monkeysphere, an OpenPGP key can be generated for each configured "
 "domain serving SSH. The OpenPGP public key can then be uploaded to the "
@@ -1365,7 +1661,7 @@ msgstr ""
 "info/getting-started-ssh/\">Monkeysphere SSH-dokumentationen</a> for flere "
 "detaljer."
 
-#: plinth/modules/monkeysphere/__init__.py:44
+#: plinth/modules/monkeysphere/__init__.py:43
 msgid ""
 "Monkeysphere can also generate an OpenPGP key for each Secure Web Server "
 "(HTTPS) certificate installed on this machine. The OpenPGP public key can "
@@ -1390,7 +1686,7 @@ msgstr "Distribuerer nøgle til nøgleserver..."
 
 #: plinth/modules/monkeysphere/templates/monkeysphere.html:74
 #: plinth/modules/monkeysphere/templates/monkeysphere_details.html:55
-#: plinth/modules/tor/templates/tor.html:127
+#: plinth/modules/tor/templates/tor.html:110
 msgid "Service"
 msgstr "Tjeneste"
 
@@ -1419,24 +1715,24 @@ msgstr "Webserver"
 msgid "Other"
 msgstr "Andet"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:113
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:117
 #, python-format
 msgid "Show details for key %(fingerprint)s"
 msgstr "Vis detaljer for nøgle %(fingerprint)s"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:119
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:123
 msgid "-"
 msgstr "-"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:129
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:133
 msgid "Import Key"
 msgstr "Importer Nøgle"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:138
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:142
 msgid "Publish Key"
 msgstr "Distribuer Nøgle"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:147
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:151
 msgid "Add Domains"
 msgstr "Tilføj Domæner"
 
@@ -1496,23 +1792,27 @@ msgstr "Send nøglen tilbage til nøgleserverne"
 msgid "Imported key."
 msgstr "Nøglen blev importeret."
 
-#: plinth/modules/monkeysphere/views.py:91
+#: plinth/modules/monkeysphere/views.py:92
 msgid "Cancelled key publishing."
 msgstr "Distribution af nøglen annulleret."
 
-#: plinth/modules/monkeysphere/views.py:143
+#: plinth/modules/monkeysphere/views.py:145
 msgid "Published key to keyserver."
 msgstr "Nøgle distribueret til nøgleserver."
 
-#: plinth/modules/monkeysphere/views.py:145
+#: plinth/modules/monkeysphere/views.py:147
 msgid "Error occurred while publishing key."
 msgstr "Fejl under distribuering af nøgle."
 
-#: plinth/modules/mumble/__init__.py:34
-msgid "Voice Chat (Mumble)"
+#: plinth/modules/mumble/__init__.py:35
+#, fuzzy
+#| msgid "Voice Chat (Mumble)"
+msgid ""
+"Voice Chat \n"
+" (Mumble)"
 msgstr "Tale-tjeneste (Mumble)"
 
-#: plinth/modules/mumble/__init__.py:43
+#: plinth/modules/mumble/__init__.py:44
 msgid ""
 "Mumble is an open source, low-latency, encrypted, high quality voice chat "
 "software."
@@ -1520,7 +1820,7 @@ msgstr ""
 "Mumble er open source software der tilbyder en højkvalitets tale-tjeneste "
 "med lav forsinkelse og kryptering."
 
-#: plinth/modules/mumble/__init__.py:46
+#: plinth/modules/mumble/__init__.py:47
 msgid ""
 "You can connect to your Mumble server on the regular Mumble port 64738. <a "
 "href=\"http://mumble.info\">Clients</a> to connect to Mumble from your "
@@ -1530,19 +1830,19 @@ msgstr ""
 "<a href=\"http://mumble.info\">Klienter</a> til computere og Android-enheder "
 "er tilgængelige."
 
-#: plinth/modules/names/__init__.py:29
+#: plinth/modules/names/__init__.py:30
 msgid "HTTP"
 msgstr "HTTP"
 
-#: plinth/modules/names/__init__.py:30
+#: plinth/modules/names/__init__.py:31
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: plinth/modules/names/__init__.py:31
+#: plinth/modules/names/__init__.py:32
 msgid "SSH"
 msgstr "SSH"
 
-#: plinth/modules/names/__init__.py:40
+#: plinth/modules/names/__init__.py:39
 msgid "Name Services"
 msgstr "Navnetjenester"
 
@@ -1550,11 +1850,11 @@ msgstr "Navnetjenester"
 msgid "Not Available"
 msgstr "Ikke tilgængelig"
 
-#: plinth/modules/networks/__init__.py:39
+#: plinth/modules/networks/__init__.py:37
 msgid "Networks"
 msgstr "Netværk"
 
-#: plinth/modules/networks/__init__.py:126
+#: plinth/modules/networks/__init__.py:124
 #, python-brace-format
 msgid "Using DNSSEC on IPv{kind}"
 msgstr "Bruger DNSSEC på IPv{kind}"
@@ -1621,7 +1921,7 @@ msgstr ""
 msgid "Shared"
 msgstr ""
 
-#: plinth/modules/networks/forms.py:64
+#: plinth/modules/networks/forms.py:64 plinth/modules/networks/forms.py:104
 msgid "Address"
 msgstr "Adresse"
 
@@ -1637,17 +1937,17 @@ msgstr ""
 "Ikke obligatorisk. Hvis ikke angivet, vil en standardværdi for netmasken "
 "baseret på adressen anvendes."
 
-#: plinth/modules/networks/forms.py:74
+#: plinth/modules/networks/forms.py:74 plinth/modules/networks/forms.py:114
 #: plinth/modules/networks/templates/connection_show.html:202
 #: plinth/modules/networks/templates/connection_show.html:241
 msgid "Gateway"
 msgstr "Gateway"
 
-#: plinth/modules/networks/forms.py:75
+#: plinth/modules/networks/forms.py:75 plinth/modules/networks/forms.py:115
 msgid "Optional value."
 msgstr "Ikke obligatorisk."
 
-#: plinth/modules/networks/forms.py:79
+#: plinth/modules/networks/forms.py:79 plinth/modules/networks/forms.py:119
 msgid "DNS Server"
 msgstr "DNS-server"
 
@@ -1660,7 +1960,7 @@ msgstr ""
 "\"Automatisk\", vil DNS-serverne der konfigureres af en DHCP-server blive "
 "ignoreret."
 
-#: plinth/modules/networks/forms.py:86
+#: plinth/modules/networks/forms.py:86 plinth/modules/networks/forms.py:126
 msgid "Second DNS Server"
 msgstr "Sekundær DNS-server"
 
@@ -1673,83 +1973,149 @@ msgstr ""
 "\"Automatisk\", vil DNS-serverne der konfigureres af en DHCP-server blive "
 "ignoreret."
 
-#: plinth/modules/networks/forms.py:97
-msgid "-- select --"
-msgstr "-- vælg --"
+#: plinth/modules/networks/forms.py:93
+#, fuzzy
+#| msgid "IPv4 Addressing Method"
+msgid "IPv6 Addressing Method"
+msgstr "IPv4 Adresseringsmetode"
 
-#: plinth/modules/networks/forms.py:197
-#: plinth/modules/networks/templates/connection_show.html:144
-msgid "SSID"
-msgstr "SSID"
-
-#: plinth/modules/networks/forms.py:198
-msgid "The visible name of the network."
-msgstr "Netværkets synlige navn."
-
-#: plinth/modules/networks/forms.py:200
-#: plinth/modules/networks/templates/connection_show.html:157
-msgid "Mode"
-msgstr "Tilstand"
-
-#: plinth/modules/networks/forms.py:201
-msgid "Infrastructure"
+#: plinth/modules/networks/forms.py:96
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "\"Automatic\" method will make {box_name} acquire configuration from this "
+#| "network making it a client. \"Shared\" method will make {box_name} act as "
+#| "a router, configure clients on this network and share its Internet "
+#| "connection."
+msgid ""
+"\"Automatic\" methods will make {box_name} acquire configuration from this "
+"network making it a client."
 msgstr ""
+"Metoden \"Automatisk\" vil få {box_name} til at forespørge om en "
+"konfiguration fra netværket, og vil altså fungere som klient. Metoden \"Delt"
+"\" vil få {box_name} til at opføre sig som en router, der kan konfigurere "
+"klienter på dette netværk og dele sin internet-forbindelse."
 
-#: plinth/modules/networks/forms.py:202
-msgid "Access Point"
-msgstr ""
-
-#: plinth/modules/networks/forms.py:203
-msgid "Ad-hoc"
-msgstr ""
-
-#: plinth/modules/networks/forms.py:205
-msgid "Frequency Band"
-msgstr ""
-
-#: plinth/modules/networks/forms.py:206
+#: plinth/modules/networks/forms.py:99 plinth/modules/networks/forms.py:271
 #, fuzzy
 #| msgid "Automatic Upgrades"
 msgid "Automatic"
 msgstr "Automatisk Opdatering"
 
-#: plinth/modules/networks/forms.py:207
+#: plinth/modules/networks/forms.py:100
+#, fuzzy
+#| msgid "Automatic Upgrades"
+msgid "Automatic, DHCP only"
+msgstr "Automatisk Opdatering"
+
+#: plinth/modules/networks/forms.py:102
+msgid "Ignore"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:108
+msgid "Prefix"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:109
+msgid "Value between 1 and 128."
+msgstr ""
+
+#: plinth/modules/networks/forms.py:120
+#, fuzzy
+#| msgid ""
+#| "Optional value. If this value is given and IPv4 addressing method is "
+#| "\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgid ""
+"Optional value. If this value is given and IPv6 addressing method is "
+"\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgstr ""
+"Ikke obligatorisk. Hvis angivet samtidigt med at IPv4 Adresseringsmetoden er "
+"\"Automatisk\", vil DNS-serverne der konfigureres af en DHCP-server blive "
+"ignoreret."
+
+#: plinth/modules/networks/forms.py:127
+#, fuzzy
+#| msgid ""
+#| "Optional value. If this value is given and IPv4 Addressing Method is "
+#| "\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgid ""
+"Optional value. If this value is given and IPv6 Addressing Method is "
+"\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgstr ""
+"Ikke obligatorisk. Hvis angivet samtidigt med at IPv4 Adresseringsmetoden er "
+"\"Automatisk\", vil DNS-serverne der konfigureres af en DHCP-server blive "
+"ignoreret."
+
+#: plinth/modules/networks/forms.py:137
+msgid "-- select --"
+msgstr "-- vælg --"
+
+#: plinth/modules/networks/forms.py:262
+#: plinth/modules/networks/templates/connection_show.html:144
+msgid "SSID"
+msgstr "SSID"
+
+#: plinth/modules/networks/forms.py:263
+msgid "The visible name of the network."
+msgstr "Netværkets synlige navn."
+
+#: plinth/modules/networks/forms.py:265
+#: plinth/modules/networks/templates/connection_show.html:157
+msgid "Mode"
+msgstr "Tilstand"
+
+#: plinth/modules/networks/forms.py:266
+msgid "Infrastructure"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:267
+msgid "Access Point"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:268
+msgid "Ad-hoc"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:270
+msgid "Frequency Band"
+msgstr ""
+
+#: plinth/modules/networks/forms.py:272
 msgid "A (5 GHz)"
 msgstr ""
 
-#: plinth/modules/networks/forms.py:208
+#: plinth/modules/networks/forms.py:273
 msgid "B/G (2.4 GHz)"
 msgstr ""
 
-#: plinth/modules/networks/forms.py:210
+#: plinth/modules/networks/forms.py:275
 #: plinth/modules/networks/templates/connection_show.html:173
 msgid "Channel"
 msgstr "Kanal"
 
-#: plinth/modules/networks/forms.py:211
+#: plinth/modules/networks/forms.py:276
 msgid ""
 "Optional value. Wireless channel in the selected frequency band to restrict "
 "to. Blank or 0 value means automatic selection."
 msgstr ""
 
-#: plinth/modules/networks/forms.py:218
+#: plinth/modules/networks/forms.py:283
 #, fuzzy
 #| msgid "SSID"
 msgid "BSSID"
 msgstr "SSID"
 
-#: plinth/modules/networks/forms.py:219
+#: plinth/modules/networks/forms.py:284
 msgid ""
 "Optional value. Unique identifier for the access point. When connecting to "
 "an access point, connect only if the BSSID of the access point matches the "
 "one provided. Example: 00:11:22:aa:bb:cc."
 msgstr ""
 
-#: plinth/modules/networks/forms.py:226
+#: plinth/modules/networks/forms.py:291
 msgid "Authentication Mode"
 msgstr "Autentificeringstilstand"
 
-#: plinth/modules/networks/forms.py:227
+#: plinth/modules/networks/forms.py:292
 msgid ""
 "Select WPA if the wireless network is secured and requires clients to have "
 "the password to connect."
@@ -1757,17 +2123,17 @@ msgstr ""
 "Vælg WPA hvis det trådløse netværk er sikret og kræver at klienter kender "
 "kodeordet for at oprette forbindelse."
 
-#: plinth/modules/networks/forms.py:229
+#: plinth/modules/networks/forms.py:294
 msgid "WPA"
 msgstr ""
 
-#: plinth/modules/networks/forms.py:230
+#: plinth/modules/networks/forms.py:295
 #, fuzzy
 #| msgid "OpenVPN"
 msgid "Open"
 msgstr "OpenVPN"
 
-#: plinth/modules/networks/forms.py:232
+#: plinth/modules/networks/forms.py:297
 msgid "Passphrase"
 msgstr "Kodesætning"
 
@@ -1777,12 +2143,12 @@ msgid "Network Connections"
 msgstr "Netværksforbindelser"
 
 #: plinth/modules/networks/networks.py:36
-#: plinth/modules/networks/networks.py:241
+#: plinth/modules/networks/networks.py:259
 msgid "Nearby Wi-Fi Networks"
 msgstr "Wi-Fi-netværk i Nærheden"
 
 #: plinth/modules/networks/networks.py:38
-#: plinth/modules/networks/networks.py:265
+#: plinth/modules/networks/networks.py:283
 msgid "Add Connection"
 msgstr "Tilføj forbindelse"
 
@@ -1803,64 +2169,64 @@ msgid "This type of connection is not yet understood."
 msgstr "Denne type forbindelse kan ikke konfigureres herfra endnu."
 
 #: plinth/modules/networks/networks.py:131
-#: plinth/modules/networks/networks.py:197
-#: plinth/modules/networks/templates/connections_edit.html:34
+#: plinth/modules/networks/networks.py:215
+#: plinth/modules/networks/templates/connections_edit.html:32
 msgid "Edit Connection"
 msgstr "Rediger Forbindelse"
 
-#: plinth/modules/networks/networks.py:208
+#: plinth/modules/networks/networks.py:226
 #, python-brace-format
 msgid "Activated connection {name}."
 msgstr "Aktiverede forbindelse {name}."
 
-#: plinth/modules/networks/networks.py:211
+#: plinth/modules/networks/networks.py:229
 msgid "Failed to activate connection: Connection not found."
 msgstr "Kunne ikke aktivere forbindelse: Forbindelse ikke fundet."
 
-#: plinth/modules/networks/networks.py:215
+#: plinth/modules/networks/networks.py:233
 #, python-brace-format
 msgid "Failed to activate connection {name}: No suitable device is available."
 msgstr ""
 "Kunne ikke aktivere forbindelse {name}: Ingen passende enhed er tilgængelig."
 
-#: plinth/modules/networks/networks.py:228
+#: plinth/modules/networks/networks.py:246
 #, python-brace-format
 msgid "Deactivated connection {name}."
 msgstr "Deaktiverede forbindelse {name}."
 
-#: plinth/modules/networks/networks.py:231
+#: plinth/modules/networks/networks.py:249
 msgid "Failed to de-activate connection: Connection not found."
 msgstr "Kan ikke deaktivere forbindelse: Forbindelse ikke fundet."
 
-#: plinth/modules/networks/networks.py:283
+#: plinth/modules/networks/networks.py:301
 #, fuzzy
 #| msgid "Adding New Ethernet Connection"
 msgid "Adding New Generic Connection"
 msgstr "Tilføjer Ny Ethernet Forbindelse"
 
-#: plinth/modules/networks/networks.py:301
+#: plinth/modules/networks/networks.py:319
 msgid "Adding New Ethernet Connection"
 msgstr "Tilføjer Ny Ethernet Forbindelse"
 
-#: plinth/modules/networks/networks.py:319
+#: plinth/modules/networks/networks.py:337
 msgid "Adding New PPPoE Connection"
 msgstr "Tilføjer Ny PPPoE Forbindelse"
 
-#: plinth/modules/networks/networks.py:352
+#: plinth/modules/networks/networks.py:370
 msgid "Adding New Wi-Fi Connection"
 msgstr "Tilføjer Ny Wi-Fi Forbindelse"
 
-#: plinth/modules/networks/networks.py:366
+#: plinth/modules/networks/networks.py:384
 #, python-brace-format
 msgid "Connection {name} deleted."
 msgstr "Slettede forbindelse {name}."
 
-#: plinth/modules/networks/networks.py:369
-#: plinth/modules/networks/networks.py:378
+#: plinth/modules/networks/networks.py:387
+#: plinth/modules/networks/networks.py:396
 msgid "Failed to delete connection: Connection not found."
 msgstr "Kunne ikke slette forbindelse: Forbindelse ikke fundet."
 
-#: plinth/modules/networks/networks.py:383
+#: plinth/modules/networks/networks.py:401
 #: plinth/modules/networks/templates/connections_delete.html:26
 msgid "Delete Connection"
 msgstr "Slet Forbindelse"
@@ -1870,7 +2236,7 @@ msgid "Edit connection"
 msgstr "Rediger Forbindelse"
 
 #: plinth/modules/networks/templates/connection_show.html:43
-#: plinth/templates/base.html:123
+#: plinth/templates/base.html:138
 msgid "Edit"
 msgstr "Rediger"
 
@@ -2002,7 +2368,7 @@ msgid "This connection is not active."
 msgstr "Denne forbindelse er ikke aktiv."
 
 #: plinth/modules/networks/templates/connection_show.html:266
-#: plinth/modules/security/__init__.py:34 plinth/modules/security/views.py:46
+#: plinth/modules/security/__init__.py:32 plinth/modules/security/views.py:46
 msgid "Security"
 msgstr "Sikkerhed"
 
@@ -2046,12 +2412,12 @@ msgstr ""
 "muligvis ikke tilgængelig på dette interface. Det anbefales at du "
 "deaktiverer/sletter denne forbindelse og rekonfigurerer det."
 
-#: plinth/modules/networks/templates/connections_add.html:34
-#: plinth/modules/networks/templates/connections_type_select.html:34
+#: plinth/modules/networks/templates/connections_add.html:32
+#: plinth/modules/networks/templates/connections_type_select.html:32
 msgid "Create..."
 msgstr "Opret..."
 
-#: plinth/modules/networks/templates/connections_create.html:34
+#: plinth/modules/networks/templates/connections_create.html:32
 msgid "Create Connection"
 msgstr "Opret Forbindelse"
 
@@ -2108,11 +2474,15 @@ msgstr "Aktiv"
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: plinth/modules/openvpn/__init__.py:41
-msgid "Virtual Private Network (OpenVPN)"
+#: plinth/modules/openvpn/__init__.py:42
+#, fuzzy
+#| msgid "Virtual Private Network (OpenVPN)"
+msgid ""
+"Virtual Private Network \n"
+" (OpenVPN)"
 msgstr "Virtuelt Privat Netværk (OpenVPN)"
 
-#: plinth/modules/openvpn/__init__.py:45
+#: plinth/modules/openvpn/__init__.py:46
 #, python-brace-format
 msgid ""
 "Virtual Private Network (VPN) is a technique for securely connecting two "
@@ -2128,6 +2498,12 @@ msgstr ""
 "en del af dit hjemmenetværk og tilgå private/interne tjenester der udbydes "
 "af {box_name}. Du kan også tilgå resten af internettet igennem {box_name} "
 "for øget sikkerhed og anonymitet."
+
+#: plinth/modules/openvpn/__init__.py:84
+#, python-brace-format
+msgid ""
+"<a class=\"btn btn-primary btn-sm\" href=\"{link}\">Download Profile</a>"
+msgstr ""
 
 #: plinth/modules/openvpn/forms.py:29
 msgid "Enable OpenVPN server"
@@ -2203,12 +2579,6 @@ msgstr "OpenVPN-server er aktiv"
 msgid "OpenVPN server is not running"
 msgstr "OpenVPN-server er ikke aktiv"
 
-#: plinth/modules/openvpn/templates/openvpn.html:116
-#: plinth/modules/owncloud/templates/owncloud.html:39
-#: plinth/modules/tor/templates/tor.html:102
-msgid "Configuration"
-msgstr "Konfiguration"
-
 #: plinth/modules/openvpn/views.py:123
 msgid "Setup completed."
 msgstr "Opsætning færdig."
@@ -2217,62 +2587,11 @@ msgstr "Opsætning færdig."
 msgid "Setup failed."
 msgstr "Opsætning fejlede."
 
-#: plinth/modules/openvpn/views.py:144 plinth/modules/tor/views.py:109
-#: plinth/views.py:86 plinth/views.py:167
-msgid "Setting unchanged"
-msgstr "Indstilling uændret"
-
-#: plinth/modules/owncloud/__init__.py:38
-msgid "File Hosting (ownCloud)"
-msgstr "Fil-hosting (ownCloud)"
-
-#: plinth/modules/owncloud/__init__.py:41
-msgid ""
-"ownCloud gives you universal access to your files through a web interface or "
-"WebDAV. It also provides a platform to easily view & sync your contacts, "
-"calendars and bookmarks across all your devices and enables basic editing "
-"right on the web. Installation has minimal server requirements, doesn't need "
-"special permissions and is quick. ownCloud is extendable via a simple but "
-"powerful API for applications and plugins."
-msgstr ""
-"ownCloud giver dig universel adgang til dine filer gennem et webinterface "
-"eller WebDAV-protokollen. Den giver dig også en platform til nemt at se og "
-"synkronisere kontakter, kalendre og bogmærker på tværs af dine enheder, og "
-"giver dig tilmed også basale redigeringsmuligheder direkte på webbet. "
-"Installationen sætter minimale krav til serveren, har ikke brug for "
-"specielle rettigheder og er hurtig. ownCloud kan udvides igennem et simpelt "
-"men kraftfuldt API til applikationer og udvidelser."
-
-#: plinth/modules/owncloud/__init__.py:49
-msgid ""
-"When enabled, the ownCloud installation will be available from <a href=\"/"
-"owncloud\">/owncloud</a> path on the web server. Visit this URL to set up "
-"the initial administration account for ownCloud."
-msgstr ""
-"Når aktiveret vil ownCloud-tjenesten være tilgængelig på stien <a href=\"/"
-"owncloud\">/owncloud</a> på webserveren. Gå til denne URL for at konfigurere "
-"administrationskontoen."
-
-#: plinth/modules/owncloud/templates/owncloud.html:30
-#, python-format
-msgid ""
-"ownCloud is no longer supported by %(box_name)s due it's removal from "
-"Debian.  Please migrate your data to an alternative solution or manage "
-"ownCloud manually from the command line."
-msgstr ""
-"ownCloud understøttes ikke længere af %(box_name)s, da projektet er blevet "
-"fjernet fra Debian.  Migrer dine data til en alternativ løsning, eller "
-"administrer ownCloud manuelt fra kommando-linjen."
-
-#: plinth/modules/owncloud/templates/owncloud.html:47
-msgid "Apply changes"
-msgstr "Aktiver ændringer"
-
-#: plinth/modules/pagekite/__init__.py:34
+#: plinth/modules/pagekite/__init__.py:44
 msgid "Public Visibility (PageKite)"
 msgstr "Offentlig Tilgængelighed (PageKite)"
 
-#: plinth/modules/pagekite/__init__.py:38
+#: plinth/modules/pagekite/__init__.py:48
 #, python-brace-format
 msgid ""
 "PageKite is a system for exposing {box_name} services when you don't have a "
@@ -2285,19 +2604,19 @@ msgstr ""
 "hvis {box_name} tjenester ikke kan nås fra resten af internettet. Dette "
 "inkluderer de følgende situationer:"
 
-#: plinth/modules/pagekite/__init__.py:45
+#: plinth/modules/pagekite/__init__.py:55
 #, python-brace-format
 msgid "{box_name} is behind a restricted firewall."
 msgstr "{box_name} er bag en restriktiv firewall."
 
-#: plinth/modules/pagekite/__init__.py:49
+#: plinth/modules/pagekite/__init__.py:59
 #, python-brace-format
 msgid "{box_name} is connected to a (wireless) router which you don't control."
 msgstr ""
 "{box_name} er forbundet til en (trådløs) router som du ikke selv "
 "kontrollerer."
 
-#: plinth/modules/pagekite/__init__.py:52
+#: plinth/modules/pagekite/__init__.py:62
 msgid ""
 "Your ISP does not provide you an external IP address and instead provides "
 "Internet connection through NAT."
@@ -2305,7 +2624,7 @@ msgstr ""
 "Din internetudbyder tildeler dig ikke en ekstern IP-adresse, men giver dig "
 "forbindelse gennem NAT."
 
-#: plinth/modules/pagekite/__init__.py:55
+#: plinth/modules/pagekite/__init__.py:65
 msgid ""
 "Your ISP does not provide you a static IP address and your IP address "
 "changes evertime you connect to Internet."
@@ -2313,11 +2632,11 @@ msgstr ""
 "Din internetudbyder tildeler dig ikke en fast IP-adresse, og din IP-adresse "
 "ændres hver gang du fobinder til nettet."
 
-#: plinth/modules/pagekite/__init__.py:58
+#: plinth/modules/pagekite/__init__.py:68
 msgid "Your ISP limits incoming connections."
 msgstr "Din internetudbyder begrænser indgående forbindelser."
 
-#: plinth/modules/pagekite/__init__.py:61
+#: plinth/modules/pagekite/__init__.py:71
 #, python-brace-format
 msgid ""
 "PageKite works around NAT, firewalls and IP-address limitations by using a "
@@ -2331,15 +2650,15 @@ msgstr ""
 "net</a>. I fremtiden vil det måske blive muligt at bruge din vens {box_name} "
 "til dette."
 
-#: plinth/modules/pagekite/forms.py:46
+#: plinth/modules/pagekite/forms.py:69
 msgid "Enable PageKite"
 msgstr "Aktiver PageKite"
 
-#: plinth/modules/pagekite/forms.py:49
+#: plinth/modules/pagekite/forms.py:72
 msgid "Server domain"
 msgstr "Serverdomæne"
 
-#: plinth/modules/pagekite/forms.py:51
+#: plinth/modules/pagekite/forms.py:74
 msgid ""
 "Select your pagekite server. Set \"pagekite.net\" to use the default "
 "pagekite.net server."
@@ -2347,31 +2666,31 @@ msgstr ""
 "Vælg din PageKite-server. Brug \"pagekite.net\" hvis du vil bruge "
 "standardserveren fra pagekite.net."
 
-#: plinth/modules/pagekite/forms.py:55
+#: plinth/modules/pagekite/forms.py:78
 msgid "Server port"
 msgstr "Serverport"
 
-#: plinth/modules/pagekite/forms.py:56
+#: plinth/modules/pagekite/forms.py:79
 msgid "Port of your pagekite server (default: 80)"
 msgstr "PageKite-serverport (standard: 80)"
 
-#: plinth/modules/pagekite/forms.py:58
+#: plinth/modules/pagekite/forms.py:81
 msgid "Kite name"
 msgstr "Kite-navn"
 
-#: plinth/modules/pagekite/forms.py:59
+#: plinth/modules/pagekite/forms.py:82
 msgid "Example: mybox.pagekite.me"
 msgstr "Eksempel: mybox.pagekite.me"
 
-#: plinth/modules/pagekite/forms.py:62
+#: plinth/modules/pagekite/forms.py:85
 msgid "Invalid kite name"
 msgstr "Ugyldigt kite-name"
 
-#: plinth/modules/pagekite/forms.py:65
+#: plinth/modules/pagekite/forms.py:88
 msgid "Kite secret"
 msgstr "Kite-hemmelighed"
 
-#: plinth/modules/pagekite/forms.py:67
+#: plinth/modules/pagekite/forms.py:90
 msgid ""
 "A secret associated with the kite or the default secret for your account if "
 "no secret is set on the kite."
@@ -2379,53 +2698,53 @@ msgstr ""
 "En hemmelighed tilknyttet denne kite, eller standard-hemmeligheden for din "
 "konto hvis der ikke er defineret nogen for denne kite."
 
-#: plinth/modules/pagekite/forms.py:83
+#: plinth/modules/pagekite/forms.py:106
 msgid "Kite details set"
 msgstr "Kite-detaljer gemt"
 
-#: plinth/modules/pagekite/forms.py:90
+#: plinth/modules/pagekite/forms.py:113
 msgid "Pagekite server set"
 msgstr "PageKite-server gemt"
 
-#: plinth/modules/pagekite/forms.py:96
+#: plinth/modules/pagekite/forms.py:119
 msgid "PageKite enabled"
 msgstr "PageKite aktiveret"
 
-#: plinth/modules/pagekite/forms.py:99
+#: plinth/modules/pagekite/forms.py:122
 msgid "PageKite disabled"
 msgstr "PageKite deaktiveret"
 
-#: plinth/modules/pagekite/forms.py:135
+#: plinth/modules/pagekite/forms.py:158
 #, python-brace-format
 msgid "Service enabled: {name}"
 msgstr "Tjeneste aktiv: {name}"
 
-#: plinth/modules/pagekite/forms.py:139
+#: plinth/modules/pagekite/forms.py:162
 #, python-brace-format
 msgid "Service disabled: {name}"
 msgstr "Tjeneste ikke aktiv: {name}"
 
-#: plinth/modules/pagekite/forms.py:150
+#: plinth/modules/pagekite/forms.py:173
 msgid "protocol"
 msgstr "protokol"
 
-#: plinth/modules/pagekite/forms.py:153
+#: plinth/modules/pagekite/forms.py:176
 msgid "external (frontend) port"
 msgstr "ekstern (WAN) port"
 
-#: plinth/modules/pagekite/forms.py:156
+#: plinth/modules/pagekite/forms.py:179
 msgid "internal (freedombox) port"
 msgstr "intern (FreedomBox) port"
 
-#: plinth/modules/pagekite/forms.py:158
+#: plinth/modules/pagekite/forms.py:181
 msgid "Enable Subdomains"
 msgstr "Aktiver Subdomæner"
 
-#: plinth/modules/pagekite/forms.py:191
+#: plinth/modules/pagekite/forms.py:215
 msgid "Deleted custom service"
 msgstr "Brugerdefineret tjeneste slettet"
 
-#: plinth/modules/pagekite/forms.py:225
+#: plinth/modules/pagekite/forms.py:249
 msgid ""
 "This service is available as a standard service. Please use the \"Standard "
 "Services\" page to enable it."
@@ -2433,13 +2752,44 @@ msgstr ""
 "Denne tjeneste er tilgængelig som en standardtjeneste. Brug venligst siden "
 "\"Standardtjenester\" for at aktivere den."
 
-#: plinth/modules/pagekite/forms.py:234
+#: plinth/modules/pagekite/forms.py:258
 msgid "Added custom service"
 msgstr "Tilføjet brugerdefineret tjeneste"
 
-#: plinth/modules/pagekite/forms.py:237
+#: plinth/modules/pagekite/forms.py:261
 msgid "This service already exists"
 msgstr "Denne tjeneste eksisterer allerede"
+
+#: plinth/modules/pagekite/forms.py:273
+#, python-brace-format
+msgid "The voucher you received with your {box_name} Danube Edition"
+msgstr "Rabatkuponen som du modtog sammen med din {box_name} Danube Edition"
+
+#: plinth/modules/pagekite/forms.py:278
+msgid "Subdomain"
+msgstr "Subdomæne"
+
+#: plinth/modules/pagekite/forms.py:280
+msgid "The subdomain you want to register"
+msgstr "Subdomænet du vil registrere"
+
+#: plinth/modules/pagekite/forms.py:303
+msgid "This code is not valid"
+msgstr "Denne kode er ikke gyldig"
+
+#: plinth/modules/pagekite/forms.py:309
+#, python-brace-format
+msgid "This code is bound to the domain {domain}."
+msgstr "Denne kode er specifik for domænet {domain}."
+
+#: plinth/modules/pagekite/forms.py:319
+msgid "The requested domain is already registered."
+msgstr "Det ønskede domæne er allerede registreret."
+
+#: plinth/modules/pagekite/forms.py:333
+#, python-brace-format
+msgid "Domain registration failed: {response}."
+msgstr "Domæneregistrering fejlede: {response}."
 
 #: plinth/modules/pagekite/templates/pagekite_configure.html:33
 msgid "PageKite Account"
@@ -2485,8 +2835,39 @@ msgstr "forbundet til %(backend_host)s:%(backend_port)s"
 msgid "Delete this service"
 msgstr "Slet denne tjeneste"
 
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:28
+msgid "Setup a freedombox.me subdomain with your voucher"
+msgstr "Konfigurer et freedombox.me subdomæne med din rabatkupon"
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:32
+#, python-format
+msgid ""
+"<a href=\"%(finish_firstboot_url)s\">Skip this step</a> if you do not have a "
+"voucher or want to configure PageKite later with a different domain or "
+"credentials."
+msgstr ""
+"<a href=\"%(finish_firstboot_url)s\">Spring dette over</a> hvis du ikke har "
+"en rabatkupon, eller vil konfigurere PageKite senere med et andet domænet "
+"eller konto."
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:40
+msgid ""
+"You can use an already redeemed voucher but it will only work with the "
+"initially registered subdomain."
+msgstr ""
+"Du vil kunne anvende en allerede indløst rabatkupon, men den vil kun fungere "
+"med det subdomæne den oprindeligt med registreret med."
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:54
+msgid "Register"
+msgstr "Registrer"
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:58
+msgid "Skip Registration"
+msgstr "Udsæt Registrering"
+
 #: plinth/modules/pagekite/templates/pagekite_introduction.html:32
-#: plinth/modules/pagekite/views.py:34
+#: plinth/modules/pagekite/views.py:37
 msgid "Configure PageKite"
 msgstr "Konfigurer PageKite"
 
@@ -2539,24 +2920,30 @@ msgstr ""
 msgid "Pagekite"
 msgstr "PageKite"
 
-#: plinth/modules/pagekite/views.py:32
+#: plinth/modules/pagekite/views.py:35
 msgid "About PageKite"
 msgstr "Om PageKite"
 
-#: plinth/modules/pagekite/views.py:36
+#: plinth/modules/pagekite/views.py:39
 msgid "Standard Services"
 msgstr "Standardtjenester"
 
-#: plinth/modules/pagekite/views.py:38
+#: plinth/modules/pagekite/views.py:41
 msgid "Custom Services"
 msgstr "Brugerdefinerede Tjenester"
 
-#: plinth/modules/power/__init__.py:32 plinth/modules/power/views.py:50
+#: plinth/modules/pagekite/views.py:161
+msgid "Pagekite setup finished. The HTTP and HTTPS services are activated now."
+msgstr ""
+"Konfiguration af PageKite er færdig. Servicerne for HTTP og HTTPS er blevet "
+"aktiveret."
+
+#: plinth/modules/power/__init__.py:30 plinth/modules/power/views.py:50
 #: plinth/modules/power/views.py:65
 msgid "Power"
 msgstr "Strøm"
 
-#: plinth/modules/power/__init__.py:35
+#: plinth/modules/power/__init__.py:33
 msgid "Restart or shut down the system."
 msgstr "Genstart eller luk systemet."
 
@@ -2592,11 +2979,15 @@ msgstr ""
 msgid "Shut Down Now"
 msgstr "Sluk Nu"
 
-#: plinth/modules/privoxy/__init__.py:42
-msgid "Web Proxy (Privoxy)"
+#: plinth/modules/privoxy/__init__.py:43
+#, fuzzy
+#| msgid "Web Proxy (Privoxy)"
+msgid ""
+"Web Proxy \n"
+" (Privoxy)"
 msgstr "Webproxy (Privoxy)"
 
-#: plinth/modules/privoxy/__init__.py:45
+#: plinth/modules/privoxy/__init__.py:46
 msgid ""
 "Privoxy is a non-caching web proxy with advanced filtering capabilities for "
 "enhancing privacy, modifying web page data and HTTP headers, controlling "
@@ -2607,7 +2998,7 @@ msgstr ""
 "HTTP-headers, styre adgang og fjerne reklamer og andet vedderstyggeligt "
 "internetskrald. "
 
-#: plinth/modules/privoxy/__init__.py:51
+#: plinth/modules/privoxy/__init__.py:52
 #, python-brace-format
 msgid ""
 "You can use Privoxy by modifying your browser proxy settings to your "
@@ -2622,16 +3013,20 @@ msgstr ""
 "på <a href=\"http://config.privoxy.org\">http://config.privoxy.org/</a> "
 "eller <a href=\"http://p.p\">http://p.p</a>."
 
-#: plinth/modules/privoxy/__init__.py:107
+#: plinth/modules/privoxy/__init__.py:144
 #, python-brace-format
 msgid "Access {url} with proxy {proxy} on tcp{kind}"
 msgstr "Tilgå {url} med proxy {proxy} ved brug af tcp{kind}"
 
-#: plinth/modules/quassel/__init__.py:40
-msgid "IRC Client (Quassel)"
+#: plinth/modules/quassel/__init__.py:42
+#, fuzzy
+#| msgid "IRC Client (Quassel)"
+msgid ""
+"IRC Client \n"
+" (Quassel)"
 msgstr "IRC-klient (Quassel)"
 
-#: plinth/modules/quassel/__init__.py:44
+#: plinth/modules/quassel/__init__.py:46
 #, python-brace-format
 msgid ""
 "Quassel is an IRC application that is split into two parts, a \"core\" and a "
@@ -2648,7 +3043,7 @@ msgstr ""
 "kontinuerligt online, og du vil kunne bruge en eller flere Quassel-klienter "
 "fra en computer eller en mobil til at forbinde til den."
 
-#: plinth/modules/quassel/__init__.py:52
+#: plinth/modules/quassel/__init__.py:54
 msgid ""
 "You can connect to your Quassel core on the default Quassel port 4242.  "
 "Clients to connect to Quassel from your <a href=\"http://quassel-irc.org/"
@@ -2660,11 +3055,15 @@ msgstr ""
 "\">computer</a> og <a href=\"http://quasseldroid.iskrembilen.com/\">mobile</"
 "a> enhed er tilgængelige."
 
-#: plinth/modules/radicale/__init__.py:41
-msgid "Calendar and Addressbook (Radicale)"
+#: plinth/modules/radicale/__init__.py:43
+#, fuzzy
+#| msgid "Calendar and Addressbook (Radicale)"
+msgid ""
+"Calendar and Addressbook \n"
+" (Radicale)"
 msgstr "Kalender og Adressebog (Radicale)"
 
-#: plinth/modules/radicale/__init__.py:45
+#: plinth/modules/radicale/__init__.py:47
 #, python-brace-format
 msgid ""
 "Radicale is a CalDAV and CardDAV server. It allows synchronization and "
@@ -2700,7 +3099,11 @@ msgid "Access rights configuration updated"
 msgstr "Konfiguration opdateret"
 
 #: plinth/modules/repro/__init__.py:38
-msgid "SIP Server (repro)"
+#, fuzzy
+#| msgid "SIP Server (repro)"
+msgid ""
+"SIP Server \n"
+" (repro)"
 msgstr "SIP-server (repro)"
 
 #: plinth/modules/repro/__init__.py:41
@@ -2745,11 +3148,15 @@ msgstr ""
 "det nødvendigt at genstarte repo-servicen. Deaktiver servicen og genaktiver "
 "den for at gøre dette."
 
-#: plinth/modules/restore/__init__.py:37
-msgid "Unhosted Storage (reStore)"
+#: plinth/modules/restore/__init__.py:36
+#, fuzzy
+#| msgid "Unhosted Storage (reStore)"
+msgid ""
+"Unhosted Storage \n"
+" (reStore)"
 msgstr "Ikke-hostet Lagerplads (reStore)"
 
-#: plinth/modules/restore/__init__.py:41
+#: plinth/modules/restore/__init__.py:40
 #, python-brace-format
 msgid ""
 "reStore is a server for <a href='https://unhosted.org/'>unhosted</a> web "
@@ -2765,7 +3172,7 @@ msgstr ""
 "efter brugerens valg. Med reStore bliver din {box_name} dit unhosted "
 "datalager."
 
-#: plinth/modules/restore/__init__.py:48
+#: plinth/modules/restore/__init__.py:47
 msgid ""
 "You can create and edit accounts in the <a href='/restore/'>reStore web-"
 "interface</a>."
@@ -2773,11 +3180,15 @@ msgstr ""
 "Du kan oprette og redigere kontoer i <a href='/restore/'>reStores "
 "webbrugerflade</a>."
 
-#: plinth/modules/roundcube/__init__.py:36
-msgid "Email Client (Roundcube)"
+#: plinth/modules/roundcube/__init__.py:35
+#, fuzzy
+#| msgid "Email Client (Roundcube)"
+msgid ""
+"Email Client \n"
+" (Roundcube)"
 msgstr "Emailklient (Roundcube)"
 
-#: plinth/modules/roundcube/__init__.py:39
+#: plinth/modules/roundcube/__init__.py:38
 msgid ""
 "Roundcube webmail is a browser-based multilingual IMAP client with an "
 "application-like user interface. It provides full functionality you expect "
@@ -2789,7 +3200,7 @@ msgstr ""
 "du forventer af en emailklient, inklusiv MIME-understøttelse, lagring af "
 "kontaktpersoner, mappe-administration, beskedsøgning og stavekontrol."
 
-#: plinth/modules/roundcube/__init__.py:45
+#: plinth/modules/roundcube/__init__.py:44
 msgid ""
 "You can access Roundcube from <a href=\"/roundcube\">/roundcube</a>. Provide "
 "the username and password of the email account you wish to access followed "
@@ -2803,7 +3214,7 @@ msgstr ""
 "example.com</code>. Vil du bruge IMAP over SSL (hvilket anbefales) skal du "
 "også angive protokollen således <code>imaps://imap.example.com</code>."
 
-#: plinth/modules/roundcube/__init__.py:52
+#: plinth/modules/roundcube/__init__.py:51
 msgid ""
 "For Gmail, username will be your Gmail address, password will be your Google "
 "account password and server will be <code>imaps://imap.gmail.com</code>.  "
@@ -2843,15 +3254,19 @@ msgstr "Kunne ikke sætte tidszone: {exception}"
 msgid "Updated security configuration"
 msgstr "Generel Konfiguration"
 
-#: plinth/modules/shaarli/__init__.py:36
-msgid "Bookmarks (Shaarli)"
+#: plinth/modules/shaarli/__init__.py:35
+#, fuzzy
+#| msgid "Bookmarks (Shaarli)"
+msgid ""
+"Bookmarks \n"
+" (Shaarli)"
 msgstr "Bogmærker (Shaarli)"
 
-#: plinth/modules/shaarli/__init__.py:39
+#: plinth/modules/shaarli/__init__.py:38
 msgid "Shaarli allows you to save and share bookmarks."
 msgstr "Shaarli tillader dig at gemme og dele bogmærker."
 
-#: plinth/modules/shaarli/__init__.py:41
+#: plinth/modules/shaarli/__init__.py:40
 msgid ""
 "When enabled, Shaarli will be available from <a href=\"/shaarli\">/shaarli</"
 "a> path on the web server. Note that Shaarli only supports a single user "
@@ -2861,18 +3276,18 @@ msgstr ""
 "shaarli</a> på webserveren. Bemærk at Shaarli kun understøtter en enkelt "
 "brugerkonto, som skal sættes op ved det første besøg."
 
-#: plinth/modules/snapshot/__init__.py:34
+#: plinth/modules/snapshot/__init__.py:32
 msgid "Snapshots"
 msgstr ""
 
-#: plinth/modules/snapshot/__init__.py:37
+#: plinth/modules/snapshot/__init__.py:35
 msgid ""
 "Snapshots allows creating and managing filesystem snapshots. These can be "
 "used to roll back the system to a previously known good state in case of "
 "unwanted changes to the system."
 msgstr ""
 
-#: plinth/modules/snapshot/__init__.py:41
+#: plinth/modules/snapshot/__init__.py:39
 msgid ""
 "Automatic snapshots are taken every hour, day, month and year. Older "
 "snapshots are automatically deleted keeping 10 of each kind and 50 in total. "
@@ -2977,26 +3392,104 @@ msgstr ""
 msgid "Rollback to Snapshot"
 msgstr ""
 
-#: plinth/modules/system/__init__.py:32 plinth/templates/base.html:109
-msgid "System Configuration"
-msgstr "Systemkonfiguration"
+#: plinth/modules/sso/__init__.py:30
+msgid "Single Sign On"
+msgstr ""
 
-#: plinth/modules/system/__init__.py:36
-#, python-brace-format
-msgid "Here you can administrate the underlying system of your {box_name}."
-msgstr "Her administrerer du det underliggende system på din {box_name}."
+#: plinth/modules/sso/templates/login.html:35
+msgid "Login"
+msgstr "Log ind"
 
-#: plinth/modules/system/__init__.py:40
+#: plinth/modules/syncthing/__init__.py:39
+msgid ""
+"File Synchronization \n"
+" (Syncthing)"
+msgstr ""
+
+#: plinth/modules/syncthing/__init__.py:42
+msgid ""
+"Syncthing is an application to synchronize files across multiple devices, e."
+"g. your desktop computer and mobile phone.  Creation, modification, or "
+"deletion of files on one device will be automatically replicated on all "
+"other devices that also run Syncthing."
+msgstr ""
+
+#: plinth/modules/syncthing/__init__.py:47
 #, python-brace-format
 msgid ""
-"The options affect the {box_name} at its most general level, so be careful!"
+"Running Syncthing on {box_name} provides an extra synchronization point for "
+"your data that is available most of the time, allowing your devices to "
+"synchronize more often.  {box_name} runs a single instance of Syncthing that "
+"may be used by multiple users.  Each user's set of devices may be "
+"synchronized with a distinct set of folders.  The web interface on "
+"{box_name} is only available for users belonging to the \"admin\" group."
 msgstr ""
-"Disse muligheder påvirker {box_name} på det meste grundlæggende niveau, så "
-"vær forsigtig!"
 
-#: plinth/modules/tor/__init__.py:42
-msgid "Anonymity Network (Tor)"
-msgstr "Anonymiseringstjeneste (Tor)"
+#: plinth/modules/syncthing/__init__.py:54
+msgid ""
+"When enabled, Syncthing's web interface will be available from <a href=\"/"
+"syncthing/\">/syncthing</a>.  Desktop and mobile clients are also <a href="
+"\"https://syncthing.net/\">available</a>."
+msgstr ""
+
+#: plinth/modules/tahoe/__init__.py:42
+msgid "Distributed File Storage (Tahoe-LAFS)"
+msgstr ""
+
+#: plinth/modules/tahoe/__init__.py:73
+msgid ""
+"Tahoe-LAFS is a decentralized secure file storage system. It uses provider "
+"independent security to store files over a distributed network of storage "
+"nodes. Even if some of the nodes fail, your files can be retrieved from the "
+"remaining nodes."
+msgstr ""
+
+#: plinth/modules/tahoe/__init__.py:78
+#, python-brace-format
+msgid ""
+"This {box_name} hosts a storage node and an introducer by default. "
+"Additional introducers can be added, which will introduce this node to the "
+"other storage nodes."
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:33
+#, python-format
+msgid ""
+"The Tahoe-LAFS server domain is set to <b>%(domain_name)s</b>. Changing the "
+"FreedomBox domain name needs a reinstall of Tahoe-LAFS and you WILL LOSE "
+"DATA. You can access Tahoe-LAFS at <a href=\"https://"
+"%(domain_name)s:5678\">https://%(domain_name)s:5678</a>."
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:55
+msgid "Local introducer"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:59
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:74
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:91
+#, fuzzy
+#| msgid "Name"
+msgid "Pet Name"
+msgstr "Navn"
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:71
+msgid "Add new introducer"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:82
+#, fuzzy
+#| msgid "Address"
+msgid "Add"
+msgstr "Adresse"
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:87
+msgid "Connected introducers"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:103
+msgid "Remove"
+msgstr ""
 
 #: plinth/modules/tor/__init__.py:45
 msgid ""
@@ -3012,52 +3505,79 @@ msgstr ""
 "du bruger <a href=\"https://www.torproject.org/download/download-easy.html.en"
 "\">Tor-browseren</a>."
 
-#: plinth/modules/tor/__init__.py:64
+#: plinth/modules/tor/__init__.py:70 plinth/modules/tor/__init__.py:112
 msgid "Tor Anonymity Network"
 msgstr "Tor Anonymiseringstjeneste"
 
-#: plinth/modules/tor/__init__.py:70
+#: plinth/modules/tor/__init__.py:76 plinth/modules/tor/__init__.py:120
 #, fuzzy
 msgid "Tor Bridge Relay"
 msgstr "Tor Bridge Relay"
 
-#: plinth/modules/tor/__init__.py:92 plinth/modules/tor/__init__.py:119
+#: plinth/modules/tor/__init__.py:98 plinth/modules/tor/__init__.py:141
 msgid "Tor Hidden Service"
 msgstr "Tor Skjult Tjeneste"
 
-#: plinth/modules/tor/__init__.py:138
+#: plinth/modules/tor/__init__.py:160
 msgid "Tor relay port available"
 msgstr "Tor videresendelsesport tilgængelig"
 
-#: plinth/modules/tor/__init__.py:146
+#: plinth/modules/tor/__init__.py:168
 msgid "Obfs3 transport registered"
 msgstr "Obfs3 transport registreret"
 
-#: plinth/modules/tor/__init__.py:152
+#: plinth/modules/tor/__init__.py:174
 msgid "Obfs4 transport registered"
 msgstr "Obfs4 transport registreret"
 
-#: plinth/modules/tor/__init__.py:189
+#: plinth/modules/tor/__init__.py:211
 #, python-brace-format
 msgid "Access URL {url} on tcp{kind} via Tor"
 msgstr "Tilgå URL {url} ved brug af tcp{kind} via Tor"
 
-#: plinth/modules/tor/__init__.py:200
+#: plinth/modules/tor/__init__.py:222
 #, python-brace-format
 msgid "Confirm Tor usage at {url} on tcp{kind}"
 msgstr "Bekræft brug af Tor på {url} ved brug af tcp{kind}"
 
-#: plinth/modules/tor/forms.py:32
+#: plinth/modules/tor/forms.py:47
+msgid ""
+"Enter a valid bridge with this format: [transport] IP:ORPort [fingerprint]"
+msgstr ""
+
+#: plinth/modules/tor/forms.py:90
 msgid "Enable Tor"
 msgstr "Aktiver Tor"
 
-#: plinth/modules/tor/forms.py:35
+#: plinth/modules/tor/forms.py:93
+msgid "Use upstream bridges to connect to Tor network"
+msgstr ""
+
+#: plinth/modules/tor/forms.py:96
+msgid ""
+"When enabled, the bridges configured below will be used to connect to the "
+"Tor network. Use this option if your Internet Service Provider (ISP) blocks "
+"or censors connections to the Tor Network. This will disable relay modes."
+msgstr ""
+
+#: plinth/modules/tor/forms.py:102
+msgid "Upstream bridges"
+msgstr ""
+
+#: plinth/modules/tor/forms.py:105
+msgid ""
+"You can get some bridges from <a href=\"https://bridges.torproject.org/"
+"\">https://bridges.torproject.org/</a> and copy/paste the bridge information "
+"here. Currently supported transports are none, obfs3, obfs4 and scamblesuit."
+msgstr ""
+
+#: plinth/modules/tor/forms.py:112
 #, fuzzy
 #| msgid "Enable Tor"
 msgid "Enable Tor relay"
 msgstr "Aktiver Tor"
 
-#: plinth/modules/tor/forms.py:38
+#: plinth/modules/tor/forms.py:115
 #, python-brace-format
 msgid ""
 "When enabled, your {box_name} will run a Tor relay and donate bandwidth to "
@@ -3065,23 +3585,23 @@ msgid ""
 "download bandwidth."
 msgstr ""
 
-#: plinth/modules/tor/forms.py:43
+#: plinth/modules/tor/forms.py:120
 #, fuzzy
 msgid "Enable Tor bridge relay"
 msgstr "Tor Bridge Relay"
 
-#: plinth/modules/tor/forms.py:46
+#: plinth/modules/tor/forms.py:123
 msgid ""
 "When enabled, relay information is published in the Tor bridge database "
 "instead of public Tor relay database making it harder to censor this node. "
 "This helps others circumvent censorship."
 msgstr ""
 
-#: plinth/modules/tor/forms.py:51
+#: plinth/modules/tor/forms.py:128
 msgid "Enable Tor Hidden Service"
 msgstr "Aktiver Tor Skjult Tjeneste"
 
-#: plinth/modules/tor/forms.py:54
+#: plinth/modules/tor/forms.py:131
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "A hidden service will allow {box_name} to provide selected services (such "
@@ -3094,11 +3614,11 @@ msgstr ""
 "En skjult tjeneste tillader {box_name} at levere udvalgte tjenester (såsom "
 "ownCloud og chat) uden at afsløre sin lokation."
 
-#: plinth/modules/tor/forms.py:59
+#: plinth/modules/tor/forms.py:136
 msgid "Download software packages over Tor"
 msgstr "Hent softwarepakker over Tor"
 
-#: plinth/modules/tor/forms.py:61
+#: plinth/modules/tor/forms.py:138
 msgid ""
 "When enabled, software will be downloaded over the Tor network for "
 "installations and upgrades. This adds a degree of privacy and security "
@@ -3108,31 +3628,35 @@ msgstr ""
 "Tor-netværket. Dette giver en vis grad af privatlivsbeskyttelse og sikkerhed "
 "under hentningen."
 
-#: plinth/modules/tor/templates/tor.html:57
+#: plinth/modules/tor/forms.py:151
+msgid "Specify at least one upstream bridge to use upstream bridges."
+msgstr ""
+
+#: plinth/modules/tor/templates/tor.html:41
 msgid "Tor configuration is being updated"
 msgstr "Tor-konfiguration opdateres"
 
-#: plinth/modules/tor/templates/tor.html:66
+#: plinth/modules/tor/templates/tor.html:49
 msgid "Tor is running"
 msgstr "Tor er aktiv"
 
-#: plinth/modules/tor/templates/tor.html:69
+#: plinth/modules/tor/templates/tor.html:52
 msgid "Tor is not running"
 msgstr "Tor er ikke aktiv"
 
-#: plinth/modules/tor/templates/tor.html:81
+#: plinth/modules/tor/templates/tor.html:64
 msgid "Hidden Service"
 msgstr "Skjult Tjeneste"
 
-#: plinth/modules/tor/templates/tor.html:83
+#: plinth/modules/tor/templates/tor.html:66
 msgid "Ports"
 msgstr "Porte"
 
-#: plinth/modules/tor/templates/tor.html:114
+#: plinth/modules/tor/templates/tor.html:97
 msgid "Relay"
 msgstr ""
 
-#: plinth/modules/tor/templates/tor.html:116
+#: plinth/modules/tor/templates/tor.html:99
 #, fuzzy, python-format
 #| msgid ""
 #| "Your %(box_name)s is configured as a Tor bridge with obfsproxy, so it can "
@@ -3148,15 +3672,15 @@ msgstr ""
 "router eller firewall, bør du sikre at de følgende porte er åbne, eller "
 "viderestillede, hvis nødvendigt:"
 
-#: plinth/modules/tor/templates/tor.html:128
+#: plinth/modules/tor/templates/tor.html:111
 msgid "Port"
 msgstr "Port"
 
-#: plinth/modules/tor/templates/tor.html:144
+#: plinth/modules/tor/templates/tor.html:127
 msgid "SOCKS"
 msgstr "SOCKS"
 
-#: plinth/modules/tor/templates/tor.html:147
+#: plinth/modules/tor/templates/tor.html:130
 #, python-format
 msgid "A Tor SOCKS port is available on your %(box_name)s on TCP port 9050."
 msgstr "En Tor SOCKS-port er tilgængelig på din %(box_name)s TCP-port 9050."
@@ -3166,19 +3690,23 @@ msgstr "En Tor SOCKS-port er tilgængelig på din %(box_name)s TCP-port 9050."
 msgid "Action error: {0} [{1}] [{2}]"
 msgstr "Fejl under handling: {0} [{1}] [{2}]"
 
-#: plinth/modules/tor/views.py:131
+#: plinth/modules/tor/views.py:128 plinth/modules/tor/views.py:156
 msgid "Configuration updated."
 msgstr "Konfiguration opdateret."
 
-#: plinth/modules/tor/views.py:133
+#: plinth/modules/tor/views.py:158
 msgid "An error occurred during configuration."
 msgstr "Der opstod en fejl under konfigurationen."
 
-#: plinth/modules/transmission/__init__.py:39
-msgid "BitTorrent (Transmission)"
+#: plinth/modules/transmission/__init__.py:38
+#, fuzzy
+#| msgid "BitTorrent (Transmission)"
+msgid ""
+"BitTorrent \n"
+" (Transmission)"
 msgstr "BitTorrent (Transmission)"
 
-#: plinth/modules/transmission/__init__.py:42
+#: plinth/modules/transmission/__init__.py:41
 msgid ""
 "BitTorrent is a peer-to-peer file sharing protocol. Transmission daemon "
 "handles Bitorrent file sharing.  Note that BitTorrent is not anonymous."
@@ -3187,7 +3715,7 @@ msgstr ""
 "Transmission håndterer BitTorrent fildeling. Bemærk at BitTorrent ikke "
 "anonymiserer trafik."
 
-#: plinth/modules/transmission/__init__.py:45
+#: plinth/modules/transmission/__init__.py:44
 msgid ""
 "Access the web interface at <a href=\"/transmission\">/transmission</a>."
 msgstr "Tilgå webbrugerfladen på <a href=\"/transmission\">/transmission</a>."
@@ -3219,11 +3747,15 @@ msgstr ""
 "forvansket hash-format. Indtast et password i ren tekst for at ændre "
 "kodeordet."
 
-#: plinth/modules/ttrss/__init__.py:38
-msgid "News Feed Reader (Tiny Tiny RSS)"
+#: plinth/modules/ttrss/__init__.py:37
+#, fuzzy
+#| msgid "News Feed Reader (Tiny Tiny RSS)"
+msgid ""
+"News Feed Reader \n"
+" (Tiny Tiny RSS)"
 msgstr "Nyhedsstrømlæser (Tiny Tiny RSS)"
 
-#: plinth/modules/ttrss/__init__.py:41
+#: plinth/modules/ttrss/__init__.py:40
 msgid ""
 "Tiny Tiny RSS is a news feed (RSS/Atom) reader and aggregator, designed to "
 "allow reading news from any location, while feeling as close to a real "
@@ -3233,7 +3765,7 @@ msgstr ""
 "er designet til at læse nyheder på farten, men samtidig føles så meget som "
 "en rigtig desktop-applikation som muligt."
 
-#: plinth/modules/ttrss/__init__.py:45
+#: plinth/modules/ttrss/__init__.py:44
 msgid ""
 "When enabled, Tiny Tiny RSS will be available from <a href=\"/tt-rss\">/tt-"
 "rss</a> path on the web server."
@@ -3241,11 +3773,11 @@ msgstr ""
 "Når aktiveret, vil Tiny Tiny RSS være tilgængelige på stien <a href=\"/tt-rss"
 "\">/tt-rss</a> på webserveren."
 
-#: plinth/modules/upgrades/__init__.py:37
+#: plinth/modules/upgrades/__init__.py:35
 msgid "Software Upgrades"
 msgstr "Softwareopdateringer"
 
-#: plinth/modules/upgrades/__init__.py:40
+#: plinth/modules/upgrades/__init__.py:38
 msgid ""
 "Upgrades install the latest software and security updates. When automatic "
 "upgrades are enabled, upgrades are automatically run every night. You don't "
@@ -3319,40 +3851,40 @@ msgstr "Automatisk opdatering deaktiveret"
 msgid "Settings unchanged"
 msgstr "Indstillinger uændret"
 
-#: plinth/modules/upgrades/views.py:109
+#: plinth/modules/upgrades/views.py:108
 msgid "Upgrade process started."
 msgstr "Opdateringsprocessen er startet."
 
-#: plinth/modules/upgrades/views.py:112
+#: plinth/modules/upgrades/views.py:111
 msgid "Starting upgrade failed."
 msgstr "Kunne ikke starte opdatering."
 
-#: plinth/modules/users/__init__.py:38
+#: plinth/modules/users/__init__.py:45
 msgid "Users and Groups"
 msgstr "Brugere og Grupper"
 
-#: plinth/modules/users/__init__.py:78
+#: plinth/modules/users/__init__.py:85
 #, python-brace-format
 msgid "Check LDAP entry \"{search_item}\""
 msgstr "Kontrol af LDAP-konfiguration \"{search_item}\""
 
-#: plinth/modules/users/forms.py:48
+#: plinth/modules/users/forms.py:36
 msgid "admin"
 msgstr "admin"
 
-#: plinth/modules/users/forms.py:49
+#: plinth/modules/users/forms.py:37
 msgid "wiki"
 msgstr "wiki"
 
-#: plinth/modules/users/forms.py:60
+#: plinth/modules/users/forms.py:49
 msgid "Username is taken or is reserved."
 msgstr ""
 
-#: plinth/modules/users/forms.py:90
+#: plinth/modules/users/forms.py:81
 msgid "Groups"
 msgstr "Grupper"
 
-#: plinth/modules/users/forms.py:94
+#: plinth/modules/users/forms.py:85
 msgid ""
 "Select which services should be available to the new user. The user will be "
 "able to log in to services that support single sign-on through LDAP, if they "
@@ -3367,16 +3899,20 @@ msgstr ""
 "tjenester. De kan også logge ind på systemet gennem SSH og har "
 "administratorprivilegier (sudo)."
 
-#: plinth/modules/users/forms.py:129
+#: plinth/modules/users/forms.py:110 plinth/modules/users/forms.py:261
+msgid "Creating LDAP user failed."
+msgstr "Kunne ikke oprette LDAP-bruger."
+
+#: plinth/modules/users/forms.py:120
 #, python-brace-format
 msgid "Failed to add new user to {group} group."
 msgstr "Kunne ikke tilføje ny bruger til gruppen {group}."
 
-#: plinth/modules/users/forms.py:141
+#: plinth/modules/users/forms.py:132
 msgid "SSH Keys"
 msgstr "SSH-nøgler"
 
-#: plinth/modules/users/forms.py:145
+#: plinth/modules/users/forms.py:136
 msgid ""
 "Setting an SSH public key will allow this user to securely log in to the "
 "system without using a password. You may enter multiple keys, one on each "
@@ -3386,38 +3922,54 @@ msgstr ""
 "sikkert ind på systemet uden et kodeord. Der kan defineres flere nøgler, en "
 "på hver linje. Tomme linjer og linjer som starter med # bliver ignoreret."
 
-#: plinth/modules/users/forms.py:185
+#: plinth/modules/users/forms.py:181
 msgid "Renaming LDAP user failed."
 msgstr "Kunne ikke omdøbe LDAP-bruger."
 
-#: plinth/modules/users/forms.py:197
+#: plinth/modules/users/forms.py:193
 msgid "Failed to remove user from group."
 msgstr "Kunne ikke fjerne bruger fra gruppe."
 
-#: plinth/modules/users/forms.py:208
+#: plinth/modules/users/forms.py:204
 msgid "Failed to add user to group."
 msgstr "Kunne ikke tilføje bruger til gruppe."
 
-#: plinth/modules/users/forms.py:237
+#: plinth/modules/users/forms.py:211
+msgid "Unable to set SSH keys."
+msgstr ""
+
+#: plinth/modules/users/forms.py:236
 msgid "Changing LDAP user password failed."
 msgstr "Kunne ikke ændre LDAP-kodeord."
 
-#: plinth/modules/users/templates/users_change_password.html:27
+#: plinth/modules/users/forms.py:269
+msgid "Failed to add new user to admin group."
+msgstr "Kunne ikke tilføje ny bruger til admin-gruppen."
+
+#: plinth/modules/users/forms.py:286
+msgid "Failed to restrict console access."
+msgstr ""
+
+#: plinth/modules/users/forms.py:298
+msgid "User account created, you are now logged in"
+msgstr "Brugerkonto oprettet, du er nu logget ind"
+
+#: plinth/modules/users/templates/users_change_password.html:29
 #, python-format
 msgid "Change Password for <em>%(username)s</em>"
 msgstr "Ændr Kodeord for <em>%(username)s</em>"
 
-#: plinth/modules/users/templates/users_change_password.html:40
+#: plinth/modules/users/templates/users_change_password.html:39
 msgid "Save Password"
 msgstr "Gem Kodeord"
 
-#: plinth/modules/users/templates/users_create.html:42
-#: plinth/modules/users/views.py:36 plinth/modules/users/views.py:56
+#: plinth/modules/users/templates/users_create.html:40
+#: plinth/modules/users/views.py:39 plinth/modules/users/views.py:60
 msgid "Create User"
 msgstr "Opret Bruger"
 
 #: plinth/modules/users/templates/users_delete.html:26
-#: plinth/modules/users/views.py:115
+#: plinth/modules/users/views.py:127
 msgid "Delete User"
 msgstr "Slet Bruger"
 
@@ -3431,17 +3983,37 @@ msgstr "Slet bruger <strong>%(username)s</strong> permanent?"
 msgid "Delete %(username)s"
 msgstr "Slet %(username)s"
 
-#: plinth/modules/users/templates/users_list.html:46
+#: plinth/modules/users/templates/users_firstboot.html:29
+msgid "Administrator Account"
+msgstr "Administratorkonto"
+
+#: plinth/modules/users/templates/users_firstboot.html:32
+msgid ""
+"Choose a username and password to access this web interface. The password "
+"can be changed later. This user will be granted administrative privileges. "
+"Other users can be added later."
+msgstr ""
+"Vælg et brugernavn og kodeord der skal have adgang til dette web-interface. "
+"Kodeordet kan ændres senere. Brugeren vil få tildelt "
+"administratorrettigheder. Andre brugere kan tilføjes senere."
+
+#: plinth/modules/users/templates/users_firstboot.html:45
+#, fuzzy
+#| msgid "PageKite Account"
+msgid "Create Account"
+msgstr "PageKite-konto"
+
+#: plinth/modules/users/templates/users_list.html:47
 #, python-format
 msgid "Delete user %(username)s"
 msgstr "Slet bruger %(username)s"
 
-#: plinth/modules/users/templates/users_list.html:53
+#: plinth/modules/users/templates/users_list.html:55
 #, python-format
 msgid "Edit user %(username)s"
 msgstr "Rediger Bruger %(username)s"
 
-#: plinth/modules/users/templates/users_update.html:39
+#: plinth/modules/users/templates/users_update.html:41
 #, python-format
 msgid ""
 "Use the <a href='%(change_password_url)s'>change password form </a> to "
@@ -3454,77 +4026,40 @@ msgstr ""
 msgid "Save Changes"
 msgstr "Gem Ændringer"
 
-#: plinth/modules/users/views.py:34 plinth/modules/users/views.py:69
+#: plinth/modules/users/views.py:37 plinth/modules/users/views.py:73
 msgid "Users"
 msgstr "Brugere"
 
-#: plinth/modules/users/views.py:54
+#: plinth/modules/users/views.py:58
 #, python-format
 msgid "User %(username)s created."
 msgstr "Bruger %(username)s oprettet."
 
-#: plinth/modules/users/views.py:78
+#: plinth/modules/users/views.py:82
 #, python-format
 msgid "User %(username)s updated."
 msgstr "Bruger %(username)s opdateret."
 
-#: plinth/modules/users/views.py:79
+#: plinth/modules/users/views.py:83
 msgid "Edit User"
 msgstr "Rediger Bruger"
 
-#: plinth/modules/users/views.py:125
+#: plinth/modules/users/views.py:137
 #, python-brace-format
 msgid "User {user} deleted."
 msgstr "Brugeren {user} slettet."
 
-#: plinth/modules/users/views.py:132
+#: plinth/modules/users/views.py:144
 msgid "Deleting LDAP user failed."
 msgstr "Kunne ikke slette LDAP-bruger."
 
-#: plinth/modules/users/views.py:141
+#: plinth/modules/users/views.py:153
 msgid "Change Password"
 msgstr "Ændr kodeord"
 
-#: plinth/modules/users/views.py:142
+#: plinth/modules/users/views.py:154
 msgid "Password changed successfully."
 msgstr "Kodeord blev ændret."
-
-#: plinth/modules/xmpp/__init__.py:43
-msgid "Chat Server (XMPP)"
-msgstr "Chat-server (XMPP)"
-
-#: plinth/modules/xmpp/__init__.py:46
-msgid ""
-"XMPP is an open and standardized communication protocol. Here you can run "
-"and configure your XMPP server, called ejabberd."
-msgstr ""
-"XMPP er en åben og standardiseret kommunikationsprotokol. Her kan du "
-"aktivere og konfigurere din XMPP-server, kaldet ejabberd."
-
-#: plinth/modules/xmpp/__init__.py:49
-msgid ""
-"To actually communicate, you can use the <a href='/jwchat'>web client</a> or "
-"any other <a href='http://xmpp.org/xmpp-software/clients/' "
-"target='_blank'>XMPP client</a>."
-msgstr ""
-"For rent faktisk at kommunikere, kan du bruge <a href='/jwchat'>web-"
-"klienten</a> eller enhver anden <a href='http://xmpp.org/xmpp-software/"
-"clients/' target='_blank'>XMPP-klient</a>."
-
-#: plinth/modules/xmpp/templates/xmpp.html:31
-#, python-format
-msgid ""
-"Your XMPP server domain is set to <b>%(domainname)s</b>. User IDs will look "
-"like <i>username@%(domainname)s</i>. You can setup your domain on the system "
-"<a href=\"%(index_url)s\">Configure</a> page."
-msgstr ""
-"Domænet for din XMPP-server er sat til <b>%(domainname)s</b>. Brugernavne "
-"vil se ud som <i>brugernavn@%(domainname)s</i>. Du kan konfigurere systemets "
-"domæne på <a href=\"%(index_url)s\">Konfigurer</a> siden."
-
-#: plinth/modules/xmpp/templates/xmpp.html:41
-msgid "Launch web client"
-msgstr "Kør webklient"
 
 #: plinth/network.py:39
 msgid "PPPoE"
@@ -3568,6 +4103,15 @@ msgstr "Secure Shell (SSH) Server"
 msgid "{box_name} Web Interface (Plinth)"
 msgstr "{box_name} Web-brugerflade (Plinth)"
 
+#: plinth/templates/403.html:28
+msgid "403 Forbidden"
+msgstr ""
+
+#: plinth/templates/403.html:32
+#, python-format
+msgid "You don't have permission to access %(request_path)s on this server."
+msgstr ""
+
 #: plinth/templates/404.html:25
 msgid "404"
 msgstr "404"
@@ -3591,8 +4135,8 @@ msgstr ""
 msgid "500"
 msgstr "500"
 
-#: plinth/templates/500.html:28
-#, fuzzy
+#: plinth/templates/500.html:29
+#, fuzzy, python-format
 #| msgid ""
 #| "This is an internal error and not something you caused or can fix.  "
 #| "Please report the error on the <a href=\"https://github.com/freedombox/"
@@ -3600,46 +4144,144 @@ msgstr "500"
 msgid ""
 "This is an internal error and not something you caused or can fix.  Please "
 "report the error on the <a href=\"https://github.com/freedombox/Plinth/issues"
-"\">bug tracker</a> so we can fix it. Also, please attach the <a href=\"/"
-"plinth/help/status-logs\">Status Log</a> to the bug report."
+"\">bug tracker</a> so we can fix it. Also, please attach the <a href="
+"\"%(status_log_url)s\">status log</a> to the bug report."
 msgstr ""
 "Dette er en intern fejl og ikke noget du forårsagede eller selv kan udbedre. "
 "Rapporter venligst fejlen i <a href=\"https://github.com/freedombox/Plinth/"
 "issues\">fejlhåndteringsvørktøjet</a> så vi kan rette den."
+
+#: plinth/templates/apps.html:25
+msgid "Services and Applications"
+msgstr "Tjenester og Applikationer"
+
+#: plinth/templates/apps.html:28
+#, python-format
+msgid ""
+"You can install and run various services and applications on your "
+"%(box_name)s. Click on any app page link on the left to read a description "
+"of the application and choose to install it."
+msgstr ""
+"Du kan installere og køre forskellige tjenester og applikationer på din "
+"%(box_name)s. Klik på et af App-linkene til venstre, for at læse mere om den "
+"enkelte applikation eller installere den."
+
+#: plinth/templates/apps.html:36
+msgid ""
+"This box can be your photo sharing site, your instant messaging site, your "
+"social networking site, your news site.  Remember web portals?  We can be "
+"one of those too.  Many of the services you use on the web could soon be on "
+"site and under your control!"
+msgstr ""
+"Denne box kan blive din fotodelingstjeneste, din instant messagingtjeneste, "
+"dit sociale medie, dit nyhedsmedie. Kender du web-portaler? Sådan en kan den "
+"også være. Mange af de tjenester du bruger på webbet kan snart være "
+"tilgængelig her og under din kontrol!"
 
 #: plinth/templates/base.html:49
 #, python-format
 msgid "Plinth administrative interface for the %(box_name)s"
 msgstr "Plinth administrationsværktøj til %(box_name)s"
 
-#: plinth/templates/base.html:83
+#: plinth/templates/base.html:85
 msgid "Toggle navigation"
 msgstr "Åbn/luk navigation"
 
-#: plinth/templates/base.html:125 plinth/templates/base.html:126
+#: plinth/templates/base.html:102 plinth/templates/base.html:103
+msgid "Home"
+msgstr ""
+
+#: plinth/templates/base.html:107 plinth/templates/base.html:109
+msgid "Apps"
+msgstr "Apps"
+
+#: plinth/templates/base.html:140 plinth/templates/base.html:141
 msgid "Change password"
 msgstr "Ændr kodeord"
 
-#: plinth/templates/base.html:129 plinth/templates/base.html:130
-#: plinth/templates/base.html:143 plinth/templates/base.html:145
+#: plinth/templates/base.html:145 plinth/templates/base.html:159
+#: plinth/templates/base.html:161
 msgid "Log out"
 msgstr "Log ud"
 
-#: plinth/templates/base.html:135 plinth/templates/base.html:137
+#: plinth/templates/base.html:151 plinth/templates/base.html:153
 msgid "Log in"
 msgstr "Log ind"
 
-#: plinth/templates/login.html:35
-msgid "Login"
-msgstr "Log ind"
+#: plinth/templates/base.html:225 plinth/templates/index.html:164
+msgid "JavaScript license information"
+msgstr ""
 
-#: plinth/templates/service.html:43
-msgid "is running"
-msgstr "er aktiv"
+#: plinth/templates/index.html:58
+#, python-format
+msgid ""
+"Enable some <a href=\"%(apps_url)s\">applications</a> to add shortcuts to "
+"this page."
+msgstr ""
 
-#: plinth/templates/service.html:46
-msgid "is not running"
-msgstr "er ikke aktiv"
+#: plinth/templates/index.html:85
+#, fuzzy
+#| msgid "Configure"
+msgid "Configure &raquo;"
+msgstr "Konfigurer"
+
+#: plinth/templates/index.html:104
+#, python-format
+msgid ""
+"%(box_name)s, a Debian pure blend, is a 100%% free software self-hosting web "
+"server to deploy social applications on small machines. It provides online "
+"communication tools respecting your privacy and data ownership."
+msgstr ""
+
+#: plinth/templates/index.html:113
+#, python-format
+msgid ""
+"This portal is a part of Plinth, the %(box_name)s web interface. Plinth is "
+"free software, distributed under the GNU Affero General Public License, "
+"Version 3 or later."
+msgstr ""
+
+#: plinth/templates/index.html:128
+msgid "Wiki"
+msgstr ""
+
+#: plinth/templates/index.html:133
+msgid "Homepage"
+msgstr ""
+
+#: plinth/templates/index.html:136
+msgid "Source Code"
+msgstr ""
+
+#: plinth/templates/index.html:139
+msgid "Donate"
+msgstr ""
+
+#: plinth/templates/index.html:143
+#, fuzzy
+#| msgid "FreedomBox Manual"
+msgid "FreedomBox Foundation"
+msgstr "FreedomBox Brugervejledning"
+
+#: plinth/templates/index.html:150
+msgid "IRC Chatroom"
+msgstr ""
+
+#: plinth/templates/index.html:155
+msgid "Mailing list"
+msgstr ""
+
+#: plinth/templates/service.html:44
+#, fuzzy, python-format
+#| msgid "Service discovery server is running"
+msgid "Service <em>%(service_name)s</em> is running."
+msgstr "Tjenestesøgningstjenesten er aktiv"
+
+#: plinth/templates/service.html:49
+#, fuzzy, python-format
+#| msgid "Service discovery server is not running"
+msgid "Service <em>%(service_name)s</em> is not running."
+msgstr "Tjenestesøgningstjenesten er ikke aktiv"
 
 #: plinth/templates/setup.html:35
 msgid "Installation"
@@ -3649,55 +4291,166 @@ msgstr "Installation"
 msgid "Install this application?"
 msgstr "Installer denne applikation?"
 
-#: plinth/templates/setup.html:54
+#: plinth/templates/setup.html:55 plinth/templates/setup.html:79
+msgid ""
+"Another installation or upgrade is already running. Please wait for a few "
+"moments before trying again."
+msgstr ""
+
+#: plinth/templates/setup.html:61 plinth/templates/setup.html:64
+#: plinth/templates/setup.html:85
 msgid "Install"
 msgstr "Installer"
 
-#: plinth/templates/setup.html:58
+#: plinth/templates/setup.html:69
 msgid "This application needs an update. Update now?"
 msgstr "Denne applikation har brug for en opdatering. Opdater nu?"
 
-#: plinth/templates/setup.html:67
+#: plinth/templates/setup.html:88
 msgid "Update"
 msgstr "Opdater"
 
-#: plinth/templates/setup.html:74
+#: plinth/templates/setup.html:96
 msgid "Performing pre-install operation"
 msgstr "Udfører før-installationshandlinger"
 
-#: plinth/templates/setup.html:76
+#: plinth/templates/setup.html:98
 msgid "Performing post-install operation"
 msgstr "Udfører efter-installationshandlinger"
 
-#: plinth/templates/setup.html:80
+#: plinth/templates/setup.html:102
 #, python-format
 msgid "Installing %(package_names)s: %(status)s"
 msgstr "Installerer %(package_names)s: %(status)s"
 
-#: plinth/templates/setup.html:90
+#: plinth/templates/setup.html:112
 #, python-format
 msgid "%(percentage)s%% complete"
 msgstr "%(percentage)s%% færdig"
 
-#: plinth/views.py:90 plinth/views.py:180
-msgid "Application enabled"
-msgstr "Applikation aktiveret"
+#: plinth/templates/system.html:25
+msgid "System Configuration"
+msgstr "Systemkonfiguration"
 
-#: plinth/views.py:93 plinth/views.py:182
-msgid "Application disabled"
-msgstr "Applikation deaktiveret"
+#: plinth/templates/system.html:28
+#, fuzzy, python-format
+#| msgid "Here you can administrate the underlying system of your {box_name}."
+msgid "Here you can administrate the underlying system of your %(box_name)s."
+msgstr "Her administrerer du det underliggende system på din {box_name}."
+
+#: plinth/templates/system.html:34
+#, fuzzy, python-format
+#| msgid ""
+#| "The options affect the {box_name} at its most general level, so be "
+#| "careful!"
+msgid ""
+"The options affect the %(box_name)s at its most general level, so be careful!"
+msgstr ""
+"Disse muligheder påvirker {box_name} på det meste grundlæggende niveau, så "
+"vær forsigtig!"
+
+#~ msgid "Applications"
+#~ msgstr "Applikationer"
+
+#~ msgid ""
+#~ "%(box_name)s setup is now complete.  To make your %(box_name)s "
+#~ "functional, you need some applications.  They will be installed the first "
+#~ "time you access them."
+#~ msgstr ""
+#~ "Konfiguration af %(box_name)s er nu færdig. For at kunne noget nyttigt "
+#~ "skal du bruge nogle applikationer på din %(box_name)s. Disse installeres "
+#~ "første gang du tilgår dem."
+
+#~ msgid "Go to Apps"
+#~ msgstr "Gå til Apps"
+
+#~ msgid "Current Network Configuration"
+#~ msgstr "Nuværende Netværkskonfiguration"
+
+#~ msgid ""
+#~ "You should check the network setup and modify it if necessary. Do not "
+#~ "forget to change the default Wi-Fi passwords!"
+#~ msgstr ""
+#~ "Du bør kontrollere netværksopsætningen og tilpasse den hvis nødvendigt. "
+#~ "Glem ikke at ændre standardkodeordene for Wi-Fi!"
+
+#~ msgid "Go to Networks"
+#~ msgstr "Gå til Netværk"
+
+#~ msgid "File Hosting (ownCloud)"
+#~ msgstr "Fil-hosting (ownCloud)"
+
+#~ msgid ""
+#~ "ownCloud gives you universal access to your files through a web interface "
+#~ "or WebDAV. It also provides a platform to easily view & sync your "
+#~ "contacts, calendars and bookmarks across all your devices and enables "
+#~ "basic editing right on the web. Installation has minimal server "
+#~ "requirements, doesn't need special permissions and is quick. ownCloud is "
+#~ "extendable via a simple but powerful API for applications and plugins."
+#~ msgstr ""
+#~ "ownCloud giver dig universel adgang til dine filer gennem et webinterface "
+#~ "eller WebDAV-protokollen. Den giver dig også en platform til nemt at se "
+#~ "og synkronisere kontakter, kalendre og bogmærker på tværs af dine "
+#~ "enheder, og giver dig tilmed også basale redigeringsmuligheder direkte på "
+#~ "webbet. Installationen sætter minimale krav til serveren, har ikke brug "
+#~ "for specielle rettigheder og er hurtig. ownCloud kan udvides igennem et "
+#~ "simpelt men kraftfuldt API til applikationer og udvidelser."
+
+#~ msgid ""
+#~ "When enabled, the ownCloud installation will be available from <a href=\"/"
+#~ "owncloud\">/owncloud</a> path on the web server. Visit this URL to set up "
+#~ "the initial administration account for ownCloud."
+#~ msgstr ""
+#~ "Når aktiveret vil ownCloud-tjenesten være tilgængelig på stien <a href=\"/"
+#~ "owncloud\">/owncloud</a> på webserveren. Gå til denne URL for at "
+#~ "konfigurere administrationskontoen."
+
+#~ msgid ""
+#~ "ownCloud is no longer supported by %(box_name)s due it's removal from "
+#~ "Debian.  Please migrate your data to an alternative solution or manage "
+#~ "ownCloud manually from the command line."
+#~ msgstr ""
+#~ "ownCloud understøttes ikke længere af %(box_name)s, da projektet er "
+#~ "blevet fjernet fra Debian.  Migrer dine data til en alternativ løsning, "
+#~ "eller administrer ownCloud manuelt fra kommando-linjen."
+
+#~ msgid "Apply changes"
+#~ msgstr "Aktiver ændringer"
+
+#, fuzzy
+#~| msgid "Delete %(name)s"
+#~ msgid "Welcome to %(box_name)s!"
+#~ msgstr "Slet %(name)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "For more information about the %(box_name)s project, see the <a href="
+#~| "\"https://wiki.debian.org/FreedomBox\">%(box_name)s Wiki</a>."
+#~ msgid ""
+#~ "More info about %(box_name)s is available on the project <a href="
+#~ "\"https://freedombox.org\">homepage</a> and <a href=\"https://wiki.debian."
+#~ "org/FreedomBox\">wiki</a>."
+#~ msgstr ""
+#~ "For mere information om %(box_name)s-projektet, se <a href=\"https://wiki."
+#~ "debian.org/FreedomBox\">%(box_name)s Wiki-siden</a>."
+
+#~ msgid "is running"
+#~ msgstr "er aktiv"
+
+#~ msgid "is not running"
+#~ msgstr "er ikke aktiv"
+
+#~ msgid "Anonymity Network (Tor)"
+#~ msgstr "Anonymiseringstjeneste (Tor)"
+
+#~ msgid "Box it up!"
+#~ msgstr "Box den!"
 
 #~ msgid "IP Check URL"
 #~ msgstr "URL for IP-kontrol"
 
 #~ msgid "Bridge"
 #~ msgstr "Bro"
-
-#~ msgid "Service discovery server is running"
-#~ msgstr "Tjenestesøgningstjenesten er aktiv"
-
-#~ msgid "Service discovery server is not running"
-#~ msgstr "Tjenestesøgningstjenesten er ikke aktiv"
 
 #~ msgid "Enable network time"
 #~ msgstr "Aktiver netværkstid"
@@ -3883,9 +4636,6 @@ msgstr "Applikation deaktiveret"
 #~ msgid "reStore"
 #~ msgstr "reStore"
 
-#~ msgid "Enable reStore"
-#~ msgstr "Aktiver reStore"
-
 #~ msgid "Enable Roundcube"
 #~ msgstr "Aktiver Roundcube"
 
@@ -3909,9 +4659,6 @@ msgstr "Applikation deaktiveret"
 
 #~ msgid "Package Upgrades"
 #~ msgstr "Pakkeopdateringer"
-
-#~ msgid "Enable XMPP"
-#~ msgstr "Aktiver XMPP"
 
 #~ msgid "Installed and configured packages successfully."
 #~ msgstr "Installation og konfiguration af pakker lykkedes."
@@ -3944,9 +4691,6 @@ msgstr "Applikation deaktiveret"
 
 #~ msgid "Next"
 #~ msgstr "Næste"
-
-#~ msgid "FreedomBox Manual"
-#~ msgstr "FreedomBox Brugervejledning"
 
 #~ msgid ""
 #~ "Many FreedomBox contributors and users are also available on the "

@@ -15,7 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from django.http.response import HttpResponseRedirect
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -24,9 +25,11 @@ from django.views.generic.edit import FormView
 
 from . import utils
 from .forms import ConfigurationForm, StandardServiceForm, \
-    AddCustomServiceForm, DeleteCustomServiceForm
+    AddCustomServiceForm, DeleteCustomServiceForm, FirstBootForm
+from plinth import cfg
+from plinth.errors import DomainRegistrationError
+from plinth.modules import first_boot
 from plinth.modules import pagekite
-
 
 subsubmenu = [{'url': reverse_lazy('pagekite:index'),
                'text': _('About PageKite')},
@@ -51,6 +54,7 @@ class ContextMixin(object):
 
     Also adds the requirement of all necessary packages to be installed
     """
+
     def get_context_data(self, **kwargs):
         """Use self.title and the module-level subsubmenu"""
         context = super(ContextMixin, self).get_context_data(**kwargs)
@@ -129,3 +133,38 @@ class ConfigurationView(ContextMixin, FormView):
     def form_valid(self, form):
         form.save(self.request)
         return super(ConfigurationView, self).form_valid(form)
+
+
+class FirstBootView(FormView):
+    """First boot (optional) setup of the Pagekite subdomain."""
+    template_name = 'pagekite_firstboot.html'
+    form_class = FirstBootForm
+
+    def get(self, request, *args, **kwargs):
+        """Skip if this first boot step if it is not relavent."""
+        if not cfg.danube_edition:
+            first_boot.mark_step_done('pagekite_firstboot')
+            return HttpResponseRedirect(reverse(first_boot.next_step()))
+
+        return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        """Act on valid form submission."""
+        try:
+            form.register_domain()
+        except DomainRegistrationError as error:
+            messages.error(self.request, error)
+            return self.form_invalid(form)
+
+        form.setup_pagekite()
+        first_boot.mark_step_done('pagekite_firstboot')
+        message = _('Pagekite setup finished. The HTTP and HTTPS services '
+                    'are activated now.')
+        messages.success(self.request, message)
+        return HttpResponseRedirect(reverse(first_boot.next_step()))
+
+
+def first_boot_skip(request):
+    """Skip the first boot step."""
+    first_boot.mark_step_done('pagekite_firstboot')
+    return HttpResponseRedirect(reverse(first_boot.next_step()))

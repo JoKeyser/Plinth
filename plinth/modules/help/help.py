@@ -20,18 +20,19 @@ Help module for Plinth.
 """
 
 import os
+from apt.cache import Cache
 from django.http import Http404
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _, ugettext_lazy
-from stronghold.decorators import public
 
 from plinth import cfg, __version__
+from plinth.menu import main_menu
 
 
 def init():
     """Initialize the Help module"""
-    menu = cfg.main_menu.add_urlname(ugettext_lazy('Documentation'),
-                                     'glyphicon-book', 'help:index')
+    menu = main_menu.add_urlname(ugettext_lazy('Documentation'),
+                                 'glyphicon-book', 'help:index')
     menu.add_urlname(ugettext_lazy('Where to Get Help'), 'glyphicon-search',
                      'help:index_explicit', 5)
     menu.add_urlname(ugettext_lazy('Manual'), 'glyphicon-info-sign',
@@ -40,24 +41,25 @@ def init():
                      100)
 
 
-@public
 def index(request):
     """Serve the index page"""
     return TemplateResponse(request, 'help_index.html',
                             {'title': _('Documentation and FAQ')})
 
 
-@public
 def about(request):
     """Serve the about page"""
+    cache = Cache()
+    plinth = cache['plinth']
     context = {
         'title': _('About {box_name}').format(box_name=_(cfg.box_name)),
-        'version': __version__
+        'version': __version__,
+        'new_version': not plinth.candidate.is_installed,
+        'os_release': get_os_release()
     }
     return TemplateResponse(request, 'help_about.html', context)
 
 
-@public
 def manual(request):
     """Serve the manual page from the 'doc' directory"""
     try:
@@ -85,3 +87,15 @@ def status_log(request):
         'data': data
     }
     return TemplateResponse(request, 'statuslog.html', context)
+
+
+def get_os_release():
+    """Returns the Debian release number and name"""
+    output = 'Error: Cannot read PRETTY_NAME in /etc/os-release.'
+    with open('/etc/os-release', 'r') as release_file:
+        for line in release_file:
+            if 'PRETTY_NAME=' in line:
+                line = line.replace('"', '').strip()
+                line = line.split('=')
+                output = line[1]
+    return output

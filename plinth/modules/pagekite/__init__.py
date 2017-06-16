@@ -23,13 +23,23 @@ from django.utils.translation import ugettext_lazy as _
 
 from . import utils
 from plinth import cfg
+from plinth.menu import main_menu
 from plinth.utils import format_lazy
+
 
 version = 1
 
-depends = ['system', 'names']
+depends = ['names']
 
 managed_packages = ['pagekite']
+
+first_boot_steps = [
+    {
+        'id': 'pagekite_firstboot',
+        'url': 'pagekite:firstboot',
+        'order': 5,
+    },
+]
 
 title = _('Public Visibility (PageKite)')
 
@@ -69,7 +79,7 @@ description = [
 
 def init():
     """Intialize the PageKite module"""
-    menu = cfg.main_menu.get('system:index')
+    menu = main_menu.get('system')
     menu.add_urlname(title, 'glyphicon-flag', 'pagekite:index')
 
     # Register kite name with Name Services module.

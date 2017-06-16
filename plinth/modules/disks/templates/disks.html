@@ -34,7 +34,7 @@
 
   <div>{% trans "The following disks are in use:" %}</div>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
       <table class="table table-bordered table-condensed table-striped">
         <thead>
           <tr>
@@ -47,7 +47,7 @@
         <tbody>
           {% for disk in disks %}
             <tr>
-              <td>{{ disk.device }}</td>
+              <td>{{ disk.dev_kname }}</td>
               <td>{{ disk.mount_point }}</td>
               <td>{{ disk.file_system_type }}</td>
               <td>
@@ -74,8 +74,8 @@
     </div>
   </div>
 
+  <h3>{% trans "Partition Expansion" %}</h3>
   {% if expandable_root_size %}
-    <h3>Expandable Partition</h3>
     <p>
       {% blocktrans trimmed %}
         There is {{ expandable_root_size }} of unallocated space
@@ -85,7 +85,20 @@
       {% endblocktrans %}
     </p>
     <p>
-      <a class="btn btn-primary btn-md" href="{% url 'disks:expand' %}">
+      <a class="btn btn-primary btn-md" href="{% url 'disks:expand' %}"
+         role="button">
+        {% trans "Expand Root Partition" %}</a>
+    </p>
+  {% else %}
+    <p>
+      {% blocktrans trimmed %}
+        There is no unallocated space after your root partition.
+        There is no need to expand it.
+      {% endblocktrans %}
+    </p>
+    <p>
+      <a class="btn btn-primary btn-md disabled"
+         href="{% url 'disks:expand' %}" role="button">
         {% trans "Expand Root Partition" %}</a>
     </p>
   {% endif %}

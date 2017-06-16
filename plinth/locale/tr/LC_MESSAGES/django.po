@@ -6,110 +6,81 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-20 09:43+0530\n"
-"PO-Revision-Date: 2016-08-24 19:25+0000\n"
+"POT-Creation-Date: 2017-06-10 09:50-0400\n"
+"PO-Revision-Date: 2017-05-08 12:10+0000\n"
 "Last-Translator: John Doe <thraex@numericable.fr>\n"
-"Language-Team: Turkish "
-"<https://hosted.weblate.org/projects/freedombox/plinth/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/freedombox/"
+"plinth/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.14-dev\n"
 
-#: plinth/action_utils.py:242
+#: plinth/action_utils.py:254
 #, python-brace-format
 msgid "Listening on {kind} port {listen_address}:{port}"
 msgstr "{kind} port {listen_address}:{port} dinleniyor"
 
-#: plinth/action_utils.py:245
+#: plinth/action_utils.py:257
 #, python-brace-format
 msgid "Listening on {kind} port {port}"
 msgstr "{kind} port {port} dinleniyor"
 
-#: plinth/action_utils.py:331
+#: plinth/action_utils.py:352
 #, python-brace-format
 msgid "Access URL {url} on tcp{kind}"
 msgstr "tcp{kind} üzerinden {url} bağlantısına eriş"
 
-#: plinth/action_utils.py:334
+#: plinth/action_utils.py:356
 #, python-brace-format
 msgid "Access URL {url}"
 msgstr "{url} bağlantısına eriş"
 
-#: plinth/action_utils.py:362
+#: plinth/action_utils.py:386
 #, python-brace-format
 msgid "Connect to {host}:{port}"
 msgstr "{host}:{port} konumuna bağlan"
 
-#: plinth/action_utils.py:365
+#: plinth/action_utils.py:389
 #, python-brace-format
 msgid "Cannot connect to {host}:{port}"
 msgstr "{host}:{port} konumuna bağlanılamadı"
 
-#: plinth/context_processors.py:36
+#: plinth/context_processors.py:38 plinth/views.py:49
 msgid "FreedomBox"
 msgstr "FreedomBox"
 
-#: plinth/forms.py:30 plinth/forms.py:37
+#: plinth/forms.py:31
 msgid "Enable application"
 msgstr "Uygulamayı etkinleştir"
 
-#: plinth/middleware.py:59
+#: plinth/forms.py:45
+#, fuzzy
+#| msgid "Select the domain name"
+msgid "Select the domain name to be used for this application"
+msgstr "Alan ismini seç"
+
+#: plinth/middleware.py:71
 msgid "Application installed."
 msgstr "Uygulama kuruldu."
 
-#: plinth/middleware.py:65
+#: plinth/middleware.py:77
 #, python-brace-format
 msgid "Error installing application: {string} {details}"
 msgstr "Uygulamanın kurulmasında hata: {string} {details}"
 
-#: plinth/middleware.py:69
+#: plinth/middleware.py:81
 #, python-brace-format
 msgid "Error installing application: {error}"
 msgstr "Uygulamanın kurulmasında hata: {error}"
 
-#: plinth/modules/apps/apps.py:26
-msgid "Apps"
-msgstr "Uygulamalar"
-
-#: plinth/modules/apps/apps.py:32 plinth/templates/base.html:93
-msgid "Applications"
-msgstr "Uygulamalar"
-
-#: plinth/modules/apps/templates/apps.html:25
-msgid "Services and Applications"
-msgstr "Servisler ve Uygulamalar"
-
-#: plinth/modules/apps/templates/apps.html:28
-#, python-format
-msgid ""
-"You can install and run various services and applications on your "
-"%(box_name)s. Click on any app page link on the left to read a description "
-"of the application and choose to install it."
-msgstr ""
-"%(box_name)s kutunuza çeşitli servis ve uygulamalar kurup "
-"çalıştırabilirsiniz. Herhangi bir uygulamanın açıklamasını okuyup onu "
-"kurmayı seçmek için sol taraftaki uygulama sayfası bağlantısına tıklayın."
-
-#: plinth/modules/apps/templates/apps.html:36
-msgid ""
-"This box can be your photo sharing site, your instant messaging site, your "
-"social networking site, your news site.  Remember web portals?  We can be "
-"one of those too.  Many of the services you use on the web could soon be on "
-"site and under your control!"
-msgstr ""
-"Bu kutu fotoğraf paylaşma siteniz, anında mesajlaşma siteniz, sosyal ağ "
-"siteniz, haberler siteniz olabilir. Ağ portallarını hatırlıyor musunuz? "
-"Onlardan biri de olabiliriz. Web üzerinde kullandığınız servislerin birçoğu "
-"yakında sizin evinizde ve sizin kontrolünüzde olabileceklerdir!"
-
-#: plinth/modules/avahi/__init__.py:41
+#: plinth/modules/avahi/__init__.py:40
 msgid "Service Discovery"
 msgstr "Servis Keşfi"
 
-#: plinth/modules/avahi/__init__.py:45
+#: plinth/modules/avahi/__init__.py:44
 #, python-brace-format
 msgid ""
 "Service discovery allows other devices on the network to discover your "
@@ -126,16 +97,82 @@ msgstr ""
 "çalışır. Özellikle düşman bir yerel ağa bağlanıldığında güvenliği arttırmak "
 "için devre dışı bırakılabilir."
 
-#: plinth/modules/config/config.py:87 plinth/modules/config/config.py:124
+#: plinth/modules/bind/__init__.py:34
+msgid ""
+"Domain Name Server \n"
+" (BIND)"
+msgstr ""
+"Alan Adı Sunucusu\n"
+" (BIND)"
+
+#: plinth/modules/bind/__init__.py:43
+msgid ""
+"BIND is open source software that enables you to publish your Domain Name "
+"System (DNS) information on the Internet, and to resolve DNS queries for "
+"your users."
+msgstr ""
+"BIND, Alan Adı Sistemi (DNS) verilerinizi İnternet'te yayınlama ve "
+"kullanıcılarınızın DNS sorgularının çözümlenmesine imkan veren açık kaynaklı "
+"bir yazılımdır."
+
+#: plinth/modules/bind/__init__.py:47
+msgid ""
+"BIND is by far the most widely used DNS software on the Internet, providing "
+"a robust and stable platform on top of which organizations can build "
+"distributed computing systems with the knowledge that those systems are "
+"fully compliant with published DNS standards."
+msgstr ""
+"BIND, İnternet'te en yaygın kullanılan DNS yazılımıdır, kuruluşların onu "
+"temel alarak yayınlanmış DNS standartlarına tamamiyle uygun dağıtılmış "
+"bilgisayar sistemleri oluşturmalarını imkan veren sağlam ve kararlı bir "
+"platform sunar."
+
+#: plinth/modules/bind/forms.py:38
+msgid "Enable forwarding"
+msgstr "İletmeyi etkinleştir"
+
+#: plinth/modules/bind/forms.py:40
+msgid "Enable forwarding on your BIND server"
+msgstr "BIND sunucunuzda iletmeyi etkinleştirin"
+
+#: plinth/modules/bind/forms.py:43
+msgid "Enable DNSSEC"
+msgstr "Dinamik DNSSEC'i Etkinleştir"
+
+#: plinth/modules/bind/forms.py:45
+msgid "Enable Domain Name System Security Extensions"
+msgstr "Alan Adı Sistemi Güvenlik Uzantılarını Etkinleştir"
+
+#: plinth/modules/bind/forms.py:50
+msgid "A list of IP addresses, separated by space"
+msgstr "Boşluklarla ayrılmış IP adresleri listesi"
+
+#: plinth/modules/bind/views.py:58
+msgid "Set forwarding configuration updated"
+msgstr "Yönlendirme yapılandırması güncellendi"
+
+#: plinth/modules/bind/views.py:66
+msgid "Enable DNSSEC configuration updated"
+msgstr "DNSSEC'i etkinleştirme yapılandırması güncellendi"
+
+#: plinth/modules/bind/views.py:74
+msgid "DNS server configuration updated"
+msgstr "DNS sunucusu yapılandırması güncellendi"
+
+#: plinth/modules/bind/views.py:79
+msgid "Enable forwarding to set forwarding DNS servers"
+msgstr "İletmeli DNS sunucuları kurmak için yönlendirmeyi etkinleştir"
+
+#: plinth/modules/config/config.py:88 plinth/modules/config/config.py:125
 #: plinth/modules/dynamicdns/dynamicdns.py:140
 msgid "Invalid domain name"
 msgstr "Geçersiz alan ismi"
 
-#: plinth/modules/config/config.py:98
+#: plinth/modules/config/config.py:99
 msgid "Hostname"
 msgstr "Makine ismi"
 
-#: plinth/modules/config/config.py:100
+#: plinth/modules/config/config.py:101
 #, python-brace-format
 msgid ""
 "Hostname is the local name by which other devices on the local network can "
@@ -148,17 +185,17 @@ msgstr ""
 "başlayıp sona ermesi gerekir ve sadece alfabe harfleri, sayılar ve tireler "
 "içerebilir. Toplam uzunluğun 63 karakter veya daha azı olması gerekmektedir."
 
-#: plinth/modules/config/config.py:108
+#: plinth/modules/config/config.py:109
 msgid "Invalid hostname"
 msgstr "Geçersiz makine ismi"
 
-#: plinth/modules/config/config.py:111 plinth/modules/config/config.py:168
-#: plinth/modules/config/config.py:280
+#: plinth/modules/config/config.py:112 plinth/modules/config/config.py:169
+#: plinth/modules/config/config.py:285
 #: plinth/modules/dynamicdns/dynamicdns.py:135
 msgid "Domain Name"
 msgstr "Alan Adı"
 
-#: plinth/modules/config/config.py:113
+#: plinth/modules/config/config.py:114
 #, python-brace-format
 msgid ""
 "Domain name is the global name by which other devices on the Internet can "
@@ -175,48 +212,49 @@ msgstr ""
 "kalmalıdır. Her grubun uzunluğu 63 karakter ya da daha azı olmalıdır. Alan "
 "adının toplam uzunluğu 253 karakter ya da daha azı olmalıdır."
 
-#: plinth/modules/config/config.py:128
+#: plinth/modules/config/config.py:129
 msgid "Language"
 msgstr "Lisan"
 
-#: plinth/modules/config/config.py:130
+#: plinth/modules/config/config.py:131
 msgid "Language for this web administration interface"
 msgstr "Bu web yönetim arayüzü için kullanılacak dil"
 
-#: plinth/modules/config/config.py:150
+#: plinth/modules/config/config.py:151
 #: plinth/modules/dynamicdns/dynamicdns.py:37
-#: plinth/modules/ikiwiki/views.py:36
+#: plinth/modules/ikiwiki/views.py:37
+#: plinth/modules/tahoe/templates/tahoe-pre-setup.html:39
 msgid "Configure"
 msgstr "Yapılandır"
 
-#: plinth/modules/config/config.py:191
+#: plinth/modules/config/config.py:192
 msgid "General Configuration"
 msgstr "Genel Yapılandırma"
 
-#: plinth/modules/config/config.py:208
+#: plinth/modules/config/config.py:209
 #, python-brace-format
 msgid "Error setting hostname: {exception}"
 msgstr "Makine isminin ayarlanmasında hata: {exception}"
 
-#: plinth/modules/config/config.py:211
+#: plinth/modules/config/config.py:212
 msgid "Hostname set"
 msgstr "Makine ismi ayarlandı"
 
-#: plinth/modules/config/config.py:217
+#: plinth/modules/config/config.py:218
 #, python-brace-format
 msgid "Error setting domain name: {exception}"
 msgstr "Alan adının ayarlanmasında hata: {exception}"
 
-#: plinth/modules/config/config.py:220
+#: plinth/modules/config/config.py:221
 msgid "Domain name set"
 msgstr "Alan adı ayarlandı"
 
-#: plinth/modules/config/config.py:228
+#: plinth/modules/config/config.py:229
 #, python-brace-format
 msgid "Error setting language: {exception}"
 msgstr "Dilin ayarlanmasında hata: {exception}"
 
-#: plinth/modules/config/config.py:231
+#: plinth/modules/config/config.py:232
 msgid "Language changed"
 msgstr "Dil değiştirildi"
 
@@ -225,35 +263,39 @@ msgstr "Dil değiştirildi"
 msgid "Submit"
 msgstr "İbraz Et"
 
-#: plinth/modules/datetime/__init__.py:39
+#: plinth/modules/datetime/__init__.py:37
 msgid "Date & Time"
 msgstr "Tarih & Zaman"
 
-#: plinth/modules/datetime/__init__.py:42
+#: plinth/modules/datetime/__init__.py:40
 msgid ""
-"Network time server is a program that maintians the system time in "
+"Network time server is a program that maintains the system time in "
 "synchronization with servers on the Internet."
 msgstr ""
 "Ağ zaman sunucusu, İnternet'teki sunucular ile sistem zamanını eş tutan bir "
 "programdır."
 
-#: plinth/modules/datetime/__init__.py:83
+#: plinth/modules/datetime/__init__.py:87
 msgid "NTP client in contact with servers"
 msgstr "Sunucularla iletişimde NTP istemcisi"
 
-#: plinth/modules/datetime/forms.py:33
+#: plinth/modules/datetime/forms.py:36
 msgid "Time Zone"
 msgstr "Saat Dilimi"
 
-#: plinth/modules/datetime/forms.py:34
+#: plinth/modules/datetime/forms.py:37
+#, fuzzy
+#| msgid ""
+#| "Set your time zone to get accurate timestamps. This will set the "
+#| "systemwide time zone."
 msgid ""
-"Set your time zone to get accurate timestamps. This will set the systemwide "
+"Set your time zone to get accurate timestamps. This will set the system-wide "
 "time zone."
 msgstr ""
 "Zaman damgalarının doğru olması için saat diliminizi ayarlayın. Bu, tüm "
 "sistem için saat dilimini ayarlayacaktır."
 
-#: plinth/modules/datetime/forms.py:45
+#: plinth/modules/datetime/forms.py:49
 msgid "-- no time zone set --"
 msgstr "-- hiçbir saat dilimi girilmemiştir --"
 
@@ -266,15 +308,19 @@ msgstr "Saat diliminin ayarlanmasında hata: {exception}"
 msgid "Time zone set"
 msgstr "Saat dilimi ayarlandı"
 
-#: plinth/modules/deluge/__init__.py:40
-msgid "BitTorrent Web Client (Deluge)"
-msgstr "BitTorrent Web İstemcisi (Deluge)"
+#: plinth/modules/deluge/__init__.py:39
+msgid ""
+"BitTorrent Web Client \n"
+" (Deluge)"
+msgstr ""
+"BitTorrent Web İstemcisi \n"
+" (Deluge)"
 
-#: plinth/modules/deluge/__init__.py:43
+#: plinth/modules/deluge/__init__.py:42
 msgid "Deluge is a BitTorrent client that features a Web UI."
 msgstr "Deluge, ağ arayüzü sunan bir BitTorrent istemcisidir."
 
-#: plinth/modules/deluge/__init__.py:45
+#: plinth/modules/deluge/__init__.py:44
 msgid ""
 "When enabled, the Deluge web client will be available from <a href=\"/deluge"
 "\">/deluge</a> path on the web server. The default password is 'deluge', but "
@@ -285,11 +331,11 @@ msgstr ""
 "şudur: 'deluge'. Ancak servisi etkinleştirdikten sonra giriş yapıp onu "
 "derhal değiştirmeniz gerekmektedir."
 
-#: plinth/modules/diagnostics/__init__.py:31
+#: plinth/modules/diagnostics/__init__.py:32
 msgid "Diagnostics"
 msgstr "Teşhisler"
 
-#: plinth/modules/diagnostics/__init__.py:34
+#: plinth/modules/diagnostics/__init__.py:35
 msgid ""
 "The system diagnostic test will run a number of checks on your system to "
 "confirm that applications and services are working as expected."
@@ -302,7 +348,8 @@ msgid "Diagnostic Test"
 msgstr "Teşhis Testi"
 
 #: plinth/modules/diagnostics/templates/diagnostics.html:40
-#: plinth/modules/diagnostics/templates/diagnostics_button.html:27
+#: plinth/modules/diagnostics/templates/diagnostics_button.html:28
+#: plinth/modules/diagnostics/templates/diagnostics_button.html:31
 msgid "Run Diagnostics"
 msgstr "Teşhisleri Çalıştır"
 
@@ -340,7 +387,48 @@ msgstr "Test"
 msgid "Result"
 msgstr "Sonuç"
 
-#: plinth/modules/disks/__init__.py:35 plinth/modules/disks/views.py:39
+#: plinth/modules/diaspora/__init__.py:61
+msgid ""
+"diaspora* is a decentralized social network where you can store and control "
+"your own data."
+msgstr ""
+
+#: plinth/modules/diaspora/forms.py:30
+#, fuzzy
+#| msgid "Select the domain name"
+msgid "Select the domain name to be used for diaspora*"
+msgstr "Alan ismini seç"
+
+#: plinth/modules/diaspora/forms.py:32
+msgid ""
+"Warning! Do not change the FreedomBox domain name after setting up diaspora*"
+msgstr ""
+
+#: plinth/modules/diaspora/templates/diaspora-post-setup.html:32
+#, python-format
+msgid ""
+"The diaspora* pod domain is set to <b>%(domain_name)s</b>. User IDs will "
+"look like <i>username@diaspora.%(domain_name)s</i><br/> If the FreedomBox "
+"domain name is changed, all data of the users registered with the previous "
+"podname wouldn't be accessible. <br/> You can access the diaspora* pod at <a "
+"href=\"https://diaspora.%(domain_name)s\"> diaspora.%(domain_name)s </a>"
+msgstr ""
+
+#: plinth/modules/diaspora/templates/diaspora-pre-setup.html:58
+#: plinth/modules/dynamicdns/templates/dynamicdns_configure.html:40
+#: plinth/modules/ejabberd/templates/ejabberd.html:61
+#: plinth/modules/ikiwiki/templates/ikiwiki_create.html:32
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:63
+#: plinth/modules/openvpn/templates/openvpn.html:124
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:51
+#: plinth/modules/tahoe/templates/tahoe-pre-setup.html:58
+#: plinth/modules/tor/templates/tor.html:93
+#: plinth/modules/upgrades/templates/upgrades_configure.html:32
+#: plinth/templates/service.html:73
+msgid "Update setup"
+msgstr "Kurulumu güncelle"
+
+#: plinth/modules/disks/__init__.py:33 plinth/modules/disks/views.py:39
 msgid "Disks"
 msgstr "Diskler"
 
@@ -358,7 +446,7 @@ msgid "Mount Point"
 msgstr "Bağlama Noktası"
 
 #: plinth/modules/disks/templates/disks.html:43
-#: plinth/modules/ikiwiki/forms.py:29
+#: plinth/modules/ikiwiki/forms.py:30
 #: plinth/modules/networks/templates/connection_show.html:98
 msgid "Type"
 msgstr "Tür"
@@ -366,6 +454,10 @@ msgstr "Tür"
 #: plinth/modules/disks/templates/disks.html:44
 msgid "Used"
 msgstr "Kullanılan"
+
+#: plinth/modules/disks/templates/disks.html:77
+msgid "Partition Expansion"
+msgstr ""
 
 #: plinth/modules/disks/templates/disks.html:80
 #, python-format
@@ -379,11 +471,18 @@ msgstr ""
 "genişletilebilir. Bu, size dosyalarınızı saklamak için ilave boş alan "
 "sunacaktır."
 
-#: plinth/modules/disks/templates/disks.html:89
+#: plinth/modules/disks/templates/disks.html:90
+#: plinth/modules/disks/templates/disks.html:102
 #: plinth/modules/disks/templates/disks_expand.html:45
 #: plinth/modules/disks/views.py:56
 msgid "Expand Root Partition"
 msgstr "Kök Bölümünü Genişlet"
+
+#: plinth/modules/disks/templates/disks.html:94
+msgid ""
+"There is no unallocated space after your root partition. There is no need to "
+"expand it."
+msgstr ""
 
 #: plinth/modules/disks/templates/disks_expand.html:35
 #, python-format
@@ -406,28 +505,33 @@ msgid "Partition expanded successfully."
 msgstr "Bölüm başarılı bir şekilde genişletildi."
 
 #: plinth/modules/disks/views.py:77
-#, python-brace-format
-msgid "{disk_size} bytes"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} bytes"
+msgid "{disk_size:.1f} bytes"
 msgstr "{disk_size} bayt"
 
 #: plinth/modules/disks/views.py:81
-#, python-brace-format
-msgid "{disk_size} KiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} KiB"
+msgid "{disk_size:.1f} KiB"
 msgstr "{disk_size} KiB"
 
 #: plinth/modules/disks/views.py:85
-#, python-brace-format
-msgid "{disk_size} MiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} MiB"
+msgid "{disk_size:.1f} MiB"
 msgstr "{disk_size} MiB"
 
 #: plinth/modules/disks/views.py:89
-#, python-brace-format
-msgid "{disk_size} GiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} GiB"
+msgid "{disk_size:.1f} GiB"
 msgstr "{disk_size} GiB"
 
 #: plinth/modules/disks/views.py:92
-#, python-brace-format
-msgid "{disk_size} TiB"
+#, fuzzy, python-brace-format
+#| msgid "{disk_size} TiB"
+msgid "{disk_size:.1f} TiB"
 msgstr "{disk_size} TiB"
 
 #: plinth/modules/dynamicdns/__init__.py:33
@@ -463,16 +567,16 @@ msgstr ""
 "sunucu DNS isminizi yeni IP adresi ile ilişkilendirecek ve İnternet'te "
 "birisi DNS isminizi sorguladığında güncel IP adresinizi elde edebilecektir."
 
-#: plinth/modules/dynamicdns/dynamicdns.py:35 plinth/modules/help/help.py:39
+#: plinth/modules/dynamicdns/dynamicdns.py:35 plinth/modules/help/help.py:40
 msgid "About"
 msgstr "Hakkında"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:39
-#: plinth/modules/firewall/templates/firewall.html:46
+#: plinth/modules/firewall/templates/firewall.html:47
 #: plinth/modules/networks/templates/connection_show.html:261
 #: plinth/modules/openvpn/templates/openvpn.html:67
-#: plinth/modules/tor/templates/tor.html:51
-#: plinth/modules/tor/templates/tor.html:82
+#: plinth/modules/tor/templates/tor.html:35
+#: plinth/modules/tor/templates/tor.html:65 plinth/templates/service.html:39
 msgid "Status"
 msgstr "Durum"
 
@@ -574,17 +678,17 @@ msgid "Use HTTP basic authentication"
 msgstr "Temel HTTP kimlik doğrulamasını kullan"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:143
-#: plinth/modules/networks/forms.py:168 plinth/modules/transmission/forms.py:37
+#: plinth/modules/networks/forms.py:227 plinth/modules/transmission/forms.py:37
 msgid "Username"
 msgstr "Kullanıcı ismi"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:146
-#: plinth/modules/networks/forms.py:169 plinth/modules/transmission/forms.py:41
+#: plinth/modules/networks/forms.py:228 plinth/modules/transmission/forms.py:41
 msgid "Password"
 msgstr "Parola"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:149
-#: plinth/modules/networks/forms.py:171
+#: plinth/modules/networks/forms.py:230
 msgid "Show password"
 msgstr "Parolayı göster"
 
@@ -617,7 +721,7 @@ msgid "Dynamic DNS Status"
 msgstr "Dinamik DNS Durumu"
 
 #: plinth/modules/dynamicdns/dynamicdns.py:364
-#: plinth/modules/openvpn/views.py:142 plinth/modules/transmission/views.py:72
+#: plinth/modules/openvpn/views.py:143 plinth/modules/transmission/views.py:72
 msgid "Configuration updated"
 msgstr "Kurulum güncellendi"
 
@@ -654,15 +758,6 @@ msgstr ""
 "Javascript'i devre dışı bırakmışsınız. Dinamik form kipi devre dışıdır ve "
 "bazı yardımcı işlevler çalışmayabilir (fakat ana işlevler çalışmalıdır)."
 
-#: plinth/modules/dynamicdns/templates/dynamicdns_configure.html:40
-#: plinth/modules/ikiwiki/templates/ikiwiki_create.html:32
-#: plinth/modules/openvpn/templates/openvpn.html:124
-#: plinth/modules/tor/templates/tor.html:110
-#: plinth/modules/upgrades/templates/upgrades_configure.html:32
-#: plinth/templates/service.html:67
-msgid "Update setup"
-msgstr "Kurulumu güncelle"
-
 #: plinth/modules/dynamicdns/templates/dynamicdns_status.html:25
 msgid "NAT type"
 msgstr "NAT türü"
@@ -696,6 +791,92 @@ msgstr ""
 #: plinth/modules/dynamicdns/templates/dynamicdns_status.html:49
 msgid "Last update"
 msgstr "Son güncelleme"
+
+#: plinth/modules/ejabberd/__init__.py:42
+msgid ""
+"Chat Server \n"
+" (ejabberd)"
+msgstr ""
+"Sohbet Sunucusu\n"
+" (ejabberd)"
+
+#: plinth/modules/ejabberd/__init__.py:45
+msgid ""
+"XMPP is an open and standardized communication protocol. Here you can run "
+"and configure your XMPP server, called ejabberd."
+msgstr ""
+"XMPP açık ve standardize edilmiş bir iletişim protokolüdür. Burada ejabberd "
+"isimli XMPP sunucusunu yapılandırıp çalıştırabilirsiniz."
+
+#: plinth/modules/ejabberd/__init__.py:48
+msgid ""
+"To actually communicate, you can use the web client or any other <a "
+"href='http://xmpp.org/xmpp-software/clients/' target='_blank'>XMPP client</"
+"a>."
+msgstr ""
+"İletişim kurmak için ağ istemcisini ya da herhangi bir diğer <a href='http://"
+"xmpp.org/xmpp-software/clients/' target='_blank'>XMPP istemcisini</a> "
+"kullanabilirsiniz."
+
+#: plinth/modules/ejabberd/forms.py:33
+msgid "Enable Message Archive Management"
+msgstr ""
+
+#: plinth/modules/ejabberd/forms.py:36
+#, python-brace-format
+msgid ""
+"If enabled, your {box_name} will store chat message histories. This allows "
+"synchronization of conversations between multiple clients, and reading the "
+"history of a multi-user chat room. It depends on the client settings whether "
+"the histories are stored as plain text or encrypted."
+msgstr ""
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:33
+#, python-format
+msgid ""
+"Your XMPP server domain is set to <b>%(domainname)s</b>. User IDs will look "
+"like <i>username@%(domainname)s</i>. You can setup your domain on the system "
+"<a href=\"%(index_url)s\">Configure</a> page."
+msgstr ""
+"XMPP sunucu alanınız <b>%(domainname)s</b> olarak ayarlanmıştır. Kullanıcı "
+"kimlikleri <i>username@%(domainname)s</i> şeklinde olacaktır. Alanınızı "
+"sistem <a href=\"%(index_url)s\">Yapılandırma</a> sayfasında "
+"ayarlayabilirsiniz."
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:47
+#: plinth/modules/jsxc/templates/jsxc.html:32
+msgid "Launch web client"
+msgstr "Ağ istemcisini başlat"
+
+#: plinth/modules/ejabberd/templates/ejabberd.html:53
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:31
+#: plinth/modules/openvpn/templates/openvpn.html:116
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:43
+#: plinth/modules/tor/templates/tor.html:85 plinth/templates/base.html:113
+#: plinth/templates/base.html:115 plinth/templates/service.html:65
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: plinth/modules/ejabberd/views.py:60 plinth/modules/openvpn/views.py:145
+#: plinth/modules/tor/views.py:134 plinth/views.py:103
+msgid "Setting unchanged"
+msgstr "Ayar değiştirilmedi"
+
+#: plinth/modules/ejabberd/views.py:64 plinth/views.py:107
+msgid "Application enabled"
+msgstr "Uygulama etkinleştirildi"
+
+#: plinth/modules/ejabberd/views.py:67 plinth/views.py:110
+msgid "Application disabled"
+msgstr "Uygulama devre dışı bırakıldı"
+
+#: plinth/modules/ejabberd/views.py:74
+msgid "Message Archive Management enabled"
+msgstr ""
+
+#: plinth/modules/ejabberd/views.py:78
+msgid "Message Archive Management disabled"
+msgstr ""
 
 #: plinth/modules/firewall/__init__.py:39
 msgid "Firewall"
@@ -732,39 +913,43 @@ msgstr ""
 "'systemctl start firewalld' komutunu çalıştırarak etkinleştirebilirsiniz."
 
 #: plinth/modules/firewall/templates/firewall.html:45
+msgid "Show Ports"
+msgstr "Portları Göster"
+
+#: plinth/modules/firewall/templates/firewall.html:46
 msgid "Service/Port"
 msgstr "Servis/Port"
 
-#: plinth/modules/firewall/templates/firewall.html:57
+#: plinth/modules/firewall/templates/firewall.html:65
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:68
 #: plinth/modules/names/templates/names.html:49
 msgid "Enabled"
 msgstr "Etkin"
 
-#: plinth/modules/firewall/templates/firewall.html:60
+#: plinth/modules/firewall/templates/firewall.html:68
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:70
 #: plinth/modules/names/templates/names.html:51
 #: plinth/modules/networks/forms.py:62
 msgid "Disabled"
 msgstr "Devre dışı"
 
-#: plinth/modules/firewall/templates/firewall.html:71
+#: plinth/modules/firewall/templates/firewall.html:80
 msgid "Permitted"
 msgstr "İzinli"
 
-#: plinth/modules/firewall/templates/firewall.html:74
+#: plinth/modules/firewall/templates/firewall.html:83
 msgid "Permitted (internal only)"
 msgstr "İzinli (sadece dahili)"
 
-#: plinth/modules/firewall/templates/firewall.html:77
+#: plinth/modules/firewall/templates/firewall.html:86
 msgid "Permitted (external only)"
 msgstr "İzinli (sadece harici)"
 
-#: plinth/modules/firewall/templates/firewall.html:80
+#: plinth/modules/firewall/templates/firewall.html:89
 msgid "Blocked"
 msgstr "Engellenmiş"
 
-#: plinth/modules/firewall/templates/firewall.html:94
+#: plinth/modules/firewall/templates/firewall.html:103
 msgid ""
 "The operation of the firewall is automatic. When you enable a service it is "
 "also permitted in the firewall and when you disable a service it is also "
@@ -774,72 +959,39 @@ msgstr ""
 "güvenlik duvarında da izinli hale gelir ve devre dışı bıraktığınızda "
 "güvenlik duvarında da devre dışı bırakılır."
 
-#: plinth/modules/first_boot/forms.py:61 plinth/modules/users/forms.py:119
-msgid "Creating LDAP user failed."
-msgstr "LDAP kullanıcısı oluşturması başarısız oldu."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:29
+msgid "Setup Complete!"
+msgstr "Yapılandırma Tamamlandı!"
 
-#: plinth/modules/first_boot/forms.py:69
-msgid "Failed to add new user to admin group."
-msgstr "Yeni kullanıcının admin (yönetici) grubuna eklenmesi başarısız oldu."
-
-#: plinth/modules/first_boot/forms.py:84
-msgid ""
-"Console login access restricted to users in \"admin\" group. This can be "
-"configured in security settings."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:32
+#, python-format
+msgid "Without any apps, your %(box_name)s cannot do very much."
 msgstr ""
-"Konsolda giriş yapabilme erişimi \"admin\" (yönetici) grubundaki "
-"kullanıcılarla sınırlıdır. Bu, güvenlik ayarlarında yapılandırılabilir."
 
-#: plinth/modules/first_boot/forms.py:90
-msgid "Failed to restrict console access."
-msgstr "Konsol erişiminin kısıtlanması başarısız oldu."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:39
+#, fuzzy
+#| msgid "Install"
+msgid "Install Apps"
+msgstr "Kur"
 
-#: plinth/modules/first_boot/forms.py:102
-msgid "User account created, you are now logged in"
-msgstr "Kullanıcı hesabı oluşturuldu, artık giriş yaptınız"
-
-#: plinth/modules/first_boot/forms.py:129
-#, python-brace-format
-msgid "The voucher you received with your {box_name} Danube Edition"
-msgstr "{box_name} kutunuzun Danube sürümü ile aldığınız fiş"
-
-#: plinth/modules/first_boot/forms.py:134
-msgid "Subdomain"
-msgstr "Alt Alan"
-
-#: plinth/modules/first_boot/forms.py:136
-msgid "The subdomain you want to register"
-msgstr "Kaydetmek istediğiniz alt alan"
-
-#: plinth/modules/first_boot/forms.py:159
-msgid "This code is not valid"
-msgstr "Bu kod geçerli değildir"
-
-#: plinth/modules/first_boot/forms.py:165
-#, python-brace-format
-msgid "This code is bound to the domain {domain}."
-msgstr "Bu kod, {domain} alanı ile ilişkilidir."
-
-#: plinth/modules/first_boot/forms.py:175
-msgid "The requested domain is already registered."
-msgstr "Talep edilen alan zaten kayıtlıdır."
-
-#: plinth/modules/first_boot/forms.py:189
-#, python-brace-format
-msgid "Domain registration failed: {response}."
-msgstr "Alan kaydı başarısız olmuştur: {response}."
+#: plinth/modules/first_boot/templates/firstboot_complete.html:45
+#, python-format
+msgid ""
+"You may want to check the <a href=\"%(networks_url)s\">network setup</a> and "
+"modify it if necessary."
+msgstr ""
 
 #: plinth/modules/first_boot/templates/firstboot_navbar.html:23
 #: plinth/modules/help/templates/help_index.html:25
-#: plinth/templates/base.html:102
+#: plinth/templates/base.html:125
 msgid "Help"
 msgstr "Yardım"
 
-#: plinth/modules/first_boot/templates/firstboot_state0.html:41
+#: plinth/modules/first_boot/templates/firstboot_welcome.html:44
 msgid "Start Setup"
 msgstr "Kuruluma Başla"
 
-#: plinth/modules/first_boot/templates/firstboot_state0.html:45
+#: plinth/modules/first_boot/templates/firstboot_welcome.html:49
 #, python-format
 msgid ""
 "To complete the setup of your %(box_name)s, please provide some basic "
@@ -848,109 +1000,20 @@ msgstr ""
 "%(box_name)s kutunuzun kurulumunu tamamlamak için lütfen bazı temel "
 "bilgileri belirtin."
 
-#: plinth/modules/first_boot/templates/firstboot_state1.html:29
-msgid "Administrator Account"
-msgstr "Yönetici Hesabı"
-
-#: plinth/modules/first_boot/templates/firstboot_state1.html:32
-msgid ""
-"Choose a username and password to access this web interface. The password "
-"can be changed later. This user will be granted administrative privileges. "
-"Other users can be added later."
-msgstr ""
-"Bu ağ arayüzüne erişmek için bir kullanıcı ismi ve parola seçin. Parola daha "
-"sonra değiştirilebilir. Kullanıcıya yönetici yetkileri verilecektir. Başka "
-"kullanıcılar daha sonra ilave edilebilir."
-
-#: plinth/modules/first_boot/templates/firstboot_state1.html:45
-msgid "Box it up!"
-msgstr "Kaydet ve FreedomBox'u başlat!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:29
-msgid "Setup Complete!"
-msgstr "Yapılandırma Tamamlandı!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:32
-#, python-format
-msgid ""
-"%(box_name)s setup is now complete.  To make your %(box_name)s functional, "
-"you need some applications.  They will be installed the first time you "
-"access them."
-msgstr ""
-"%(box_name)s kurulumu artık tamamlanmıştır. %(box_name)s kutunuzu işlevsel "
-"hale getirmek için bazı uygulamalara ihtiyacınız vardır. Uygulamalar onlara "
-"ilk kez eriştiğinizde kurulacaktır."
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:41
-msgid "Go to Apps"
-msgstr "Uygulamalara Git"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:44
-msgid "Current Network Configuration"
-msgstr "Güncel Şebeke Yapılandırması"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:47
-msgid ""
-"You should check the network setup and modify it if necessary. Do not forget "
-"to change the default Wi-Fi passwords!"
-msgstr ""
-"Şebeke yapılandırmasını kontrol edip gerekiyorsa değiştirmelisiniz. "
-"Varsayılan kablosuz ağ parolalarını değiştirmeyi unutmayın!"
-
-#: plinth/modules/first_boot/templates/firstboot_state10.html:57
-msgid "Go to Networks"
-msgstr "Ağlara Git"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:27
-msgid "Setup a freedombox.me subdomain with your voucher"
-msgstr "Fişinizle bir freedombox.me alt alanı kurun"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:31
-#, python-format
-msgid ""
-"<a href=\"%(finish_firstboot_url)s\">Skip this step</a> if you do not have a "
-"voucher or want to configure PageKite later with a different domain or "
-"credentials."
-msgstr ""
-"Fişiniz yoksa ya da PageKite'ı daha sonra başka bir alan ya da giriş "
-"bilgileri ile yapılandırmak istiyorsanız <a href=\"%(finish_firstboot_url)s"
-"\">bu adımı atlayın</a>."
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:39
-msgid ""
-"You can use an already redeemed voucher but it will only work with the "
-"initially registered subdomain."
-msgstr ""
-"Zaten itfa edilmiş bir fişi kullanabilirsiniz ancak bu sadece başlangıçta "
-"kaydedilen alt alan ile çalışacaktır."
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:55
-msgid "Register"
-msgstr "Kaydet"
-
-#: plinth/modules/first_boot/templates/firstboot_state5.html:59
-msgid "Skip Registration"
-msgstr "Kaydı Atla"
-
-#: plinth/modules/first_boot/views.py:70
+#: plinth/modules/first_boot/views.py:56
 msgid "Setup Complete"
 msgstr "Yapılandırma Tamamlandı"
 
-#: plinth/modules/first_boot/views.py:94
-msgid "Pagekite setup finished. The HTTP and HTTPS services are activated now."
-msgstr ""
-"Pagekite kurulumu tamamlanmıştır. HTTP ve HTTPS servisleri artık "
-"etkinleştirilmiştir."
-
-#: plinth/modules/help/help.py:33
+#: plinth/modules/help/help.py:34
 msgid "Documentation"
 msgstr "Belgelendirme"
 
-#: plinth/modules/help/help.py:35
+#: plinth/modules/help/help.py:36
 msgid "Where to Get Help"
 msgstr "Nerede Yardım Bulabilirim"
 
-#: plinth/modules/help/help.py:37 plinth/modules/networks/forms.py:61
+#: plinth/modules/help/help.py:38 plinth/modules/networks/forms.py:61
+#: plinth/modules/networks/forms.py:101 plinth/templates/index.html:124
 msgid "Manual"
 msgstr "El ile"
 
@@ -958,12 +1021,12 @@ msgstr "El ile"
 msgid "Documentation and FAQ"
 msgstr "Belgelendirme ve SSS"
 
-#: plinth/modules/help/help.py:54
+#: plinth/modules/help/help.py:55
 #, python-brace-format
 msgid "About {box_name}"
 msgstr "{box_name} hakkında"
 
-#: plinth/modules/help/help.py:72
+#: plinth/modules/help/help.py:74
 #, python-brace-format
 msgid "{box_name} Manual"
 msgstr "{box_name} Kılavuzu"
@@ -1028,9 +1091,20 @@ msgid "Learn more &raquo;"
 msgstr "Daha fazla bilgi edinin &raquo;"
 
 #: plinth/modules/help/templates/help_about.html:76
-#, python-format
-msgid "You are running Plinth version %(version)s."
+#, fuzzy, python-format
+#| msgid "You are running Plinth version %(version)s."
+msgid "You are running %(os_release)s and Plinth version %(version)s."
 msgstr "Plinth yazılımının %(version)s sürümünü kullanıyorsunuz."
+
+#: plinth/modules/help/templates/help_about.html:81
+#, fuzzy
+#| msgid "There is a new version available."
+msgid "There is a new Plinth version available."
+msgstr "Yeni bir sürüm mevcuttur."
+
+#: plinth/modules/help/templates/help_about.html:85
+msgid "Plinth is up to date."
+msgstr ""
 
 #: plinth/modules/help/templates/help_base.html:36
 #, python-format
@@ -1082,32 +1156,40 @@ msgstr ""
 "net/?randomnick=1&channels=freedombox&prompt=1\"> #freedombox</a> kanalına "
 "katılın ve yardım talebinde bulunun."
 
-#: plinth/modules/help/templates/statuslog.html:26
+#: plinth/modules/help/templates/statuslog.html:25
+msgid "Status Log"
+msgstr "Durum Kütüğü"
+
+#: plinth/modules/help/templates/statuslog.html:28
 #, python-format
 msgid ""
-"This is the last %(num_lines)s lines of the status log for this web "
+"These are the last %(num_lines)s lines of the status log for this web "
 "interface. If you want to report a bug, please use the <a href=\"https://"
-"github.com/freedombox/Plinth/issues\">bugtracker</a> and attach this status "
+"github.com/freedombox/Plinth/issues\">bug tracker</a> and attach this status "
 "log to the bug report."
 msgstr ""
-"Bu, bu ağ arayüzü için durum kütüğünün son %(num_lines)s satırıdır. Bir hata "
-"raporu göndermek istiyorsanız lütfen <a href=\"https://github.com/freebox/"
-"Plinth/issues\">hata izleyicisini</a> kullanınız ve bu durum kütüğünü "
-"ekleyiniz."
+"Bunlar, bu ağ arayüzü için durum kütüğünün son %(num_lines)s satırıdır. Bir "
+"hata raporu göndermek istiyorsanız lütfen <a href=\"https://github.com/"
+"freebox/Plinth/issues\">hata izleyicisini</a> kullanınız ve bu durum "
+"kütüğünü ekleyiniz."
 
-#: plinth/modules/help/templates/statuslog.html:36
+#: plinth/modules/help/templates/statuslog.html:38
+msgid "Caution:"
+msgstr "Dikkat:"
+
+#: plinth/modules/help/templates/statuslog.html:39
 msgid ""
-"Caution: Please remove any passwords or other personal information from the "
-"log, before submitting the bug report."
+"Please remove any passwords or other personal information from the log "
+"before submitting the bug report."
 msgstr ""
-"Dikkat: hata raporunu göndermeden önce lütfen kütükten parolaları ve diğer "
-"kişisel verileri kaldırınız."
+"Hata raporunu göndermeden önce lütfen kütükten parolaları ve diğer kişisel "
+"verileri kaldırınız."
 
-#: plinth/modules/ikiwiki/__init__.py:40
+#: plinth/modules/ikiwiki/__init__.py:39
 msgid "Wiki and Blog (ikiwiki)"
 msgstr "Viki ve Blog (ikiwiki)"
 
-#: plinth/modules/ikiwiki/__init__.py:43
+#: plinth/modules/ikiwiki/__init__.py:42
 msgid ""
 "ikiwiki is a simple wiki and blog application. It supports several "
 "lightweight markup languages, including Markdown, and common blogging "
@@ -1120,16 +1202,20 @@ msgstr ""
 "bloglar ve vikiler <a href=\"/ikiwiki\">/ikiwiki</a> adresinden erişilebilir "
 "olacaktır."
 
-#: plinth/modules/ikiwiki/forms.py:32
+#: plinth/modules/ikiwiki/forms.py:34
 #: plinth/modules/networks/templates/connection_show.html:78
 msgid "Name"
 msgstr "İsim"
 
-#: plinth/modules/ikiwiki/forms.py:34
+#: plinth/modules/ikiwiki/forms.py:35
+msgid "Only alphanumeric characters are allowed."
+msgstr "Sadece alfanümerik karakterlere izin verilir."
+
+#: plinth/modules/ikiwiki/forms.py:38
 msgid "Admin Account Name"
 msgstr "Yönetici Hesap İsmi"
 
-#: plinth/modules/ikiwiki/forms.py:37
+#: plinth/modules/ikiwiki/forms.py:41
 msgid "Admin Account Password"
 msgstr "Yönetici Hesap Parolası"
 
@@ -1177,69 +1263,118 @@ msgstr "%(site)s sitesini sil"
 msgid "Go to site %(site)s"
 msgstr "%(site)s sitesine git"
 
-#: plinth/modules/ikiwiki/views.py:38
+#: plinth/modules/ikiwiki/views.py:39
 msgid "Manage"
 msgstr "Yönet"
 
-#: plinth/modules/ikiwiki/views.py:40
+#: plinth/modules/ikiwiki/views.py:41
 msgid "Create"
 msgstr "Oluştur"
 
-#: plinth/modules/ikiwiki/views.py:63
+#: plinth/modules/ikiwiki/views.py:64
 msgid "Manage Wikis and Blogs"
 msgstr "Viki ve Blogları Yönet"
 
-#: plinth/modules/ikiwiki/views.py:89
+#: plinth/modules/ikiwiki/views.py:95
 msgid "Create Wiki or Blog"
 msgstr "Viki ya da Blog oluştur"
 
-#: plinth/modules/ikiwiki/views.py:102
+#: plinth/modules/ikiwiki/views.py:108
 #, python-brace-format
 msgid "Created wiki {name}."
 msgstr "{name} isimli viki oluşturuldu."
 
-#: plinth/modules/ikiwiki/views.py:104
+#: plinth/modules/ikiwiki/views.py:110
 #, python-brace-format
 msgid "Could not create wiki: {error}"
 msgstr "Viki oluşturulamadı: {error}"
 
-#: plinth/modules/ikiwiki/views.py:116
+#: plinth/modules/ikiwiki/views.py:122
 #, python-brace-format
 msgid "Created blog {name}."
 msgstr "{name} isimli blog oluşturuldu."
 
-#: plinth/modules/ikiwiki/views.py:118
+#: plinth/modules/ikiwiki/views.py:124
 #, python-brace-format
 msgid "Could not create blog: {error}"
 msgstr "Blog oluşturulamadı: {error}"
 
-#: plinth/modules/ikiwiki/views.py:131
+#: plinth/modules/ikiwiki/views.py:137
 #, python-brace-format
 msgid "{name} deleted."
 msgstr "{name} silindi."
 
-#: plinth/modules/ikiwiki/views.py:133
+#: plinth/modules/ikiwiki/views.py:140
 #, python-brace-format
 msgid "Could not delete {name}: {error}"
 msgstr "{name} silinemedi: {error}"
 
-#: plinth/modules/ikiwiki/views.py:139
+#: plinth/modules/ikiwiki/views.py:146
 msgid "Delete Wiki or Blog"
 msgstr "Viki ya da Blogu Sil"
 
-#: plinth/modules/letsencrypt/__init__.py:38
-#: plinth/modules/letsencrypt/__init__.py:63
+#: plinth/modules/infinoted/__init__.py:43
+msgid ""
+"Gobby Server \n"
+" (infinoted)"
+msgstr ""
+"Gobby sunucusu\n"
+" (infinoted)"
+
+#: plinth/modules/infinoted/__init__.py:46
+msgid "infinoted is a server for Gobby, a collaborative text editor."
+msgstr ""
+"infinoted, işbirliğine izin veren bir metin düzenleyici olan Gobby için bir "
+"sunucudur."
+
+#: plinth/modules/infinoted/__init__.py:49
+#, python-brace-format
+msgid ""
+"To use it, <a href=\"https://gobby.github.io/\">download Gobby</a>, desktop "
+"client and install it. Then start Gobby and select \"Connect to Server\" and "
+"enter your {box_name}'s domain name."
+msgstr ""
+"Onu kullanmak için <a href=\"https://gobby.github.io/\">Gobby'i masaüstü "
+"istemcisini indirip</a> kurun. Ardından Gobby'yi başlatın, \"Sunucuya Bağlan"
+"\" seçeneğini seçin ve {box_name} kutunuzun alan adını girin."
+
+#: plinth/modules/jsxc/__init__.py:36
+msgid ""
+"Chat Client \n"
+" (JSXC)"
+msgstr ""
+"Sohbet İstemcisi \n"
+" (JSXC)"
+
+#: plinth/modules/jsxc/__init__.py:40
+msgid ""
+"JSXC is a web client for XMPP. Typically it is used with an XMPP server "
+"running locally."
+msgstr ""
+"JSXC, XMPP için bir web istemcisidir. Tipik olarak yerel şekilde çalışan bir "
+"XMPP sunucusuyla kullanılır."
+
+#: plinth/modules/jsxc/__init__.py:78
+msgid ""
+"Chat Client \n"
+" (jsxc)"
+msgstr ""
+"Sohbet İstemcisi\n"
+" (jsxc)"
+
+#: plinth/modules/letsencrypt/__init__.py:39
+#: plinth/modules/letsencrypt/__init__.py:64
 msgid "Certificates (Let's Encrypt)"
 msgstr "Sertifikalar (Let's Encrypt)"
 
-#: plinth/modules/letsencrypt/__init__.py:42
+#: plinth/modules/letsencrypt/__init__.py:43
 #, python-brace-format
 msgid ""
-"A digital certficate allows users of a web service to verify the identity of "
-"the service and to securely communicate with it. {box_name} can "
+"A digital certificate allows users of a web service to verify the identity "
+"of the service and to securely communicate with it. {box_name} can "
 "automatically obtain and setup digital certificates for each available "
 "domain.  It does so by proving itself to be the owner of a domain to Let's "
-"Encrypt, a certficate authority (CA)."
+"Encrypt, a certificate authority (CA)."
 msgstr ""
 "Sayısal sertifikalar kullanıcıların ağ servislerinin kimliklerini "
 "doğrulamalarına ve onlarla güvenli bir şekilde iletişim kurmalarına imkân "
@@ -1248,13 +1383,7 @@ msgstr ""
 "bir sertifika otoritesi (Certificate Authority, CA) olan Let's Encrypt'e "
 "ispatlayarak yapar."
 
-#: plinth/modules/letsencrypt/__init__.py:49
-#| msgid ""
-#| "Let's Encrypt is a free, automated, and open certificate authority, run "
-#| "for the public’s benefit by the Internet Security Research Group (ISRG).  "
-#| "Please read and agree with the <a href=\"https://letsencrypt.org/"
-#| "repository/\">Let's Encrypt Subscriber Agreement</a> before using this "
-#| "service."
+#: plinth/modules/letsencrypt/__init__.py:50
 msgid ""
 "Let's Encrypt is a free, automated, and open certificate authority, run for "
 "the public's benefit by the Internet Security Research Group (ISRG).  Please "
@@ -1263,9 +1392,9 @@ msgid ""
 msgstr ""
 "Let's Encrypt, Internet Security Research Group (ISRG) tarafından işletilen, "
 "kamunun yararına çalışan ücretsiz, otomatik ve açık bir sertifika "
-"otoritesidir. Bu servisi kullanmadan önce lütfen <a href=\""
-"https://letsencrypt.org/repository/\">Let's Encrypt Abone Sözleşmesini</a> "
-"okuyup kabul edin."
+"otoritesidir. Bu servisi kullanmadan önce lütfen <a href=\"https://"
+"letsencrypt.org/repository/\">Let's Encrypt Abone Sözleşmesini</a> okuyup "
+"kabul edin."
 
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:43
 msgid "Domain"
@@ -1289,7 +1418,7 @@ msgid "Expires on %(expiry_date)s"
 msgstr "%(expiry_date)s tarihinde sona eriyor"
 
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:62
-msgid "No certficate"
+msgid "No certificate"
 msgstr "Sertifika yok"
 
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:79
@@ -1303,6 +1432,14 @@ msgstr "Tekrar edin"
 #: plinth/modules/letsencrypt/templates/letsencrypt.html:92
 msgid "Obtain"
 msgstr "Edin"
+
+#: plinth/modules/letsencrypt/templates/letsencrypt.html:105
+msgid ""
+"No domains have been configured. Configure domains to be able to obtain "
+"certificates for them."
+msgstr ""
+"Hiçbir alan yapılandırılmamış. Onlardan sertifika edinmek için alan "
+"yapılandırın."
 
 #: plinth/modules/letsencrypt/views.py:55
 #, python-brace-format
@@ -1325,11 +1462,98 @@ msgstr "{domain} alanı için sertifika başarılı bir şekilde edinildi"
 msgid "Failed to obtain certificate for domain {domain}: {error}"
 msgstr "{domain} alanı için sertifika edinilemedi: {error}"
 
-#: plinth/modules/minetest/__init__.py:41
-msgid "Block Sandbox (Minetest)"
-msgstr "Blok Kum Havuzu (Minetest)"
+#: plinth/modules/matrixsynapse/__init__.py:41
+msgid ""
+"Chat Server \n"
+" (Matrix Synapse)"
+msgstr ""
+"Sohbet Sunucusu\n"
+" (Matrix Synapse)"
 
-#: plinth/modules/minetest/__init__.py:45
+#: plinth/modules/matrixsynapse/__init__.py:44
+msgid ""
+"<a href=\"https://matrix.org/docs/guides/faq.html\">Matrix</a> is an new "
+"ecosystem for open, federated instant messaging and VoIP. Synapse is a "
+"server implementing the Matrix protocol. It provides chat groups, audio/"
+"video calls, end-to-end encryption, multiple device synchronization and does "
+"not require phone numbers to work. Users on a given Matrix server can "
+"converse with users on all other Matrix servers via federation."
+msgstr ""
+"<a href=\"https://matrix.org/docs/guides/faq.html\">Matrix</a>, VoIP ve "
+"federe, açık anlık mesajlaşma için yeni bir ekosistemdir. Synapse, Matrix "
+"protokolünü uygulayan bir sunucudur. Sohbet grupları, ses ve görüntülü "
+"görüşmeler, uçtan uca şifreleme, çoklu cihaz eşleşmesi sunar ve çalışmak "
+"için telefon numaraları gerektirmez. Herhangi bir Matrix sunucusundaki "
+"kullanıcılar federasyon sayesinde tüm diğer Matrix sunucularındaki "
+"kullanıcılarla iletişimde bulunabilirler."
+
+#: plinth/modules/matrixsynapse/__init__.py:52
+msgid ""
+"To communicate, you can use the <a href=\"https://matrix.org/docs/projects/"
+"\">available clients</a> for mobile, desktop and the web. <a href=\"https://"
+"riot.im/\">Riot</a> client is recommended."
+msgstr ""
+"İletişimde bulunmak için, mobil, masaüstü ve web <a href=\"https://matrix."
+"org/docs/projects/\">mevcut istemcilerini</a> kullanabilirsiniz. <a href="
+"\"https://riot.im/\">Riot</a> istemcisi tavsiye edilir."
+
+#: plinth/modules/matrixsynapse/forms.py:31
+msgid "Select the domain name"
+msgstr "Alan ismini seç"
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:34
+msgid ""
+"Matrix service needs to be configured for a domain. Users on other Matrix "
+"servers will be able to reach users on this server using this domain name. "
+"Matrix user IDs will look like <em>@username:domainname</em>."
+msgstr ""
+"Matrix, bir alan için yapılandırılmayı gerektirir. Diğer Matrix "
+"sunucularındaki kullanıcılar, bu sunucudaki kullanıcılara ulaşmak için bu "
+"alan adını kullanacaklardır. Matrix kullanıcı kimlikleri <em>@kullanıcıismi:"
+"alanismi</em> şeklinde olacaktır."
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:42
+msgid ""
+"\n"
+"      <strong>Warning!</strong> Changing the domain name after the initial\n"
+"      setup is currently not supported.\n"
+"    "
+msgstr ""
+"\n"
+"      <strong>İkaz!</strong> Alan ismini ilk yapılandırmadan sonra "
+"değiştirmek güncel\n"
+"      olarak desteklenmemektedir.\n"
+"    "
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse-pre-setup.html:51
+#, python-format
+msgid ""
+"No domain(s) are available. <a href=\"%(config_url)s\">Configure</a> at "
+"least one domain to be able to use Matrix Synapse."
+msgstr ""
+"Hiçbir alan mevcut değildir. En az bir alan <a href=\"%(config_url)s"
+"\">yapılandırın</a> ki Matrix Synapse kullanılabilsin."
+
+#: plinth/modules/matrixsynapse/templates/matrix-synapse.html:30
+#, python-format
+msgid ""
+"The Matrix server domain is set to <em>%(domain_name)s</em>. User IDs will "
+"look like <em>@username:%(domain_name)s</em>. Changing the domain name after "
+"the initial setup is currently not supported."
+msgstr ""
+"Matrix alan ismi <em>%(domain_name)s</em> olarak ayarlanmıştır. Kullanıcı "
+"kimlikleri <em>@kullanıcıismi:%(domain_name)s</em> şeklinde olacaktır. Alan "
+"adını ilk yapılandırmadan sonra değiştirmek şimdilik desteklenmemektedir."
+
+#: plinth/modules/minetest/__init__.py:48
+msgid ""
+"Block Sandbox \n"
+" (Minetest)"
+msgstr ""
+"Blok Kum Havuzu\n"
+" (Minetest)"
+
+#: plinth/modules/minetest/__init__.py:52
 #, python-brace-format
 msgid ""
 "Minetest is a multiplayer infinite-world block sandbox. This module enables "
@@ -1342,13 +1566,79 @@ msgstr ""
 "etkinleştirir. Sunucuya bağlanmak için bir <a href=\"http://www.minetest.net/"
 "downloads/\"> Minetest istemcisi</a> gereklidir."
 
-#: plinth/modules/monkeysphere/__init__.py:32
-#: plinth/modules/monkeysphere/__init__.py:58
+#: plinth/modules/minetest/forms.py:31
+msgid "Maximum number of players"
+msgstr "Azami oyuncu sayısı"
+
+#: plinth/modules/minetest/forms.py:35
+msgid ""
+"You can change the maximum number of players playing                      "
+"minetest at a single instance of time"
+msgstr ""
+"Tek bir vakitte minetest oynayan azami oyuncu "
+"sayısını                          değiştirebilirsiniz"
+
+#: plinth/modules/minetest/forms.py:39
+msgid "Enable creative mode"
+msgstr "Yaratıcı kipi etkinleştir"
+
+#: plinth/modules/minetest/forms.py:41
+msgid ""
+"Creative mode changes the rules of the game to make it                      "
+"more suitable for creative gameplay, rather than                      "
+"challenging \"survival\" gameplay."
+msgstr ""
+"Yaratıcı kip, oyunun kurallarını \"hayatta kalma\" oyun "
+"stili                       yerine yaratıcı oyun stiline daha "
+"uygun                                olarak değiştirir."
+
+#: plinth/modules/minetest/forms.py:46
+msgid "Enable PVP"
+msgstr "PVP'yi Etkinleştir"
+
+#: plinth/modules/minetest/forms.py:48
+msgid ""
+"Enabling Player Vs Player will allow players to damage                     "
+"other players"
+msgstr ""
+"PVP'yi (oyuncuya karşı oyuncu) etkinleştirmek, oyuncuların            diğer "
+"oyunculara zarar vermesine izin verecektir"
+
+#: plinth/modules/minetest/forms.py:52
+msgid "Enable damage"
+msgstr "Zararı etkinleştir"
+
+#: plinth/modules/minetest/forms.py:54
+msgid ""
+"When disabled, players cannot die or receive damage of                     "
+"any kind"
+msgstr ""
+"Devre dışı bırakıldığında, oyuncular ölemez ve hiçbir "
+"zarar                   göremezler"
+
+#: plinth/modules/minetest/views.py:58
+msgid "Maximum players configuration updated"
+msgstr "Azami oyuncu sayısı yapılandırması güncellendi"
+
+#: plinth/modules/minetest/views.py:66
+msgid "Creative mode configuration updated"
+msgstr "Yaratıcı kip kurulumu güncellendi"
+
+#: plinth/modules/minetest/views.py:74
+msgid "PVP configuration updated"
+msgstr "PVP kurulumu güncellendi"
+
+#: plinth/modules/minetest/views.py:82
+msgid "Damage configuration updated"
+msgstr "Zarar verme kurulumu güncellendi"
+
+#: plinth/modules/monkeysphere/__init__.py:31
+#: plinth/modules/monkeysphere/__init__.py:59
 #: plinth/modules/monkeysphere/templates/monkeysphere_details.html:26
 msgid "Monkeysphere"
 msgstr "Monkeysphere"
 
-#: plinth/modules/monkeysphere/__init__.py:35
+#: plinth/modules/monkeysphere/__init__.py:34
 msgid ""
 "With Monkeysphere, an OpenPGP key can be generated for each configured "
 "domain serving SSH. The OpenPGP public key can then be uploaded to the "
@@ -1368,7 +1658,7 @@ msgstr ""
 "gerekir. Daha fazla bilgi için  <a href=\"http://web.monkeysphere.info/"
 "getting-started-ssh/\"> Monkeysphere SSH belgelendirmesine</a> bakınız."
 
-#: plinth/modules/monkeysphere/__init__.py:44
+#: plinth/modules/monkeysphere/__init__.py:43
 msgid ""
 "Monkeysphere can also generate an OpenPGP key for each Secure Web Server "
 "(HTTPS) certificate installed on this machine. The OpenPGP public key can "
@@ -1392,7 +1682,7 @@ msgstr "Anahtar, anahtar sunucusuna yayınlanıyor..."
 
 #: plinth/modules/monkeysphere/templates/monkeysphere.html:74
 #: plinth/modules/monkeysphere/templates/monkeysphere_details.html:55
-#: plinth/modules/tor/templates/tor.html:127
+#: plinth/modules/tor/templates/tor.html:110
 msgid "Service"
 msgstr "Servis"
 
@@ -1421,24 +1711,24 @@ msgstr "Web Sunucusu"
 msgid "Other"
 msgstr "Diğer"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:113
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:117
 #, python-format
 msgid "Show details for key %(fingerprint)s"
 msgstr "%(fingerprint)s anahtarı için detayları göster"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:119
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:123
 msgid "-"
 msgstr "-"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:129
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:133
 msgid "Import Key"
 msgstr "Anahtarı İçe Aktar"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:138
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:142
 msgid "Publish Key"
 msgstr "Anahtarı Yayınla"
 
-#: plinth/modules/monkeysphere/templates/monkeysphere.html:147
+#: plinth/modules/monkeysphere/templates/monkeysphere.html:151
 msgid "Add Domains"
 msgstr "Alan Ekle"
 
@@ -1499,23 +1789,27 @@ msgstr "Anahtarı anahtar sunucularına geri gönder"
 msgid "Imported key."
 msgstr "Anahtar içe aktarıldı."
 
-#: plinth/modules/monkeysphere/views.py:91
+#: plinth/modules/monkeysphere/views.py:92
 msgid "Cancelled key publishing."
 msgstr "Anahtar yayını iptal edildi."
 
-#: plinth/modules/monkeysphere/views.py:143
+#: plinth/modules/monkeysphere/views.py:145
 msgid "Published key to keyserver."
 msgstr "Anahtar, anahtar sunucusuna yayınlandı."
 
-#: plinth/modules/monkeysphere/views.py:145
+#: plinth/modules/monkeysphere/views.py:147
 msgid "Error occurred while publishing key."
 msgstr "Anahtarın yayınlanmasında bir hata meydana geldi."
 
-#: plinth/modules/mumble/__init__.py:34
-msgid "Voice Chat (Mumble)"
-msgstr "Ses ile Sohbet (Mumble)"
+#: plinth/modules/mumble/__init__.py:35
+msgid ""
+"Voice Chat \n"
+" (Mumble)"
+msgstr ""
+"Ses ile Sohbet\n"
+" (Mumble)"
 
-#: plinth/modules/mumble/__init__.py:43
+#: plinth/modules/mumble/__init__.py:44
 msgid ""
 "Mumble is an open source, low-latency, encrypted, high quality voice chat "
 "software."
@@ -1523,7 +1817,7 @@ msgstr ""
 "Mumble, açık kaynak, düşük gecikmeli, şifreli, yüksek kaliteli sesle sohbet "
 "yazılımıdır."
 
-#: plinth/modules/mumble/__init__.py:46
+#: plinth/modules/mumble/__init__.py:47
 msgid ""
 "You can connect to your Mumble server on the regular Mumble port 64738. <a "
 "href=\"http://mumble.info\">Clients</a> to connect to Mumble from your "
@@ -1533,19 +1827,19 @@ msgstr ""
 "bağlanabilirsiniz. Mumble'a masaüstünden ya da Android cihazlarından "
 "bağlanmak için <a href=\"http://mumble.info\">istemciler</a> mevcuttur."
 
-#: plinth/modules/names/__init__.py:29
+#: plinth/modules/names/__init__.py:30
 msgid "HTTP"
 msgstr "HTTP"
 
-#: plinth/modules/names/__init__.py:30
+#: plinth/modules/names/__init__.py:31
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: plinth/modules/names/__init__.py:31
+#: plinth/modules/names/__init__.py:32
 msgid "SSH"
 msgstr "SSH"
 
-#: plinth/modules/names/__init__.py:40
+#: plinth/modules/names/__init__.py:39
 msgid "Name Services"
 msgstr "İsim Servisleri"
 
@@ -1553,11 +1847,11 @@ msgstr "İsim Servisleri"
 msgid "Not Available"
 msgstr "Mevcut değil"
 
-#: plinth/modules/networks/__init__.py:39
+#: plinth/modules/networks/__init__.py:37
 msgid "Networks"
 msgstr "Ağlar"
 
-#: plinth/modules/networks/__init__.py:126
+#: plinth/modules/networks/__init__.py:124
 #, python-brace-format
 msgid "Using DNSSEC on IPv{kind}"
 msgstr "IPv{kind} üzerinde DNSSEC kullanılıyor"
@@ -1624,7 +1918,7 @@ msgstr "Otomatik (DHCP)"
 msgid "Shared"
 msgstr "Paylaşılan"
 
-#: plinth/modules/networks/forms.py:64
+#: plinth/modules/networks/forms.py:64 plinth/modules/networks/forms.py:104
 msgid "Address"
 msgstr "Adres"
 
@@ -1640,17 +1934,17 @@ msgstr ""
 "Seçime dayalı değer. Boş bırakılırsa adrese dayalı varsayılan bir ağ maskesi "
 "kullanılacaktır."
 
-#: plinth/modules/networks/forms.py:74
+#: plinth/modules/networks/forms.py:74 plinth/modules/networks/forms.py:114
 #: plinth/modules/networks/templates/connection_show.html:202
 #: plinth/modules/networks/templates/connection_show.html:241
 msgid "Gateway"
 msgstr "Geçit"
 
-#: plinth/modules/networks/forms.py:75
+#: plinth/modules/networks/forms.py:75 plinth/modules/networks/forms.py:115
 msgid "Optional value."
 msgstr "Seçime dayalı değer."
 
-#: plinth/modules/networks/forms.py:79
+#: plinth/modules/networks/forms.py:79 plinth/modules/networks/forms.py:119
 msgid "DNS Server"
 msgstr "DNS Sunucusu"
 
@@ -1663,7 +1957,7 @@ msgstr ""
 "\"Otomatik\" ise, DHCP sunucusu tarafından sunulan DNS sunucuları görmezden "
 "gelinecektir."
 
-#: plinth/modules/networks/forms.py:86
+#: plinth/modules/networks/forms.py:86 plinth/modules/networks/forms.py:126
 msgid "Second DNS Server"
 msgstr "İkinci DNS Sunucusu"
 
@@ -1676,58 +1970,105 @@ msgstr ""
 "\"Otomatik\" ise, DHCP sunucusu tarafından sunulan DNS sunucuları görmezden "
 "gelinecektir."
 
-#: plinth/modules/networks/forms.py:97
+#: plinth/modules/networks/forms.py:93
+msgid "IPv6 Addressing Method"
+msgstr "IPv6 Adresleme Metodu"
+
+#: plinth/modules/networks/forms.py:96
+#, python-brace-format
+msgid ""
+"\"Automatic\" methods will make {box_name} acquire configuration from this "
+"network making it a client."
+msgstr ""
+"\"Otomatik\" metodları {box_name} kutusunun yapılandırmasını bu ağdan "
+"almasını sağlayacak ve onu bir istemci yapacaktır."
+
+#: plinth/modules/networks/forms.py:99 plinth/modules/networks/forms.py:271
+msgid "Automatic"
+msgstr "Otomatik"
+
+#: plinth/modules/networks/forms.py:100
+msgid "Automatic, DHCP only"
+msgstr "Otomatik, sadece DHCP"
+
+#: plinth/modules/networks/forms.py:102
+msgid "Ignore"
+msgstr "Yok say"
+
+#: plinth/modules/networks/forms.py:108
+msgid "Prefix"
+msgstr "Önek"
+
+#: plinth/modules/networks/forms.py:109
+msgid "Value between 1 and 128."
+msgstr "1 ilâ 128 arasında bir değer."
+
+#: plinth/modules/networks/forms.py:120
+msgid ""
+"Optional value. If this value is given and IPv6 addressing method is "
+"\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgstr ""
+"Seçime dayalı değer. Eğer bu değer belirtildiyse ve IPv6 adresleme metodu "
+"\"Otomatik\" ise, DHCP sunucusu tarafından sunulan DNS sunucuları görmezden "
+"gelinecektir."
+
+#: plinth/modules/networks/forms.py:127
+msgid ""
+"Optional value. If this value is given and IPv6 Addressing Method is "
+"\"Automatic\", the DNS Servers provided by a DHCP server will be ignored."
+msgstr ""
+"Seçime dayalı değer. Eğer bu değer belirtildiyse ve IPv6 Adresleme Metodu "
+"\"Otomatik\" ise, DHCP sunucusu tarafından sunulan DNS sunucuları görmezden "
+"gelinecektir."
+
+#: plinth/modules/networks/forms.py:137
 msgid "-- select --"
 msgstr "-- seç --"
 
-#: plinth/modules/networks/forms.py:197
+#: plinth/modules/networks/forms.py:262
 #: plinth/modules/networks/templates/connection_show.html:144
 msgid "SSID"
 msgstr "SSID"
 
-#: plinth/modules/networks/forms.py:198
+#: plinth/modules/networks/forms.py:263
 msgid "The visible name of the network."
 msgstr "Şebekenin görünür ismi."
 
-#: plinth/modules/networks/forms.py:200
+#: plinth/modules/networks/forms.py:265
 #: plinth/modules/networks/templates/connection_show.html:157
 msgid "Mode"
 msgstr "Kip"
 
-#: plinth/modules/networks/forms.py:201
+#: plinth/modules/networks/forms.py:266
 msgid "Infrastructure"
 msgstr "Altyapı"
 
-#: plinth/modules/networks/forms.py:202
+#: plinth/modules/networks/forms.py:267
 msgid "Access Point"
 msgstr "Erişim Noktası"
 
-#: plinth/modules/networks/forms.py:203
+#: plinth/modules/networks/forms.py:268
 msgid "Ad-hoc"
 msgstr "Geçici"
 
-#: plinth/modules/networks/forms.py:205
+#: plinth/modules/networks/forms.py:270
 msgid "Frequency Band"
 msgstr "Frekans Bandı"
 
-#: plinth/modules/networks/forms.py:206
-msgid "Automatic"
-msgstr "Otomatik"
-
-#: plinth/modules/networks/forms.py:207
+#: plinth/modules/networks/forms.py:272
 msgid "A (5 GHz)"
 msgstr "A (5 GHz)"
 
-#: plinth/modules/networks/forms.py:208
+#: plinth/modules/networks/forms.py:273
 msgid "B/G (2.4 GHz)"
-msgstr "B/G (2.4 GHz)"
+msgstr "B/G (2,4 GHz)"
 
-#: plinth/modules/networks/forms.py:210
+#: plinth/modules/networks/forms.py:275
 #: plinth/modules/networks/templates/connection_show.html:173
 msgid "Channel"
 msgstr "Kanal"
 
-#: plinth/modules/networks/forms.py:211
+#: plinth/modules/networks/forms.py:276
 msgid ""
 "Optional value. Wireless channel in the selected frequency band to restrict "
 "to. Blank or 0 value means automatic selection."
@@ -1735,11 +2076,11 @@ msgstr ""
 "Seçime dayalı değer. Seçili frekans bandına sınırlanacak kablosuz kanal. Boş "
 "ya da 0 değeri otomatik seçim anlamına gelir."
 
-#: plinth/modules/networks/forms.py:218
+#: plinth/modules/networks/forms.py:283
 msgid "BSSID"
 msgstr "BSSID"
 
-#: plinth/modules/networks/forms.py:219
+#: plinth/modules/networks/forms.py:284
 msgid ""
 "Optional value. Unique identifier for the access point. When connecting to "
 "an access point, connect only if the BSSID of the access point matches the "
@@ -1749,11 +2090,11 @@ msgstr ""
 "noktasına bağlantı kurulduğunda, sadece erişim noktasının BSSID'si "
 "sağlananla eşleşiyorsa bağlanın. Örnek: 00:11:22:aa:bb:cc."
 
-#: plinth/modules/networks/forms.py:226
+#: plinth/modules/networks/forms.py:291
 msgid "Authentication Mode"
 msgstr "Kimlik Doğrulama Kipi"
 
-#: plinth/modules/networks/forms.py:227
+#: plinth/modules/networks/forms.py:292
 msgid ""
 "Select WPA if the wireless network is secured and requires clients to have "
 "the password to connect."
@@ -1761,15 +2102,15 @@ msgstr ""
 "Eğer kablosuz ağ güvenli ise ve istemcilerin bağlantı için parolaları "
 "olmasını gerektiriyorsa WPA'yi seçin."
 
-#: plinth/modules/networks/forms.py:229
+#: plinth/modules/networks/forms.py:294
 msgid "WPA"
 msgstr "WPA"
 
-#: plinth/modules/networks/forms.py:230
+#: plinth/modules/networks/forms.py:295
 msgid "Open"
 msgstr "Açık"
 
-#: plinth/modules/networks/forms.py:232
+#: plinth/modules/networks/forms.py:297
 msgid "Passphrase"
 msgstr "Parola"
 
@@ -1779,12 +2120,12 @@ msgid "Network Connections"
 msgstr "Ağ Bağlantıları"
 
 #: plinth/modules/networks/networks.py:36
-#: plinth/modules/networks/networks.py:241
+#: plinth/modules/networks/networks.py:259
 msgid "Nearby Wi-Fi Networks"
 msgstr "Yakındaki Wi-Fi Ağları"
 
 #: plinth/modules/networks/networks.py:38
-#: plinth/modules/networks/networks.py:265
+#: plinth/modules/networks/networks.py:283
 msgid "Add Connection"
 msgstr "Bağlantı Ekle"
 
@@ -1805,63 +2146,63 @@ msgid "This type of connection is not yet understood."
 msgstr "Bu tip bağlantı henüz anlaşılamamaktadır."
 
 #: plinth/modules/networks/networks.py:131
-#: plinth/modules/networks/networks.py:197
-#: plinth/modules/networks/templates/connections_edit.html:34
+#: plinth/modules/networks/networks.py:215
+#: plinth/modules/networks/templates/connections_edit.html:32
 msgid "Edit Connection"
 msgstr "Bağlantıyı Düzenle"
 
-#: plinth/modules/networks/networks.py:208
+#: plinth/modules/networks/networks.py:226
 #, python-brace-format
 msgid "Activated connection {name}."
 msgstr "{name} bağlantısı etkinleştirildi."
 
-#: plinth/modules/networks/networks.py:211
+#: plinth/modules/networks/networks.py:229
 msgid "Failed to activate connection: Connection not found."
 msgstr "Bağlantı etkinleştirilemedi: bağlantı bulunamadı."
 
-#: plinth/modules/networks/networks.py:215
+#: plinth/modules/networks/networks.py:233
 #, python-brace-format
 msgid "Failed to activate connection {name}: No suitable device is available."
 msgstr ""
 "{name} isimli bağlantı etkinleştirilemedi: hiçbir uygun cihaz mevcut değil."
 
-#: plinth/modules/networks/networks.py:228
+#: plinth/modules/networks/networks.py:246
 #, python-brace-format
 msgid "Deactivated connection {name}."
 msgstr "{name} isimli bağlantı devre dışı bırakıldı."
 
-#: plinth/modules/networks/networks.py:231
+#: plinth/modules/networks/networks.py:249
 msgid "Failed to de-activate connection: Connection not found."
 msgstr ""
 "Bağlantının devre dışı bırakılması başarısız oldu: bağlantı bulunamadı."
 
-#: plinth/modules/networks/networks.py:283
+#: plinth/modules/networks/networks.py:301
 msgid "Adding New Generic Connection"
 msgstr "Yeni Jenerik Bağlantı Ekleniyor"
 
-#: plinth/modules/networks/networks.py:301
+#: plinth/modules/networks/networks.py:319
 msgid "Adding New Ethernet Connection"
 msgstr "Yeni Ethernet Bağlantısı Ekleniyor"
 
-#: plinth/modules/networks/networks.py:319
+#: plinth/modules/networks/networks.py:337
 msgid "Adding New PPPoE Connection"
 msgstr "Yeni PPPoE Bağlantısı Ekleniyor"
 
-#: plinth/modules/networks/networks.py:352
+#: plinth/modules/networks/networks.py:370
 msgid "Adding New Wi-Fi Connection"
 msgstr "Yeni Kablosuz Bağlantı Ekleniyor"
 
-#: plinth/modules/networks/networks.py:366
+#: plinth/modules/networks/networks.py:384
 #, python-brace-format
 msgid "Connection {name} deleted."
 msgstr "{name} isimli bağlantı silindi."
 
-#: plinth/modules/networks/networks.py:369
-#: plinth/modules/networks/networks.py:378
+#: plinth/modules/networks/networks.py:387
+#: plinth/modules/networks/networks.py:396
 msgid "Failed to delete connection: Connection not found."
 msgstr "Bağlantının silinmesi başarısız oldu: bağlantı bulunamadı."
 
-#: plinth/modules/networks/networks.py:383
+#: plinth/modules/networks/networks.py:401
 #: plinth/modules/networks/templates/connections_delete.html:26
 msgid "Delete Connection"
 msgstr "Bağlantıyı Sil"
@@ -1871,7 +2212,7 @@ msgid "Edit connection"
 msgstr "Bağlantıyı Düzenle"
 
 #: plinth/modules/networks/templates/connection_show.html:43
-#: plinth/templates/base.html:123
+#: plinth/templates/base.html:138
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -2003,7 +2344,7 @@ msgid "This connection is not active."
 msgstr "Bu bağlantı etkin değildir."
 
 #: plinth/modules/networks/templates/connection_show.html:266
-#: plinth/modules/security/__init__.py:34 plinth/modules/security/views.py:46
+#: plinth/modules/security/__init__.py:32 plinth/modules/security/views.py:46
 msgid "Security"
 msgstr "Güvenlik"
 
@@ -2046,12 +2387,12 @@ msgstr ""
 "arayüzde mevcut olmayabilir. Bu bağlantıyı devre dışı bırakmanız/silmeniz ve "
 "yeniden yapılandırmanız tavsiye edilir."
 
-#: plinth/modules/networks/templates/connections_add.html:34
-#: plinth/modules/networks/templates/connections_type_select.html:34
+#: plinth/modules/networks/templates/connections_add.html:32
+#: plinth/modules/networks/templates/connections_type_select.html:32
 msgid "Create..."
 msgstr "Oluştur..."
 
-#: plinth/modules/networks/templates/connections_create.html:34
+#: plinth/modules/networks/templates/connections_create.html:32
 msgid "Create Connection"
 msgstr "Bağlantı Oluştur"
 
@@ -2108,11 +2449,15 @@ msgstr "Etkin"
 msgid "Inactive"
 msgstr "Devre Dışı"
 
-#: plinth/modules/openvpn/__init__.py:41
-msgid "Virtual Private Network (OpenVPN)"
+#: plinth/modules/openvpn/__init__.py:42
+#, fuzzy
+#| msgid "Virtual Private Network (OpenVPN)"
+msgid ""
+"Virtual Private Network \n"
+" (OpenVPN)"
 msgstr "Sanal Özel Şebeke (OpenVPN)"
 
-#: plinth/modules/openvpn/__init__.py:45
+#: plinth/modules/openvpn/__init__.py:46
 #, python-brace-format
 msgid ""
 "Virtual Private Network (VPN) is a technique for securely connecting two "
@@ -2128,6 +2473,12 @@ msgstr ""
 "{box_name} kutusuna bağlanıp {box_name} tarafından sunulan özel/dahili "
 "servisleri kullanabilirsiniz. Aynı zamanda ek güvenlik ve anonimlik için "
 "İnternet'in geri kalanına {box_name} vasıtasıyla erişebilirsiniz."
+
+#: plinth/modules/openvpn/__init__.py:84
+#, python-brace-format
+msgid ""
+"<a class=\"btn btn-primary btn-sm\" href=\"{link}\">Download Profile</a>"
+msgstr "<a class=\"btn btn-primary btn-sm\" href=\"{link}\">Profil İndir</a>"
 
 #: plinth/modules/openvpn/forms.py:29
 msgid "Enable OpenVPN server"
@@ -2203,12 +2554,6 @@ msgstr "OpenVPN sunucusu çalışmaktadır"
 msgid "OpenVPN server is not running"
 msgstr "OpenVPN sunucusu çalışmamaktadır"
 
-#: plinth/modules/openvpn/templates/openvpn.html:116
-#: plinth/modules/owncloud/templates/owncloud.html:39
-#: plinth/modules/tor/templates/tor.html:102
-msgid "Configuration"
-msgstr "Yapılandırma"
-
 #: plinth/modules/openvpn/views.py:123
 msgid "Setup completed."
 msgstr "Kurulum tamamlandı."
@@ -2217,62 +2562,11 @@ msgstr "Kurulum tamamlandı."
 msgid "Setup failed."
 msgstr "Kurulum başarısı oldu."
 
-#: plinth/modules/openvpn/views.py:144 plinth/modules/tor/views.py:109
-#: plinth/views.py:86 plinth/views.py:167
-msgid "Setting unchanged"
-msgstr "Ayar değiştirilmedi"
-
-#: plinth/modules/owncloud/__init__.py:38
-msgid "File Hosting (ownCloud)"
-msgstr "Dosya Barındırma (ownCloud)"
-
-#: plinth/modules/owncloud/__init__.py:41
-msgid ""
-"ownCloud gives you universal access to your files through a web interface or "
-"WebDAV. It also provides a platform to easily view & sync your contacts, "
-"calendars and bookmarks across all your devices and enables basic editing "
-"right on the web. Installation has minimal server requirements, doesn't need "
-"special permissions and is quick. ownCloud is extendable via a simple but "
-"powerful API for applications and plugins."
-msgstr ""
-"ownCloud ağ (web) arayüzü ya da WebDAV aracılığıyla dosyalarınıza evrensel "
-"erişim sağlar. Bununla beraber arkadaşlarınızı, takvimlerinizi ve yer "
-"imlerinizi tüm cihazlarınızda görüntülemek & eşleştirmek için de bir "
-"platform sunar ve sade düzenlemeleri doğrudan ağ üzerinde yapmanıza da imkân "
-"verir. Kurulumun sunucu gereksinimleri asgaridir, özel izinler gerektirmez "
-"ve hızlıdır. ownCloud uygulamalar ve eklentiler için sade ama güçlü bir API "
-"ile genişletilebilir."
-
-#: plinth/modules/owncloud/__init__.py:49
-msgid ""
-"When enabled, the ownCloud installation will be available from <a href=\"/"
-"owncloud\">/owncloud</a> path on the web server. Visit this URL to set up "
-"the initial administration account for ownCloud."
-msgstr ""
-"Etkinleştirildiğinde ownCloud kurulumuna web sunucusunun <a href=\"/owncloud"
-"\">/owncloud</a> yoluyla erişim mümkün olacaktır. ownCloud için ilk yönetici "
-"hesabını yapılandırmak için bu bağlantıyı ziyaret edin."
-
-#: plinth/modules/owncloud/templates/owncloud.html:30
-#, python-format
-msgid ""
-"ownCloud is no longer supported by %(box_name)s due it's removal from "
-"Debian.  Please migrate your data to an alternative solution or manage "
-"ownCloud manually from the command line."
-msgstr ""
-"ownCloud Debian'dan kaldırıldığı için bundan böyle %(box_name)s tarafından "
-"desteklenmektedir. Lütfen verilerinizi alternatif bir çözüme taşıyınız ya da "
-"ownCloud'u elle komut satırından yönetiniz."
-
-#: plinth/modules/owncloud/templates/owncloud.html:47
-msgid "Apply changes"
-msgstr "Değişiklikleri uygula"
-
-#: plinth/modules/pagekite/__init__.py:34
+#: plinth/modules/pagekite/__init__.py:44
 msgid "Public Visibility (PageKite)"
 msgstr "Herkese Açık Görünülürlük (PageKite)"
 
-#: plinth/modules/pagekite/__init__.py:38
+#: plinth/modules/pagekite/__init__.py:48
 #, python-brace-format
 msgid ""
 "PageKite is a system for exposing {box_name} services when you don't have a "
@@ -2284,19 +2578,19 @@ msgstr ""
 "erişmek için bir sistemdir. Buna sadece {box_name} servislerine İnternet'ten "
 "erişmek mümkün değilse ihtiyaç duyarsınız. Bu, şu durumları kapsar:"
 
-#: plinth/modules/pagekite/__init__.py:45
+#: plinth/modules/pagekite/__init__.py:55
 #, python-brace-format
 msgid "{box_name} is behind a restricted firewall."
 msgstr "{box_name} kısıtlı bir güvenlik duvarının arkasında olduğunda."
 
-#: plinth/modules/pagekite/__init__.py:49
+#: plinth/modules/pagekite/__init__.py:59
 #, python-brace-format
 msgid "{box_name} is connected to a (wireless) router which you don't control."
 msgstr ""
 "{box_name} kontrolünüzde olmayan bir (kablosuz) yönlendiriciye bağlı "
 "olduğunda."
 
-#: plinth/modules/pagekite/__init__.py:52
+#: plinth/modules/pagekite/__init__.py:62
 msgid ""
 "Your ISP does not provide you an external IP address and instead provides "
 "Internet connection through NAT."
@@ -2304,7 +2598,7 @@ msgstr ""
 "İnternet Erişim Sağlayıcınız size harici bir IP adresi sunmadığında ve bunun "
 "yerine İnternet bağlantısını NAT vasıtasıyla sağladığında."
 
-#: plinth/modules/pagekite/__init__.py:55
+#: plinth/modules/pagekite/__init__.py:65
 msgid ""
 "Your ISP does not provide you a static IP address and your IP address "
 "changes evertime you connect to Internet."
@@ -2312,11 +2606,11 @@ msgstr ""
 "İnternet Erişim Sağlayıcınız size statik bir IP adresi sağlamadığında ve IP "
 "adresiniz İnternet'e her bağlandığınızda değiştiğinde."
 
-#: plinth/modules/pagekite/__init__.py:58
+#: plinth/modules/pagekite/__init__.py:68
 msgid "Your ISP limits incoming connections."
 msgstr "İnternet Erişim Sağlayıcınız içeri gelen bağlantıları kısıtladığında."
 
-#: plinth/modules/pagekite/__init__.py:61
+#: plinth/modules/pagekite/__init__.py:71
 #, python-brace-format
 msgid ""
 "PageKite works around NAT, firewalls and IP-address limitations by using a "
@@ -2330,15 +2624,15 @@ msgstr ""
 "pagekite.net\">pagekite.net</a>. Gelecekte bunun için arkadaşlarınızın "
 "{box_name} kutusunu kullanmanız mümkün olacaktır."
 
-#: plinth/modules/pagekite/forms.py:46
+#: plinth/modules/pagekite/forms.py:69
 msgid "Enable PageKite"
 msgstr "PageKite'ı Etkinleştir"
 
-#: plinth/modules/pagekite/forms.py:49
+#: plinth/modules/pagekite/forms.py:72
 msgid "Server domain"
 msgstr "Sunucu alanı"
 
-#: plinth/modules/pagekite/forms.py:51
+#: plinth/modules/pagekite/forms.py:74
 msgid ""
 "Select your pagekite server. Set \"pagekite.net\" to use the default "
 "pagekite.net server."
@@ -2346,31 +2640,31 @@ msgstr ""
 "PageKite sunucunuzu seçin. Varsayılan pagekite.net sunucusunu kullanmak için "
 "\"pagekite.net\" değerini kullanın."
 
-#: plinth/modules/pagekite/forms.py:55
+#: plinth/modules/pagekite/forms.py:78
 msgid "Server port"
 msgstr "Sunucu portu"
 
-#: plinth/modules/pagekite/forms.py:56
+#: plinth/modules/pagekite/forms.py:79
 msgid "Port of your pagekite server (default: 80)"
 msgstr "PageKite sunucunuzun portu (varsayılan: 80)"
 
-#: plinth/modules/pagekite/forms.py:58
+#: plinth/modules/pagekite/forms.py:81
 msgid "Kite name"
 msgstr "Kite ismi"
 
-#: plinth/modules/pagekite/forms.py:59
+#: plinth/modules/pagekite/forms.py:82
 msgid "Example: mybox.pagekite.me"
 msgstr "Örnek: mybox.pagekite.me"
 
-#: plinth/modules/pagekite/forms.py:62
+#: plinth/modules/pagekite/forms.py:85
 msgid "Invalid kite name"
 msgstr "Geçersiz kite ismi"
 
-#: plinth/modules/pagekite/forms.py:65
+#: plinth/modules/pagekite/forms.py:88
 msgid "Kite secret"
 msgstr "Kite sırrı"
 
-#: plinth/modules/pagekite/forms.py:67
+#: plinth/modules/pagekite/forms.py:90
 msgid ""
 "A secret associated with the kite or the default secret for your account if "
 "no secret is set on the kite."
@@ -2378,53 +2672,53 @@ msgstr ""
 "Kite ile ilişkilendirilmiş bir sır ya da kite üzerinde hiçbir sır "
 "ayarlanmamışsa hesabınız için varsayılan sır."
 
-#: plinth/modules/pagekite/forms.py:83
+#: plinth/modules/pagekite/forms.py:106
 msgid "Kite details set"
 msgstr "Kite detayları ayarlandı"
 
-#: plinth/modules/pagekite/forms.py:90
+#: plinth/modules/pagekite/forms.py:113
 msgid "Pagekite server set"
 msgstr "Pagekite sunucusu ayarlandı"
 
-#: plinth/modules/pagekite/forms.py:96
+#: plinth/modules/pagekite/forms.py:119
 msgid "PageKite enabled"
 msgstr "PageKite etkinleştirildi"
 
-#: plinth/modules/pagekite/forms.py:99
+#: plinth/modules/pagekite/forms.py:122
 msgid "PageKite disabled"
 msgstr "PageKite devre dışı"
 
-#: plinth/modules/pagekite/forms.py:135
+#: plinth/modules/pagekite/forms.py:158
 #, python-brace-format
 msgid "Service enabled: {name}"
 msgstr "Servis etkinleştirildi: {name}"
 
-#: plinth/modules/pagekite/forms.py:139
+#: plinth/modules/pagekite/forms.py:162
 #, python-brace-format
 msgid "Service disabled: {name}"
 msgstr "Servis devre dışı bırakıldı: {name}"
 
-#: plinth/modules/pagekite/forms.py:150
+#: plinth/modules/pagekite/forms.py:173
 msgid "protocol"
 msgstr "protokol"
 
-#: plinth/modules/pagekite/forms.py:153
+#: plinth/modules/pagekite/forms.py:176
 msgid "external (frontend) port"
 msgstr "harici (ön arayüz) port"
 
-#: plinth/modules/pagekite/forms.py:156
+#: plinth/modules/pagekite/forms.py:179
 msgid "internal (freedombox) port"
 msgstr "dahili (freedombox) port"
 
-#: plinth/modules/pagekite/forms.py:158
+#: plinth/modules/pagekite/forms.py:181
 msgid "Enable Subdomains"
 msgstr "Alt Alanları Etkinleştir"
 
-#: plinth/modules/pagekite/forms.py:191
+#: plinth/modules/pagekite/forms.py:215
 msgid "Deleted custom service"
 msgstr "Özel servis silindi"
 
-#: plinth/modules/pagekite/forms.py:225
+#: plinth/modules/pagekite/forms.py:249
 msgid ""
 "This service is available as a standard service. Please use the \"Standard "
 "Services\" page to enable it."
@@ -2432,13 +2726,44 @@ msgstr ""
 "Bu servis standart bir servis olarak mevcuttur. Etkinleştirmek için lütfen "
 "\"Standart Servisler\" sayfasını kullanın."
 
-#: plinth/modules/pagekite/forms.py:234
+#: plinth/modules/pagekite/forms.py:258
 msgid "Added custom service"
 msgstr "Özel servis eklendi"
 
-#: plinth/modules/pagekite/forms.py:237
+#: plinth/modules/pagekite/forms.py:261
 msgid "This service already exists"
 msgstr "Bu servis zaten mevcuttur"
+
+#: plinth/modules/pagekite/forms.py:273
+#, python-brace-format
+msgid "The voucher you received with your {box_name} Danube Edition"
+msgstr "{box_name} kutunuzun Danube sürümü ile aldığınız fiş"
+
+#: plinth/modules/pagekite/forms.py:278
+msgid "Subdomain"
+msgstr "Alt Alan"
+
+#: plinth/modules/pagekite/forms.py:280
+msgid "The subdomain you want to register"
+msgstr "Kaydetmek istediğiniz alt alan"
+
+#: plinth/modules/pagekite/forms.py:303
+msgid "This code is not valid"
+msgstr "Bu kod geçerli değildir"
+
+#: plinth/modules/pagekite/forms.py:309
+#, python-brace-format
+msgid "This code is bound to the domain {domain}."
+msgstr "Bu kod, {domain} alanı ile ilişkilidir."
+
+#: plinth/modules/pagekite/forms.py:319
+msgid "The requested domain is already registered."
+msgstr "Talep edilen alan zaten kayıtlıdır."
+
+#: plinth/modules/pagekite/forms.py:333
+#, python-brace-format
+msgid "Domain registration failed: {response}."
+msgstr "Alan kaydı başarısız olmuştur: {response}."
 
 #: plinth/modules/pagekite/templates/pagekite_configure.html:33
 msgid "PageKite Account"
@@ -2484,8 +2809,39 @@ msgstr "%(backend_host)s:%(backend_port)s unsuruna bağlandı"
 msgid "Delete this service"
 msgstr "Bu servisi sil"
 
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:28
+msgid "Setup a freedombox.me subdomain with your voucher"
+msgstr "Fişinizle bir freedombox.me alt alanı kurun"
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:32
+#, python-format
+msgid ""
+"<a href=\"%(finish_firstboot_url)s\">Skip this step</a> if you do not have a "
+"voucher or want to configure PageKite later with a different domain or "
+"credentials."
+msgstr ""
+"Fişiniz yoksa ya da PageKite'ı daha sonra başka bir alan ya da giriş "
+"bilgileri ile yapılandırmak istiyorsanız <a href=\"%(finish_firstboot_url)s"
+"\">bu adımı atlayın</a>."
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:40
+msgid ""
+"You can use an already redeemed voucher but it will only work with the "
+"initially registered subdomain."
+msgstr ""
+"Zaten itfa edilmiş bir fişi kullanabilirsiniz ancak bu sadece başlangıçta "
+"kaydedilen alt alan ile çalışacaktır."
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:54
+msgid "Register"
+msgstr "Kaydet"
+
+#: plinth/modules/pagekite/templates/pagekite_firstboot.html:58
+msgid "Skip Registration"
+msgstr "Kaydı Atla"
+
 #: plinth/modules/pagekite/templates/pagekite_introduction.html:32
-#: plinth/modules/pagekite/views.py:34
+#: plinth/modules/pagekite/views.py:37
 msgid "Configure PageKite"
 msgstr "PageKite'ı Yapılandır"
 
@@ -2538,24 +2894,30 @@ msgstr ""
 msgid "Pagekite"
 msgstr "Pagekite"
 
-#: plinth/modules/pagekite/views.py:32
+#: plinth/modules/pagekite/views.py:35
 msgid "About PageKite"
 msgstr "PageKite Hakkında"
 
-#: plinth/modules/pagekite/views.py:36
+#: plinth/modules/pagekite/views.py:39
 msgid "Standard Services"
 msgstr "Standart Servisler"
 
-#: plinth/modules/pagekite/views.py:38
+#: plinth/modules/pagekite/views.py:41
 msgid "Custom Services"
 msgstr "Özel Servisler"
 
-#: plinth/modules/power/__init__.py:32 plinth/modules/power/views.py:50
+#: plinth/modules/pagekite/views.py:161
+msgid "Pagekite setup finished. The HTTP and HTTPS services are activated now."
+msgstr ""
+"Pagekite kurulumu tamamlanmıştır. HTTP ve HTTPS servisleri artık "
+"etkinleştirilmiştir."
+
+#: plinth/modules/power/__init__.py:30 plinth/modules/power/views.py:50
 #: plinth/modules/power/views.py:65
 msgid "Power"
 msgstr "Enerji"
 
-#: plinth/modules/power/__init__.py:35
+#: plinth/modules/power/__init__.py:33
 msgid "Restart or shut down the system."
 msgstr "Sistemi tekrar başlat ya da kapat."
 
@@ -2591,11 +2953,15 @@ msgstr ""
 msgid "Shut Down Now"
 msgstr "Şimdi Kapat"
 
-#: plinth/modules/privoxy/__init__.py:42
-msgid "Web Proxy (Privoxy)"
-msgstr "Ağ Vekil Sunucusu (Privoxy)"
+#: plinth/modules/privoxy/__init__.py:43
+msgid ""
+"Web Proxy \n"
+" (Privoxy)"
+msgstr ""
+"Ağ Vekil Sunucusu\n"
+" (Privoxy)"
 
-#: plinth/modules/privoxy/__init__.py:45
+#: plinth/modules/privoxy/__init__.py:46
 msgid ""
 "Privoxy is a non-caching web proxy with advanced filtering capabilities for "
 "enhancing privacy, modifying web page data and HTTP headers, controlling "
@@ -2606,7 +2972,7 @@ msgstr ""
 "gelişmiş filtreleme özellikleri bulunan ve önbelleğe veri almayan bir ağ "
 "vekil sunucusudur. "
 
-#: plinth/modules/privoxy/__init__.py:51
+#: plinth/modules/privoxy/__init__.py:52
 #, python-brace-format
 msgid ""
 "You can use Privoxy by modifying your browser proxy settings to your "
@@ -2622,16 +2988,20 @@ msgstr ""
 "org/</a>  veya <a href=\"http://p.p\">http://p.p</a> adresinde "
 "görebilirsiniz."
 
-#: plinth/modules/privoxy/__init__.py:107
+#: plinth/modules/privoxy/__init__.py:144
 #, python-brace-format
 msgid "Access {url} with proxy {proxy} on tcp{kind}"
 msgstr "{url} konumuna {proxy} vekili vasıtasıyla tcp{kind} üzerinden eriş"
 
-#: plinth/modules/quassel/__init__.py:40
-msgid "IRC Client (Quassel)"
-msgstr "IRC İstemcisi (Quassel)"
+#: plinth/modules/quassel/__init__.py:42
+msgid ""
+"IRC Client \n"
+" (Quassel)"
+msgstr ""
+"IRC İstemcisi\n"
+" (Quassel)"
 
-#: plinth/modules/quassel/__init__.py:44
+#: plinth/modules/quassel/__init__.py:46
 #, python-brace-format
 msgid ""
 "Quassel is an IRC application that is split into two parts, a \"core\" and a "
@@ -2648,7 +3018,7 @@ msgstr ""
 "da daha fazla Quassel istemcileri masaüstünden ya da mobil telefondan ona "
 "bağlanmak ve ondan bağlantıyı kesmek için kullanılabilir."
 
-#: plinth/modules/quassel/__init__.py:52
+#: plinth/modules/quassel/__init__.py:54
 msgid ""
 "You can connect to your Quassel core on the default Quassel port 4242.  "
 "Clients to connect to Quassel from your <a href=\"http://quassel-irc.org/"
@@ -2660,11 +3030,15 @@ msgstr ""
 "downloads\">masaüstü</a> ve <a href=\"http://quasseldroid.iskrembilen.com/"
 "\">mobil</a> cihaz istemcileri mevcuttur."
 
-#: plinth/modules/radicale/__init__.py:41
-msgid "Calendar and Addressbook (Radicale)"
-msgstr "Takvim ve Adres Defteri (Radicale)"
+#: plinth/modules/radicale/__init__.py:43
+msgid ""
+"Calendar and Addressbook \n"
+" (Radicale)"
+msgstr ""
+"Takvim ve Adres Defteri\n"
+" (Radicale)"
 
-#: plinth/modules/radicale/__init__.py:45
+#: plinth/modules/radicale/__init__.py:47
 #, python-brace-format
 msgid ""
 "Radicale is a CalDAV and CardDAV server. It allows synchronization and "
@@ -2704,8 +3078,12 @@ msgid "Access rights configuration updated"
 msgstr "Erişim izinleri yapılandırması güncellendi"
 
 #: plinth/modules/repro/__init__.py:38
-msgid "SIP Server (repro)"
-msgstr "SIP Sunucusu (repro)"
+msgid ""
+"SIP Server \n"
+" (repro)"
+msgstr ""
+"SIP Sunucusu\n"
+" (repro)"
 
 #: plinth/modules/repro/__init__.py:41
 msgid ""
@@ -2748,11 +3126,15 @@ msgstr ""
 "sonra repro servisini tekrar başlatmak gerekir. Servisi devre dışı bırakıp "
 "tekrar etkinleştirin."
 
-#: plinth/modules/restore/__init__.py:37
-msgid "Unhosted Storage (reStore)"
-msgstr "Barındırılmayan Depolama (reStore)"
+#: plinth/modules/restore/__init__.py:36
+msgid ""
+"Unhosted Storage \n"
+" (reStore)"
+msgstr ""
+"Barındırılmayan Depolama\n"
+" (reStore)"
 
-#: plinth/modules/restore/__init__.py:41
+#: plinth/modules/restore/__init__.py:40
 #, python-brace-format
 msgid ""
 "reStore is a server for <a href='https://unhosted.org/'>unhosted</a> web "
@@ -2768,7 +3150,7 @@ msgstr ""
 "sunucusunda depolanabilir. reStore ile {box_name} kutunuz barındırılmayan "
 "depolama sunucunuz haline gelir."
 
-#: plinth/modules/restore/__init__.py:48
+#: plinth/modules/restore/__init__.py:47
 msgid ""
 "You can create and edit accounts in the <a href='/restore/'>reStore web-"
 "interface</a>."
@@ -2776,11 +3158,15 @@ msgstr ""
 "<a href='/restore/'>reStore ağ arayüzünde</a> hesap oluşturabilir ve "
 "düzenleyebilirsiniz."
 
-#: plinth/modules/roundcube/__init__.py:36
-msgid "Email Client (Roundcube)"
-msgstr "E-posta İstemcisi (Roundcube)"
+#: plinth/modules/roundcube/__init__.py:35
+msgid ""
+"Email Client \n"
+" (Roundcube)"
+msgstr ""
+"E-posta İstemcisi\n"
+" (Roundcube)"
 
-#: plinth/modules/roundcube/__init__.py:39
+#: plinth/modules/roundcube/__init__.py:38
 msgid ""
 "Roundcube webmail is a browser-based multilingual IMAP client with an "
 "application-like user interface. It provides full functionality you expect "
@@ -2792,7 +3178,7 @@ msgstr ""
 "istemcilerinden beklediğiniz tüm işlevleri sağlar ve buna MIME desteği, "
 "adres defteri, klasör düzenleme, mesaj arama ve imlâ kontrolü de dahildir."
 
-#: plinth/modules/roundcube/__init__.py:45
+#: plinth/modules/roundcube/__init__.py:44
 msgid ""
 "You can access Roundcube from <a href=\"/roundcube\">/roundcube</a>. Provide "
 "the username and password of the email account you wish to access followed "
@@ -2807,7 +3193,7 @@ msgstr ""
 "tavsiye edilir), sunucu alanını <code>imaps://imap.example.com</code> gibi "
 "doldurun."
 
-#: plinth/modules/roundcube/__init__.py:52
+#: plinth/modules/roundcube/__init__.py:51
 msgid ""
 "For Gmail, username will be your Gmail address, password will be your Google "
 "account password and server will be <code>imaps://imap.gmail.com</code>.  "
@@ -2846,15 +3232,19 @@ msgstr "Kısıtlı erişimin ayarlanmasında hata: {exception}"
 msgid "Updated security configuration"
 msgstr "Güvenlik yapılandırması güncellendi"
 
-#: plinth/modules/shaarli/__init__.py:36
-msgid "Bookmarks (Shaarli)"
-msgstr "Yer İmleri (Shaarli)"
+#: plinth/modules/shaarli/__init__.py:35
+msgid ""
+"Bookmarks \n"
+" (Shaarli)"
+msgstr ""
+"Yer İmleri\n"
+" (Shaarli)"
 
-#: plinth/modules/shaarli/__init__.py:39
+#: plinth/modules/shaarli/__init__.py:38
 msgid "Shaarli allows you to save and share bookmarks."
 msgstr "Shaarli, yer imlerinizi kaydetmenize ve paylaşmanıza imkân verir."
 
-#: plinth/modules/shaarli/__init__.py:41
+#: plinth/modules/shaarli/__init__.py:40
 msgid ""
 "When enabled, Shaarli will be available from <a href=\"/shaarli\">/shaarli</"
 "a> path on the web server. Note that Shaarli only supports a single user "
@@ -2865,11 +3255,11 @@ msgstr ""
 "ayarlamanız gerekecek olan sadece tek bir kullanıcı hesabını desteklediğini "
 "unutmayın."
 
-#: plinth/modules/snapshot/__init__.py:34
+#: plinth/modules/snapshot/__init__.py:32
 msgid "Snapshots"
 msgstr "Anlıklar"
 
-#: plinth/modules/snapshot/__init__.py:37
+#: plinth/modules/snapshot/__init__.py:35
 msgid ""
 "Snapshots allows creating and managing filesystem snapshots. These can be "
 "used to roll back the system to a previously known good state in case of "
@@ -2879,7 +3269,7 @@ msgstr ""
 "verir. Bunlar, sisteme istenmeyen değişiklikler yapılması durumunda sistemin "
 "daha önce bilinen iyi bir duruma geri getirilmesini sağlar."
 
-#: plinth/modules/snapshot/__init__.py:41
+#: plinth/modules/snapshot/__init__.py:39
 msgid ""
 "Automatic snapshots are taken every hour, day, month and year. Older "
 "snapshots are automatically deleted keeping 10 of each kind and 50 in total. "
@@ -2984,26 +3374,136 @@ msgstr ""
 msgid "Rollback to Snapshot"
 msgstr "Anlığa Geri Al"
 
-#: plinth/modules/system/__init__.py:32 plinth/templates/base.html:109
-msgid "System Configuration"
-msgstr "Sistem Yapılandırması"
+#: plinth/modules/sso/__init__.py:30
+msgid "Single Sign On"
+msgstr ""
 
-#: plinth/modules/system/__init__.py:36
-#, python-brace-format
-msgid "Here you can administrate the underlying system of your {box_name}."
-msgstr "Burada {box_name} kutunuzun temel sistemini yönetebilirsiniz."
+#: plinth/modules/sso/templates/login.html:35
+msgid "Login"
+msgstr "Giriş"
 
-#: plinth/modules/system/__init__.py:40
+#: plinth/modules/syncthing/__init__.py:39
+#, fuzzy
+#| msgid "File Synchronization (Syncthing)"
+msgid ""
+"File Synchronization \n"
+" (Syncthing)"
+msgstr "Dosya eşleşmesi (Syncthing)"
+
+#: plinth/modules/syncthing/__init__.py:42
+#, fuzzy
+#| msgid ""
+#| "Syncthing is an application that can synchronizes files across multiple "
+#| "devices.  Creation, modification and deletion of files on one device will "
+#| "automatically be replicated to other devices."
+msgid ""
+"Syncthing is an application to synchronize files across multiple devices, e."
+"g. your desktop computer and mobile phone.  Creation, modification, or "
+"deletion of files on one device will be automatically replicated on all "
+"other devices that also run Syncthing."
+msgstr ""
+"Syncthing, birçok cihaz üzerinde dosya eşleşmesi yapabilen bir uygulamadır. "
+"Herhangi bir cihaz üzerinde dosya oluşturulması, değiştirilmesi ya da "
+"silinmesi, otomatik olarak diğer cihazlarda da meydana gelecektir."
+
+#: plinth/modules/syncthing/__init__.py:47
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "Running Synching on {box_name}, provides an extra synchronization point "
+#| "for your data that is available most of the time so that your devices "
+#| "synchronize more often.  On {box_name}, a single instance of Syncthing "
+#| "runs and may be used by many users.  Each user's set of devices many be "
+#| "synchronized with a distinct set of folders.  Web interface is only "
+#| "available for users belonging to the \"admin\" group."
+msgid ""
+"Running Syncthing on {box_name} provides an extra synchronization point for "
+"your data that is available most of the time, allowing your devices to "
+"synchronize more often.  {box_name} runs a single instance of Syncthing that "
+"may be used by multiple users.  Each user's set of devices may be "
+"synchronized with a distinct set of folders.  The web interface on "
+"{box_name} is only available for users belonging to the \"admin\" group."
+msgstr ""
+"{box_name} üzerinde Syncthing çalıştırılması, verilerinize cihazlarınızın "
+"daha sık eşleşme yapmaları için neredeyse her zaman kullanılabilir olacak ek "
+"bir eşleşme noktası sunar. {box_name} üzerinde tek bir Syncthing örneklemesi "
+"çalışacaktır ve birçok kullanıcı tarafından kullanılabilir. Her kullanıcının "
+"cihaz kümesi, farklı bir klasör grubu ile eşleştirilebilir. Ağ arayüzü "
+"sadece \"admin\" yani yönetici grubuna ait kullanıcılar tarafından "
+"kullanılabilir."
+
+#: plinth/modules/syncthing/__init__.py:54
+#, fuzzy
+#| msgid ""
+#| "When enabled, Syncthing will be available from <a href=\"/syncthing/\">/"
+#| "syncthing</a> web interface. Desktop and mobile clients are also <a href="
+#| "\"https://syncthing.net/\">available.</a>"
+msgid ""
+"When enabled, Syncthing's web interface will be available from <a href=\"/"
+"syncthing/\">/syncthing</a>.  Desktop and mobile clients are also <a href="
+"\"https://syncthing.net/\">available</a>."
+msgstr ""
+"Etkinleştirildiğinde, Syncthing <a href=\"/syncthing/\">syncthing</a> ağ "
+"arayüzünden kullanılabilir. Masaüstü ve mobil istemciler de <a href="
+"\"https://syncthing.net/\">mevcuttur.</a>"
+
+#: plinth/modules/tahoe/__init__.py:42
+msgid "Distributed File Storage (Tahoe-LAFS)"
+msgstr ""
+
+#: plinth/modules/tahoe/__init__.py:73
+msgid ""
+"Tahoe-LAFS is a decentralized secure file storage system. It uses provider "
+"independent security to store files over a distributed network of storage "
+"nodes. Even if some of the nodes fail, your files can be retrieved from the "
+"remaining nodes."
+msgstr ""
+
+#: plinth/modules/tahoe/__init__.py:78
 #, python-brace-format
 msgid ""
-"The options affect the {box_name} at its most general level, so be careful!"
+"This {box_name} hosts a storage node and an introducer by default. "
+"Additional introducers can be added, which will introduce this node to the "
+"other storage nodes."
 msgstr ""
-"Seçenekler {box_name} kutusunu en genel düzeyde etkiler, bu nedenle dikkatli "
-"olun!"
 
-#: plinth/modules/tor/__init__.py:42
-msgid "Anonymity Network (Tor)"
-msgstr "Anonimlik Ağı (Tor)"
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:33
+#, python-format
+msgid ""
+"The Tahoe-LAFS server domain is set to <b>%(domain_name)s</b>. Changing the "
+"FreedomBox domain name needs a reinstall of Tahoe-LAFS and you WILL LOSE "
+"DATA. You can access Tahoe-LAFS at <a href=\"https://"
+"%(domain_name)s:5678\">https://%(domain_name)s:5678</a>."
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:55
+msgid "Local introducer"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:59
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:74
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:91
+#, fuzzy
+#| msgid "Name"
+msgid "Pet Name"
+msgstr "İsim"
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:71
+msgid "Add new introducer"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:82
+#, fuzzy
+#| msgid "Address"
+msgid "Add"
+msgstr "Adres"
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:87
+msgid "Connected introducers"
+msgstr ""
+
+#: plinth/modules/tahoe/templates/tahoe-post-setup.html:103
+msgid "Remove"
+msgstr ""
 
 #: plinth/modules/tor/__init__.py:45
 msgid ""
@@ -3019,49 +3519,84 @@ msgstr ""
 "href=\"https://www.torproject.org/download/download-easy.html\">Tor "
 "Tarayıcısını</a> kullanmanızı tavsiye eder."
 
-#: plinth/modules/tor/__init__.py:64
+#: plinth/modules/tor/__init__.py:70 plinth/modules/tor/__init__.py:112
 msgid "Tor Anonymity Network"
 msgstr "Tor Anonimlik Ağı"
 
-#: plinth/modules/tor/__init__.py:70
+#: plinth/modules/tor/__init__.py:76 plinth/modules/tor/__init__.py:120
 msgid "Tor Bridge Relay"
 msgstr "Tor Köprü Aktarması"
 
-#: plinth/modules/tor/__init__.py:92 plinth/modules/tor/__init__.py:119
+#: plinth/modules/tor/__init__.py:98 plinth/modules/tor/__init__.py:141
 msgid "Tor Hidden Service"
 msgstr "Tor Gizli Servisi"
 
-#: plinth/modules/tor/__init__.py:138
+#: plinth/modules/tor/__init__.py:160
 msgid "Tor relay port available"
 msgstr "Tor geçit portu mevcuttur"
 
-#: plinth/modules/tor/__init__.py:146
+#: plinth/modules/tor/__init__.py:168
 msgid "Obfs3 transport registered"
 msgstr "Obfs3 taşıma kayıtlıdır"
 
-#: plinth/modules/tor/__init__.py:152
+#: plinth/modules/tor/__init__.py:174
 msgid "Obfs4 transport registered"
 msgstr "Obfs4 taşıma kayıtlıdır"
 
-#: plinth/modules/tor/__init__.py:189
+#: plinth/modules/tor/__init__.py:211
 #, python-brace-format
 msgid "Access URL {url} on tcp{kind} via Tor"
 msgstr "{url} bağlantısına tcp{kind} üzerinden Tor vasıtasıyla eriş"
 
-#: plinth/modules/tor/__init__.py:200
+#: plinth/modules/tor/__init__.py:222
 #, python-brace-format
 msgid "Confirm Tor usage at {url} on tcp{kind}"
 msgstr "tcp{kind} üzerinden {url} konumunda Tor kullanımını teyit et"
 
-#: plinth/modules/tor/forms.py:32
+#: plinth/modules/tor/forms.py:47
+msgid ""
+"Enter a valid bridge with this format: [transport] IP:ORPort [fingerprint]"
+msgstr "Şu biçemde geçerli bir köprü girin: [taşıma] IP:ORPort [parmakizi]"
+
+#: plinth/modules/tor/forms.py:90
 msgid "Enable Tor"
 msgstr "Tor'u Etkinleştir"
 
-#: plinth/modules/tor/forms.py:35
+#: plinth/modules/tor/forms.py:93
+msgid "Use upstream bridges to connect to Tor network"
+msgstr "Tor şebekesine bağlanmak için upstream köprüleri kullan"
+
+#: plinth/modules/tor/forms.py:96
+msgid ""
+"When enabled, the bridges configured below will be used to connect to the "
+"Tor network. Use this option if your Internet Service Provider (ISP) blocks "
+"or censors connections to the Tor Network. This will disable relay modes."
+msgstr ""
+"Etkinleştirildiğinde, aşağıda yapılandırılan köprüler Tor şebekesine "
+"bağlanmak için kullanılacaktır. Bu seçeneği İnternet Erişim Sağlayıcınız Tor "
+"ağına bağlantıları engelliyor ya da sansürlüyorsa kullanın. Bu, aktarım "
+"kiplerini devre dışı bırakacaktır."
+
+#: plinth/modules/tor/forms.py:102
+msgid "Upstream bridges"
+msgstr "Upstream köprüler"
+
+#: plinth/modules/tor/forms.py:105
+msgid ""
+"You can get some bridges from <a href=\"https://bridges.torproject.org/"
+"\">https://bridges.torproject.org/</a> and copy/paste the bridge information "
+"here. Currently supported transports are none, obfs3, obfs4 and scamblesuit."
+msgstr ""
+"Bazı köprüleri <a href=\"https://bridges.torproject.org/\">https://bridges."
+"torproject.org/</a> adresinden elde edip köprü bilgilerini buraya "
+"yapıştırabilirsiniz. Güncel olarak desteklenen taşımalar şunlardır: hiçbiri, "
+"obfs3, obfs4 ve scamblesuit."
+
+#: plinth/modules/tor/forms.py:112
 msgid "Enable Tor relay"
 msgstr "Tor aktarımını etkinleştir"
 
-#: plinth/modules/tor/forms.py:38
+#: plinth/modules/tor/forms.py:115
 #, python-brace-format
 msgid ""
 "When enabled, your {box_name} will run a Tor relay and donate bandwidth to "
@@ -3072,11 +3607,11 @@ msgstr ""
 "şebekesine bant genişliği bağışlayacaktır. Bunu, saniyede 2 megabitten fazla "
 "indirme ve gönderme bant genişliğiniz varsa yapınız."
 
-#: plinth/modules/tor/forms.py:43
+#: plinth/modules/tor/forms.py:120
 msgid "Enable Tor bridge relay"
 msgstr "Tor köprü aktarmasını etkinleştir"
 
-#: plinth/modules/tor/forms.py:46
+#: plinth/modules/tor/forms.py:123
 msgid ""
 "When enabled, relay information is published in the Tor bridge database "
 "instead of public Tor relay database making it harder to censor this node. "
@@ -3087,11 +3622,11 @@ msgstr ""
 "sansürlenmesini zorlaştıracaktır. Bunu yapmanız, başkalarının sansürü "
 "aşmasına yardımcı olur."
 
-#: plinth/modules/tor/forms.py:51
+#: plinth/modules/tor/forms.py:128
 msgid "Enable Tor Hidden Service"
 msgstr "Tor Gizli Servisi Etkinleştir"
 
-#: plinth/modules/tor/forms.py:54
+#: plinth/modules/tor/forms.py:131
 #, python-brace-format
 msgid ""
 "A hidden service will allow {box_name} to provide selected services (such as "
@@ -3102,11 +3637,11 @@ msgstr ""
 "servisleri konumunu ortaya çıkarmadan sağlamasına imkân verir. Güçlü "
 "anonimlik için henüz kullanmayın."
 
-#: plinth/modules/tor/forms.py:59
+#: plinth/modules/tor/forms.py:136
 msgid "Download software packages over Tor"
 msgstr "Yazılım paketlerini Tor üzerinden indir"
 
-#: plinth/modules/tor/forms.py:61
+#: plinth/modules/tor/forms.py:138
 msgid ""
 "When enabled, software will be downloaded over the Tor network for "
 "installations and upgrades. This adds a degree of privacy and security "
@@ -3116,31 +3651,35 @@ msgstr ""
 "üzerinden indirilecektir. Bu, yazılım indirmeleri sırasında bir derece "
 "güvenlilik ve gizlilik ekler."
 
-#: plinth/modules/tor/templates/tor.html:57
+#: plinth/modules/tor/forms.py:151
+msgid "Specify at least one upstream bridge to use upstream bridges."
+msgstr "Upstream köprüleri kullanmak için en az bir upstream köprü belirtiniz."
+
+#: plinth/modules/tor/templates/tor.html:41
 msgid "Tor configuration is being updated"
 msgstr "Tor yapılandırması güncellenmektedir"
 
-#: plinth/modules/tor/templates/tor.html:66
+#: plinth/modules/tor/templates/tor.html:49
 msgid "Tor is running"
 msgstr "Tor çalışmaktadır"
 
-#: plinth/modules/tor/templates/tor.html:69
+#: plinth/modules/tor/templates/tor.html:52
 msgid "Tor is not running"
 msgstr "Tor çalışmamaktadır"
 
-#: plinth/modules/tor/templates/tor.html:81
+#: plinth/modules/tor/templates/tor.html:64
 msgid "Hidden Service"
 msgstr "Gizli Servis"
 
-#: plinth/modules/tor/templates/tor.html:83
+#: plinth/modules/tor/templates/tor.html:66
 msgid "Ports"
 msgstr "Portlar"
 
-#: plinth/modules/tor/templates/tor.html:114
+#: plinth/modules/tor/templates/tor.html:97
 msgid "Relay"
 msgstr "Aktarıcı"
 
-#: plinth/modules/tor/templates/tor.html:116
+#: plinth/modules/tor/templates/tor.html:99
 #, python-format
 msgid ""
 "If your %(box_name)s is behind a router or firewall, you should make sure "
@@ -3150,15 +3689,15 @@ msgstr ""
 "gerekiyorsa aşağıdaki bağlantı noktalarının (port) açık ve yönlendirilmiş "
 "olduğundan emin olun:"
 
-#: plinth/modules/tor/templates/tor.html:128
+#: plinth/modules/tor/templates/tor.html:111
 msgid "Port"
 msgstr "Port"
 
-#: plinth/modules/tor/templates/tor.html:144
+#: plinth/modules/tor/templates/tor.html:127
 msgid "SOCKS"
 msgstr "SOCKS"
 
-#: plinth/modules/tor/templates/tor.html:147
+#: plinth/modules/tor/templates/tor.html:130
 #, python-format
 msgid "A Tor SOCKS port is available on your %(box_name)s on TCP port 9050."
 msgstr ""
@@ -3170,19 +3709,23 @@ msgstr ""
 msgid "Action error: {0} [{1}] [{2}]"
 msgstr "Eylem hatası: {0} [{1}] [{2}]"
 
-#: plinth/modules/tor/views.py:131
+#: plinth/modules/tor/views.py:128 plinth/modules/tor/views.py:156
 msgid "Configuration updated."
 msgstr "Kurulum güncellendi."
 
-#: plinth/modules/tor/views.py:133
+#: plinth/modules/tor/views.py:158
 msgid "An error occurred during configuration."
 msgstr "Yapılandırma sırasında bir hata meydana geldi."
 
-#: plinth/modules/transmission/__init__.py:39
-msgid "BitTorrent (Transmission)"
-msgstr "BitTorrent (Transmission)"
+#: plinth/modules/transmission/__init__.py:38
+msgid ""
+"BitTorrent \n"
+" (Transmission)"
+msgstr ""
+"BitTorrent\n"
+" (Transmission)"
 
-#: plinth/modules/transmission/__init__.py:42
+#: plinth/modules/transmission/__init__.py:41
 msgid ""
 "BitTorrent is a peer-to-peer file sharing protocol. Transmission daemon "
 "handles Bitorrent file sharing.  Note that BitTorrent is not anonymous."
@@ -3191,7 +3734,7 @@ msgstr ""
 "BitTorrent dosya paylaşımını idare eder. BitTorrent'ın anonim olmadığını "
 "unutmayın."
 
-#: plinth/modules/transmission/__init__.py:45
+#: plinth/modules/transmission/__init__.py:44
 msgid ""
 "Access the web interface at <a href=\"/transmission\">/transmission</a>."
 msgstr ""
@@ -3225,11 +3768,15 @@ msgstr ""
 "gösterilmektedir. Yeni bir parola ayarlamak için parolayı düz metin olarak "
 "girin."
 
-#: plinth/modules/ttrss/__init__.py:38
-msgid "News Feed Reader (Tiny Tiny RSS)"
-msgstr "Haber Besleme Okuyucusu (Tiny Tiny RSS)"
+#: plinth/modules/ttrss/__init__.py:37
+msgid ""
+"News Feed Reader \n"
+" (Tiny Tiny RSS)"
+msgstr ""
+"Haber Besleme Okuyucusu\n"
+" (Tiny Tiny RSS)"
 
-#: plinth/modules/ttrss/__init__.py:41
+#: plinth/modules/ttrss/__init__.py:40
 msgid ""
 "Tiny Tiny RSS is a news feed (RSS/Atom) reader and aggregator, designed to "
 "allow reading news from any location, while feeling as close to a real "
@@ -3239,7 +3786,7 @@ msgstr ""
 "ve haber toplamaları herhangi bir yerden okumaya imkân sağlamak için "
 "tasarlanmış bir haber besleme (RSS/Atom) okuyucusu ve toplayıcısıdır."
 
-#: plinth/modules/ttrss/__init__.py:45
+#: plinth/modules/ttrss/__init__.py:44
 msgid ""
 "When enabled, Tiny Tiny RSS will be available from <a href=\"/tt-rss\">/tt-"
 "rss</a> path on the web server."
@@ -3247,11 +3794,11 @@ msgstr ""
 "Etkinleştirildiğinde,Tiny Tiny RSS'e erişim ağ sunucusunda <a href=\"/tt-rss"
 "\">/tt-rss</a> yolundan mümkün olacaktır."
 
-#: plinth/modules/upgrades/__init__.py:37
+#: plinth/modules/upgrades/__init__.py:35
 msgid "Software Upgrades"
 msgstr "Yazılım Güncellemeleri"
 
-#: plinth/modules/upgrades/__init__.py:40
+#: plinth/modules/upgrades/__init__.py:38
 msgid ""
 "Upgrades install the latest software and security updates. When automatic "
 "upgrades are enabled, upgrades are automatically run every night. You don't "
@@ -3323,40 +3870,40 @@ msgstr "Otomatik yükseltmeler devre dışı bırakıldı"
 msgid "Settings unchanged"
 msgstr "Ayarlar değiştirilmedi"
 
-#: plinth/modules/upgrades/views.py:109
+#: plinth/modules/upgrades/views.py:108
 msgid "Upgrade process started."
 msgstr "Yükseltme süreci başlamıştır."
 
-#: plinth/modules/upgrades/views.py:112
+#: plinth/modules/upgrades/views.py:111
 msgid "Starting upgrade failed."
 msgstr "Yükseltmenin başlatılması başarısız oldu."
 
-#: plinth/modules/users/__init__.py:38
+#: plinth/modules/users/__init__.py:45
 msgid "Users and Groups"
 msgstr "Kullanıcılar ve Gruplar"
 
-#: plinth/modules/users/__init__.py:78
+#: plinth/modules/users/__init__.py:85
 #, python-brace-format
 msgid "Check LDAP entry \"{search_item}\""
 msgstr "\"{search_item}\" LDAP unsurunu kontrol et"
 
-#: plinth/modules/users/forms.py:48
+#: plinth/modules/users/forms.py:36
 msgid "admin"
 msgstr "admin (yönetici)"
 
-#: plinth/modules/users/forms.py:49
+#: plinth/modules/users/forms.py:37
 msgid "wiki"
 msgstr "wiki"
 
-#: plinth/modules/users/forms.py:60
+#: plinth/modules/users/forms.py:49
 msgid "Username is taken or is reserved."
 msgstr "Kullanıcı ismi zaten alınmış ya da ayrılmıştır."
 
-#: plinth/modules/users/forms.py:90
+#: plinth/modules/users/forms.py:81
 msgid "Groups"
 msgstr "Gruplar"
 
-#: plinth/modules/users/forms.py:94
+#: plinth/modules/users/forms.py:85
 msgid ""
 "Select which services should be available to the new user. The user will be "
 "able to log in to services that support single sign-on through LDAP, if they "
@@ -3370,16 +3917,20 @@ msgstr ""
 "servislere giriş yapabilecektir. Aynı zamanda sisteme SSH aracılığıyla giriş "
 "yapıp yönetici izinlerine (sudo) erişebileceklerdir."
 
-#: plinth/modules/users/forms.py:129
+#: plinth/modules/users/forms.py:110 plinth/modules/users/forms.py:261
+msgid "Creating LDAP user failed."
+msgstr "LDAP kullanıcısı oluşturması başarısız oldu."
+
+#: plinth/modules/users/forms.py:120
 #, python-brace-format
 msgid "Failed to add new user to {group} group."
 msgstr "{group} grubuna yeni kullanıcı ilâve edilmesi başarısız oldu."
 
-#: plinth/modules/users/forms.py:141
+#: plinth/modules/users/forms.py:132
 msgid "SSH Keys"
 msgstr "SSH Anahtarları"
 
-#: plinth/modules/users/forms.py:145
+#: plinth/modules/users/forms.py:136
 msgid ""
 "Setting an SSH public key will allow this user to securely log in to the "
 "system without using a password. You may enter multiple keys, one on each "
@@ -3390,38 +3941,54 @@ msgstr ""
 "çok anahtar girebilirsiniz, her anahtarı yeni bir satırda girin. Boş "
 "satırlar ve # ile başlayan satırlar görmezden gelinecektir."
 
-#: plinth/modules/users/forms.py:185
+#: plinth/modules/users/forms.py:181
 msgid "Renaming LDAP user failed."
 msgstr "LDAP kullanıcısının tekrar adlandırılması başarısız oldu."
 
-#: plinth/modules/users/forms.py:197
+#: plinth/modules/users/forms.py:193
 msgid "Failed to remove user from group."
 msgstr "Kullanıcının gruptan kaldırılması başarısız oldu."
 
-#: plinth/modules/users/forms.py:208
+#: plinth/modules/users/forms.py:204
 msgid "Failed to add user to group."
 msgstr "Kullanıcının gruba eklenmesi başarısız oldu."
 
-#: plinth/modules/users/forms.py:237
+#: plinth/modules/users/forms.py:211
+msgid "Unable to set SSH keys."
+msgstr "SSH anahtarları ayarlanamadı."
+
+#: plinth/modules/users/forms.py:236
 msgid "Changing LDAP user password failed."
 msgstr "LDAP kullanıcı parolasının değiştirilmesi başarısız oldu."
 
-#: plinth/modules/users/templates/users_change_password.html:27
+#: plinth/modules/users/forms.py:269
+msgid "Failed to add new user to admin group."
+msgstr "Yeni kullanıcının admin (yönetici) grubuna eklenmesi başarısız oldu."
+
+#: plinth/modules/users/forms.py:286
+msgid "Failed to restrict console access."
+msgstr "Konsol erişiminin kısıtlanması başarısız oldu."
+
+#: plinth/modules/users/forms.py:298
+msgid "User account created, you are now logged in"
+msgstr "Kullanıcı hesabı oluşturuldu, artık giriş yaptınız"
+
+#: plinth/modules/users/templates/users_change_password.html:29
 #, python-format
 msgid "Change Password for <em>%(username)s</em>"
 msgstr "<em>%(username)s</em> için Parola Değiştir"
 
-#: plinth/modules/users/templates/users_change_password.html:40
+#: plinth/modules/users/templates/users_change_password.html:39
 msgid "Save Password"
 msgstr "Parolayı Kaydet"
 
-#: plinth/modules/users/templates/users_create.html:42
-#: plinth/modules/users/views.py:36 plinth/modules/users/views.py:56
+#: plinth/modules/users/templates/users_create.html:40
+#: plinth/modules/users/views.py:39 plinth/modules/users/views.py:60
 msgid "Create User"
 msgstr "Kullanıcı Oluştur"
 
 #: plinth/modules/users/templates/users_delete.html:26
-#: plinth/modules/users/views.py:115
+#: plinth/modules/users/views.py:127
 msgid "Delete User"
 msgstr "Kullanıcıyı Sil"
 
@@ -3435,17 +4002,35 @@ msgstr "<strong>%(username)s</strong> kullanıcısı daimi olarak silinsin mi?"
 msgid "Delete %(username)s"
 msgstr "%(username)s kullanıcısını sil"
 
-#: plinth/modules/users/templates/users_list.html:46
+#: plinth/modules/users/templates/users_firstboot.html:29
+msgid "Administrator Account"
+msgstr "Yönetici Hesabı"
+
+#: plinth/modules/users/templates/users_firstboot.html:32
+msgid ""
+"Choose a username and password to access this web interface. The password "
+"can be changed later. This user will be granted administrative privileges. "
+"Other users can be added later."
+msgstr ""
+"Bu ağ arayüzüne erişmek için bir kullanıcı ismi ve parola seçin. Parola daha "
+"sonra değiştirilebilir. Kullanıcıya yönetici yetkileri verilecektir. Başka "
+"kullanıcılar daha sonra ilave edilebilir."
+
+#: plinth/modules/users/templates/users_firstboot.html:45
+msgid "Create Account"
+msgstr "Hesap Oluştur"
+
+#: plinth/modules/users/templates/users_list.html:47
 #, python-format
 msgid "Delete user %(username)s"
 msgstr "%(username)s kullanıcısını sil"
 
-#: plinth/modules/users/templates/users_list.html:53
+#: plinth/modules/users/templates/users_list.html:55
 #, python-format
 msgid "Edit user %(username)s"
 msgstr "%(username)s kullanıcısını düzenle"
 
-#: plinth/modules/users/templates/users_update.html:39
+#: plinth/modules/users/templates/users_update.html:41
 #, python-format
 msgid ""
 "Use the <a href='%(change_password_url)s'>change password form </a> to "
@@ -3458,78 +4043,40 @@ msgstr ""
 msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
-#: plinth/modules/users/views.py:34 plinth/modules/users/views.py:69
+#: plinth/modules/users/views.py:37 plinth/modules/users/views.py:73
 msgid "Users"
 msgstr "Kullanıcılar"
 
-#: plinth/modules/users/views.py:54
+#: plinth/modules/users/views.py:58
 #, python-format
 msgid "User %(username)s created."
 msgstr "%(username)s kullanıcısı oluşturuldu."
 
-#: plinth/modules/users/views.py:78
+#: plinth/modules/users/views.py:82
 #, python-format
 msgid "User %(username)s updated."
 msgstr "%(username)s kullanıcısı güncellendi."
 
-#: plinth/modules/users/views.py:79
+#: plinth/modules/users/views.py:83
 msgid "Edit User"
 msgstr "Kullanıcıyı Düzenle"
 
-#: plinth/modules/users/views.py:125
+#: plinth/modules/users/views.py:137
 #, python-brace-format
 msgid "User {user} deleted."
 msgstr "{user} kullanıcısı silindi."
 
-#: plinth/modules/users/views.py:132
+#: plinth/modules/users/views.py:144
 msgid "Deleting LDAP user failed."
 msgstr "LDAP kullanıcısının silinmesi başarısız oldu."
 
-#: plinth/modules/users/views.py:141
+#: plinth/modules/users/views.py:153
 msgid "Change Password"
 msgstr "Parolayı Değiştir"
 
-#: plinth/modules/users/views.py:142
+#: plinth/modules/users/views.py:154
 msgid "Password changed successfully."
 msgstr "Parola başarılı bir şekilde değiştirildi."
-
-#: plinth/modules/xmpp/__init__.py:43
-msgid "Chat Server (XMPP)"
-msgstr "Sohbet Sunucusu (XMPP)"
-
-#: plinth/modules/xmpp/__init__.py:46
-msgid ""
-"XMPP is an open and standardized communication protocol. Here you can run "
-"and configure your XMPP server, called ejabberd."
-msgstr ""
-"XMPP açık ve standardize edilmiş bir iletişim protokolüdür. Burada ejabberd "
-"isimli XMPP sunucusunu yapılandırıp çalıştırabilirsiniz."
-
-#: plinth/modules/xmpp/__init__.py:49
-msgid ""
-"To actually communicate, you can use the <a href='/jwchat'>web client</a> or "
-"any other <a href='http://xmpp.org/xmpp-software/clients/' "
-"target='_blank'>XMPP client</a>."
-msgstr ""
-"İletişim kurmak için <a href='/jwchat'>ağ istemcisini</a> ya da herhangi bir "
-"diğer <a href='http://xmpp.org/xmpp-software/clients/' target='_blank'>XMPP "
-"istemcisini</a> kullanabilirsiniz."
-
-#: plinth/modules/xmpp/templates/xmpp.html:31
-#, python-format
-msgid ""
-"Your XMPP server domain is set to <b>%(domainname)s</b>. User IDs will look "
-"like <i>username@%(domainname)s</i>. You can setup your domain on the system "
-"<a href=\"%(index_url)s\">Configure</a> page."
-msgstr ""
-"XMPP sunucu alanınız <b>%(domainname)s</b> olarak ayarlanmıştır. Kullanıcı "
-"kimlikleri <i>username@%(domainname)s</i> şeklinde olacaktır. Alanınızı "
-"sistem <a href=\"%(index_url)s\">Yapılandırma</a> sayfasında "
-"ayarlayabilirsiniz."
-
-#: plinth/modules/xmpp/templates/xmpp.html:41
-msgid "Launch web client"
-msgstr "Ağ istemcisini başlat"
 
 #: plinth/network.py:39
 msgid "PPPoE"
@@ -3573,6 +4120,15 @@ msgstr "Güvenli Kabuk (SSH) Sunucusu"
 msgid "{box_name} Web Interface (Plinth)"
 msgstr "{box_name} Ağ Arayüzü (Plinth)"
 
+#: plinth/templates/403.html:28
+msgid "403 Forbidden"
+msgstr "403 Yasaklanmış"
+
+#: plinth/templates/403.html:32
+#, python-format
+msgid "You don't have permission to access %(request_path)s on this server."
+msgstr "Bu sunucuda %(request_path)s erişimi izniniz yoktur."
+
 #: plinth/templates/404.html:25
 msgid "404"
 msgstr "404"
@@ -3596,51 +4152,153 @@ msgstr ""
 msgid "500"
 msgstr "500"
 
-#: plinth/templates/500.html:28
+#: plinth/templates/500.html:29
+#, python-format
 msgid ""
 "This is an internal error and not something you caused or can fix.  Please "
 "report the error on the <a href=\"https://github.com/freedombox/Plinth/issues"
-"\">bug tracker</a> so we can fix it. Also, please attach the <a href=\"/"
-"plinth/help/status-logs\">Status Log</a> to the bug report."
+"\">bug tracker</a> so we can fix it. Also, please attach the <a href="
+"\"%(status_log_url)s\">status log</a> to the bug report."
 msgstr ""
 "Bu dahili bir hatadır ve sizin yaptığınız ya da giderebileceğiniz bir hata "
 "değildir. Lütfen hatayı <a href=\"https://github.com/freedombox/Plinth/issues"
 "\">hata izleyicisinde</a> rapor edin ki sorunu giderebilelim. Hata raporuna "
-"<a href=\"/plinth/help/status-logs\">Durum Kütüğünü</a> eklemeyi unutmayınız."
+"<a href=\"%(status_log_url)s\">durum kütüğünü</a> eklemeyi unutmayınız."
+
+#: plinth/templates/apps.html:25
+msgid "Services and Applications"
+msgstr "Servisler ve Uygulamalar"
+
+#: plinth/templates/apps.html:28
+#, python-format
+msgid ""
+"You can install and run various services and applications on your "
+"%(box_name)s. Click on any app page link on the left to read a description "
+"of the application and choose to install it."
+msgstr ""
+"%(box_name)s kutunuza çeşitli servis ve uygulamalar kurup "
+"çalıştırabilirsiniz. Herhangi bir uygulamanın açıklamasını okuyup onu "
+"kurmayı seçmek için sol taraftaki uygulama sayfası bağlantısına tıklayın."
+
+#: plinth/templates/apps.html:36
+msgid ""
+"This box can be your photo sharing site, your instant messaging site, your "
+"social networking site, your news site.  Remember web portals?  We can be "
+"one of those too.  Many of the services you use on the web could soon be on "
+"site and under your control!"
+msgstr ""
+"Bu kutu fotoğraf paylaşma siteniz, anında mesajlaşma siteniz, sosyal ağ "
+"siteniz, haberler siteniz olabilir. Ağ portallarını hatırlıyor musunuz? "
+"Onlardan biri de olabiliriz. Web üzerinde kullandığınız servislerin birçoğu "
+"yakında sizin evinizde ve sizin kontrolünüzde olabileceklerdir!"
 
 #: plinth/templates/base.html:49
 #, python-format
 msgid "Plinth administrative interface for the %(box_name)s"
 msgstr "%(box_name)s için Plinth yönetim arayüzü"
 
-#: plinth/templates/base.html:83
+#: plinth/templates/base.html:85
 msgid "Toggle navigation"
 msgstr "Tarama Geçişi"
 
-#: plinth/templates/base.html:125 plinth/templates/base.html:126
+#: plinth/templates/base.html:102 plinth/templates/base.html:103
+msgid "Home"
+msgstr "Ev"
+
+#: plinth/templates/base.html:107 plinth/templates/base.html:109
+msgid "Apps"
+msgstr "Uygulamalar"
+
+#: plinth/templates/base.html:140 plinth/templates/base.html:141
 msgid "Change password"
 msgstr "Parolayı değiştir"
 
-#: plinth/templates/base.html:129 plinth/templates/base.html:130
-#: plinth/templates/base.html:143 plinth/templates/base.html:145
+#: plinth/templates/base.html:145 plinth/templates/base.html:159
+#: plinth/templates/base.html:161
 msgid "Log out"
 msgstr "Çıkış yap"
 
-#: plinth/templates/base.html:135 plinth/templates/base.html:137
+#: plinth/templates/base.html:151 plinth/templates/base.html:153
 msgid "Log in"
 msgstr "Giriş yap"
 
-#: plinth/templates/login.html:35
-msgid "Login"
-msgstr "Giriş"
+#: plinth/templates/base.html:225 plinth/templates/index.html:164
+msgid "JavaScript license information"
+msgstr "JavaScript lisans bilgileri"
 
-#: plinth/templates/service.html:43
-msgid "is running"
-msgstr "çalışmaktadır"
+#: plinth/templates/index.html:58
+#, python-format
+msgid ""
+"Enable some <a href=\"%(apps_url)s\">applications</a> to add shortcuts to "
+"this page."
+msgstr ""
+"Bu sayfaya kısayol eklemek için <a href=\"%(apps_url)s\">uygulama</a> "
+"etkinleştiriniz."
 
-#: plinth/templates/service.html:46
-msgid "is not running"
-msgstr "çalışmamaktadır"
+#: plinth/templates/index.html:85
+msgid "Configure &raquo;"
+msgstr "Yapılandır &raquo;"
+
+#: plinth/templates/index.html:104
+#, python-format
+msgid ""
+"%(box_name)s, a Debian pure blend, is a 100%% free software self-hosting web "
+"server to deploy social applications on small machines. It provides online "
+"communication tools respecting your privacy and data ownership."
+msgstr ""
+"%(box_name)s, arı bir Debian sürümüdür ve sosyal uygulamaları küçük "
+"makinelere kurmak için %%100 özgür yazılım olan kendi kendini barındıran web "
+"sunucusudur. Veri sahipliğinize ve gizliliğinize saygı gösteren çevrimiçi "
+"iletişim araçları sunar."
+
+#: plinth/templates/index.html:113
+#, python-format
+msgid ""
+"This portal is a part of Plinth, the %(box_name)s web interface. Plinth is "
+"free software, distributed under the GNU Affero General Public License, "
+"Version 3 or later."
+msgstr ""
+"Bu portal %(box_name)s kutusunun ağ arayüzü olan Plinth'in bir parçasıdır. "
+"Plinth özgür yazılımdır ve GNU Affero Genel Kamu Lisansının 3. ya da daha "
+"sonraki sürümleri kapsamında yayınlanmıştır."
+
+#: plinth/templates/index.html:128
+msgid "Wiki"
+msgstr "Viki"
+
+#: plinth/templates/index.html:133
+msgid "Homepage"
+msgstr "Ana sayfa"
+
+#: plinth/templates/index.html:136
+msgid "Source Code"
+msgstr "Kaynak kod"
+
+#: plinth/templates/index.html:139
+msgid "Donate"
+msgstr "Bağış"
+
+#: plinth/templates/index.html:143
+msgid "FreedomBox Foundation"
+msgstr "FreedomBox Vakfı"
+
+#: plinth/templates/index.html:150
+msgid "IRC Chatroom"
+msgstr "IRC sohbet odası"
+
+#: plinth/templates/index.html:155
+msgid "Mailing list"
+msgstr "E-posta listesi"
+
+#: plinth/templates/service.html:44
+#, python-format
+msgid "Service <em>%(service_name)s</em> is running."
+msgstr "<em>%(service_name)s</em> servisi çalışmaktadır."
+
+#: plinth/templates/service.html:49
+#, python-format
+msgid "Service <em>%(service_name)s</em> is not running."
+msgstr "<em>%(service_name)s</em> servisi çalışmamaktadır."
 
 #: plinth/templates/setup.html:35
 msgid "Installation"
@@ -3650,55 +4308,168 @@ msgstr "Kurulum"
 msgid "Install this application?"
 msgstr "Bu uygulama kurulsun mu?"
 
-#: plinth/templates/setup.html:54
+#: plinth/templates/setup.html:55 plinth/templates/setup.html:79
+msgid ""
+"Another installation or upgrade is already running. Please wait for a few "
+"moments before trying again."
+msgstr ""
+
+#: plinth/templates/setup.html:61 plinth/templates/setup.html:64
+#: plinth/templates/setup.html:85
 msgid "Install"
 msgstr "Kur"
 
-#: plinth/templates/setup.html:58
+#: plinth/templates/setup.html:69
 msgid "This application needs an update. Update now?"
 msgstr "Bu uygulamanın güncellemeye ihtiyacı var. Şimdi güncellensin mi?"
 
-#: plinth/templates/setup.html:67
+#: plinth/templates/setup.html:88
 msgid "Update"
 msgstr "Güncelle"
 
-#: plinth/templates/setup.html:74
+#: plinth/templates/setup.html:96
 msgid "Performing pre-install operation"
 msgstr "Kurulum öncesi işlemleri yapılıyor"
 
-#: plinth/templates/setup.html:76
+#: plinth/templates/setup.html:98
 msgid "Performing post-install operation"
 msgstr "Kurulum sonrası işlemleri yapılıyor"
 
-#: plinth/templates/setup.html:80
+#: plinth/templates/setup.html:102
 #, python-format
 msgid "Installing %(package_names)s: %(status)s"
 msgstr "%(package_names)s kuruluyor: %(status)s"
 
-#: plinth/templates/setup.html:90
+#: plinth/templates/setup.html:112
 #, python-format
 msgid "%(percentage)s%% complete"
 msgstr "%(percentage)s%% tamamlandı"
 
-#: plinth/views.py:90 plinth/views.py:180
-msgid "Application enabled"
-msgstr "Uygulama etkinleştirildi"
+#: plinth/templates/system.html:25
+msgid "System Configuration"
+msgstr "Sistem Yapılandırması"
 
-#: plinth/views.py:93 plinth/views.py:182
-msgid "Application disabled"
-msgstr "Uygulama devre dışı bırakıldı"
+#: plinth/templates/system.html:28
+#, fuzzy, python-format
+#| msgid "Here you can administrate the underlying system of your {box_name}."
+msgid "Here you can administrate the underlying system of your %(box_name)s."
+msgstr "Burada {box_name} kutunuzun temel sistemini yönetebilirsiniz."
+
+#: plinth/templates/system.html:34
+#, fuzzy, python-format
+#| msgid ""
+#| "The options affect the {box_name} at its most general level, so be "
+#| "careful!"
+msgid ""
+"The options affect the %(box_name)s at its most general level, so be careful!"
+msgstr ""
+"Seçenekler {box_name} kutusunu en genel düzeyde etkiler, bu nedenle dikkatli "
+"olun!"
+
+#~ msgid "Applications"
+#~ msgstr "Uygulamalar"
+
+#~ msgid ""
+#~ "%(box_name)s setup is now complete.  To make your %(box_name)s "
+#~ "functional, you need some applications.  They will be installed the first "
+#~ "time you access them."
+#~ msgstr ""
+#~ "%(box_name)s kurulumu artık tamamlanmıştır. %(box_name)s kutunuzu "
+#~ "işlevsel hale getirmek için bazı uygulamalara ihtiyacınız vardır. "
+#~ "Uygulamalar onlara ilk kez eriştiğinizde kurulacaktır."
+
+#~ msgid "Go to Apps"
+#~ msgstr "Uygulamalara Git"
+
+#~ msgid "Current Network Configuration"
+#~ msgstr "Güncel Şebeke Yapılandırması"
+
+#~ msgid ""
+#~ "You should check the network setup and modify it if necessary. Do not "
+#~ "forget to change the default Wi-Fi passwords!"
+#~ msgstr ""
+#~ "Şebeke yapılandırmasını kontrol edip gerekiyorsa değiştirmelisiniz. "
+#~ "Varsayılan kablosuz ağ parolalarını değiştirmeyi unutmayın!"
+
+#~ msgid "Go to Networks"
+#~ msgstr "Ağlara Git"
+
+#~ msgid "File Hosting (ownCloud)"
+#~ msgstr "Dosya Barındırma (ownCloud)"
+
+#~ msgid ""
+#~ "ownCloud gives you universal access to your files through a web interface "
+#~ "or WebDAV. It also provides a platform to easily view & sync your "
+#~ "contacts, calendars and bookmarks across all your devices and enables "
+#~ "basic editing right on the web. Installation has minimal server "
+#~ "requirements, doesn't need special permissions and is quick. ownCloud is "
+#~ "extendable via a simple but powerful API for applications and plugins."
+#~ msgstr ""
+#~ "ownCloud ağ (web) arayüzü ya da WebDAV aracılığıyla dosyalarınıza "
+#~ "evrensel erişim sağlar. Bununla beraber arkadaşlarınızı, takvimlerinizi "
+#~ "ve yer imlerinizi tüm cihazlarınızda görüntülemek & eşleştirmek için de "
+#~ "bir platform sunar ve sade düzenlemeleri doğrudan ağ üzerinde yapmanıza "
+#~ "da imkân verir. Kurulumun sunucu gereksinimleri asgaridir, özel izinler "
+#~ "gerektirmez ve hızlıdır. ownCloud uygulamalar ve eklentiler için sade ama "
+#~ "güçlü bir API ile genişletilebilir."
+
+#~ msgid ""
+#~ "When enabled, the ownCloud installation will be available from <a href=\"/"
+#~ "owncloud\">/owncloud</a> path on the web server. Visit this URL to set up "
+#~ "the initial administration account for ownCloud."
+#~ msgstr ""
+#~ "Etkinleştirildiğinde ownCloud kurulumuna web sunucusunun <a href=\"/"
+#~ "owncloud\">/owncloud</a> yoluyla erişim mümkün olacaktır. ownCloud için "
+#~ "ilk yönetici hesabını yapılandırmak için bu bağlantıyı ziyaret edin."
+
+#~ msgid ""
+#~ "ownCloud is no longer supported by %(box_name)s due it's removal from "
+#~ "Debian.  Please migrate your data to an alternative solution or manage "
+#~ "ownCloud manually from the command line."
+#~ msgstr ""
+#~ "ownCloud Debian'dan kaldırıldığı için bundan böyle %(box_name)s "
+#~ "tarafından desteklenmektedir. Lütfen verilerinizi alternatif bir çözüme "
+#~ "taşıyınız ya da ownCloud'u elle komut satırından yönetiniz."
+
+#~ msgid "Apply changes"
+#~ msgstr "Değişiklikleri uygula"
+
+#~ msgid ""
+#~ "Console login access restricted to users in \"admin\" group. This can be "
+#~ "configured in security settings."
+#~ msgstr ""
+#~ "Konsolda giriş yapabilme erişimi \"admin\" (yönetici) grubundaki "
+#~ "kullanıcılarla sınırlıdır. Bu, güvenlik ayarlarında yapılandırılabilir."
+
+#~ msgid "Welcome to %(box_name)s!"
+#~ msgstr "%(box_name)s kutusuna hoş geldiniz!"
+
+#~ msgid ""
+#~ "More info about %(box_name)s is available on the project <a href="
+#~ "\"https://freedombox.org\">homepage</a> and <a href=\"https://wiki.debian."
+#~ "org/FreedomBox\">wiki</a>."
+#~ msgstr ""
+#~ "%(box_name)s projesi hakkında daha fazla bilgi proje <a href=\"https://"
+#~ "freedombox.org\">ana sayfasında</a> ve <a href=\"https://wiki.debian.org/"
+#~ "FreedomBox\">%(box_name)s vikisinde</a> mevcuttur."
+
+#~ msgid "is running"
+#~ msgstr "çalışmaktadır"
+
+#~ msgid "is not running"
+#~ msgstr "çalışmamaktadır"
+
+#~ msgid "Anonymity Network (Tor)"
+#~ msgstr "Anonimlik Ağı (Tor)"
+
+#~ msgid "Box it up!"
+#~ msgstr "Kaydet ve FreedomBox'u başlat!"
 
 #~ msgid "IP Check URL"
 #~ msgstr "IP Kontrol Bağlantısı"
 
 #~ msgid "Bridge"
 #~ msgstr "Köprü"
-
-#~ msgid "Service discovery server is running"
-#~ msgstr "Servis keşfi sunucusu çalışmaktadır"
-
-#~ msgid "Service discovery server is not running"
-#~ msgstr "Servis keşfi sunucusu çalışmamaktadır"
 
 #~ msgid "Enable network time"
 #~ msgstr "Ağ zamanını etkinleştir"
@@ -3884,9 +4655,6 @@ msgstr "Uygulama devre dışı bırakıldı"
 #~ msgid "reStore"
 #~ msgstr "reStore"
 
-#~ msgid "Enable reStore"
-#~ msgstr "reStore'u Etkinleştir"
-
 #~ msgid "Enable Roundcube"
 #~ msgstr "Roundcube'u Etkinleştir"
 
@@ -3911,9 +4679,6 @@ msgstr "Uygulama devre dışı bırakıldı"
 #~ msgid "Package Upgrades"
 #~ msgstr "Paket Yükseltmeler"
 
-#~ msgid "Enable XMPP"
-#~ msgstr "XMPP'yi Etkinleştir"
-
 #~ msgid "Installed and configured packages successfully."
 #~ msgstr "Paketler başarılı bir şekilde kuruldu ve ayarlandı."
 
@@ -3932,9 +4697,6 @@ msgstr "Uygulama devre dışı bırakıldı"
 
 #~ msgid "show password"
 #~ msgstr "parolayı göster"
-
-#~ msgid "FreedomBox Manual"
-#~ msgstr "FreedomBox Kullanım Kılavuzu"
 
 #~ msgid ""
 #~ "Many FreedomBox contributors and users are also available on the "

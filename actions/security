@@ -16,13 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 """
 Helper for security configuration
 """
 
 import argparse
-
 
 ACCESS_CONF_FILE = '/etc/security/access.conf'
 ACCESS_CONF_SNIPPET = '-:ALL EXCEPT root fbx (admin) (sudo):ALL'
@@ -40,6 +38,7 @@ def parse_arguments():
         'disable-restricted-access',
         help='Don\'t restrict console login to users in admin or sudo group')
 
+    subparsers.required = True
     return parser.parse_args()
 
 

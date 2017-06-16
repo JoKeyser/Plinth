@@ -18,12 +18,19 @@
 """
 Test module for Plinth's custom context processors.
 """
+from unittest.mock import Mock, MagicMock
 
 from django.http import HttpRequest
 from django.test import TestCase
 
 from plinth import cfg
 from plinth import context_processors as cp
+from plinth import menu
+
+
+def setUpModule():  # noqa
+    """Setup all test cases by initializing menu module."""
+    menu.init()
 
 
 class ContextProcessorsTestCase(TestCase):
@@ -35,6 +42,9 @@ class ContextProcessorsTestCase(TestCase):
 
         request = HttpRequest()
         request.path = '/aaa/bbb/ccc/'
+        request.user = Mock()
+        request.user.groups.filter().exists = Mock(return_value=True)
+        request.session = MagicMock()
         response = cp.common(request)
         self.assertIsNotNone(response)
 
@@ -51,10 +61,15 @@ class ContextProcessorsTestCase(TestCase):
         self.assertIsNotNone(urls)
         self.assertEqual(['/', '/aaa/', '/aaa/bbb/', '/aaa/bbb/ccc/'], urls)
 
+        self.assertTrue(response['user_is_admin'])
+
     def test_common_border_conditions(self):
         """Verify that the common() function works for border conditions."""
         request = HttpRequest()
         request.path = ''
+        request.user = Mock()
+        request.user.groups.filter().exists = Mock(return_value=True)
+        request.session = MagicMock()
         response = cp.common(request)
         self.assertEqual([], response['active_menu_urls'])
 

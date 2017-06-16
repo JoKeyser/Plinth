@@ -23,17 +23,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from plinth import actions
 from plinth import action_utils
-from plinth import cfg
+from plinth import frontpage
 from plinth import service as service_module
+from plinth.menu import main_menu
 
 
 version = 1
 
-depends = ['apps']
-
 managed_packages = ['sqlite3', 'roundcube', 'roundcube-sqlite3']
 
-title = _('Email Client (Roundcube)')
+title = _('Email Client \n (Roundcube)')
 
 description = [
     _('Roundcube webmail is a browser-based multilingual IMAP '
@@ -62,13 +61,18 @@ service = None
 
 def init():
     """Intialize the module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-envelope', 'roundcube:index')
 
     global service
-    service = service_module.Service(
-        'roundcube', title, ports=['http', 'https'], is_external=True,
-        is_enabled=is_enabled, enable=enable, disable=disable)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            'roundcube', title, ports=['http', 'https'], is_external=True,
+            is_enabled=is_enabled, enable=enable, disable=disable)
+
+        if is_enabled():
+            add_shortcut()
 
 
 def setup(helper, old_version=None):
@@ -76,6 +80,18 @@ def setup(helper, old_version=None):
     helper.call('pre', actions.superuser_run, 'roundcube', ['pre-install'])
     helper.install(managed_packages)
     helper.call('post', actions.superuser_run, 'roundcube', ['setup'])
+    helper.call('post', add_shortcut)
+    global service
+    if service is None:
+        service = service_module.Service(
+            'roundcube', title, ports=['http', 'https'], is_external=True,
+            is_enabled=is_enabled, enable=enable, disable=disable)
+
+
+def add_shortcut():
+    frontpage.add_shortcut(
+        'roundcube', title, url='/roundcube',
+        login_required=True)
 
 
 def is_enabled():
@@ -86,11 +102,13 @@ def is_enabled():
 def enable():
     """Enable the module."""
     actions.superuser_run('roundcube', ['enable'])
+    add_shortcut()
 
 
 def disable():
     """Enable the module."""
     actions.superuser_run('roundcube', ['disable'])
+    frontpage.remove_shortcut('roundcube')
 
 
 def diagnose():

@@ -20,17 +20,15 @@ Plinth module to manage disks.
 """
 
 from django.utils.translation import ugettext_lazy as _
-import json
 import logging
 import subprocess
+import json
 
 from plinth import actions
-from plinth import cfg
+from plinth.menu import main_menu
 
 
 version = 1
-
-depends = ['system']
 
 title = _('Disks')
 
@@ -43,12 +41,28 @@ logger = logging.getLogger(__name__)
 
 def init():
     """Intialize the module."""
-    menu = cfg.main_menu.get('system:index')
+    menu = main_menu.get('system')
     menu.add_urlname(title, 'glyphicon-hdd', 'disks:index')
 
 
 def get_disks():
-    """Return the list of disks and free space available."""
+    """Returns list of disks by combining information from df and lsblk."""
+    disks_from_df = _get_disks_from_df()
+    disks_from_lsblk = _get_disks_from_lsblk()
+    # Combine both sources of info dicts into one dict, based on mount point;
+    # note this discards disks without a (current) mount point.
+    combined_list = []
+    for disk_from_df in disks_from_df:
+        for disk_from_lsblk in disks_from_lsblk:
+            if disk_from_df['mount_point'] == disk_from_lsblk['mountpoint']:
+                disk_from_df.update(disk_from_lsblk)
+                combined_list.append(disk_from_df)
+
+    return combined_list
+
+
+def _get_disks_from_df():
+    """Return the list of disks and free space available using 'df'."""
     command = ['df', '--exclude-type=tmpfs', '--exclude-type=devtmpfs',
                '--output=source,target,fstype,size,used,pcent',
                '--human-readable']
@@ -72,9 +86,27 @@ def get_disks():
     return disks
 
 
+def _get_disks_from_lsblk():
+    """Return the list of disks and other information from 'lsblk'."""
+    command = ['lsblk', '--json', '--output', 'kname,pkname,mountpoint,type']
+    try:
+        process = subprocess.run(command, stdout=subprocess.PIPE, check=True)
+    except subprocess.CalledProcessError as exception:
+        logger.exception('Error getting disk information: %s', exception)
+        return []
+
+    output = process.stdout.decode()
+    disks = json.loads(output)['blockdevices']
+    for disk in disks:
+        disk['dev_kname'] = '/dev/{0}'.format(disk['kname'])
+
+    return disks
+
+
 def get_root_device(disks):
     """Return the root partition's device from list of partitions."""
-    devices = [disk['device'] for disk in disks if disk['mount_point'] == '/']
+    devices = [disk['dev_kname'] for disk in disks
+               if disk['mountpoint'] == '/' and disk['type'] == 'part']
     try:
         return devices[0]
     except IndexError:

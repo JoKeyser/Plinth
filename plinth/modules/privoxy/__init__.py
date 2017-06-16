@@ -19,12 +19,15 @@
 Plinth module to configure Privoxy.
 """
 
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from plinth import actions
 from plinth import action_utils
 from plinth import cfg
+from plinth import frontpage
 from plinth import service as service_module
+from plinth.menu import main_menu
 from plinth.utils import format_lazy
 from plinth.views import ServiceView
 
@@ -33,13 +36,11 @@ version = 1
 
 is_essential = False
 
-depends = ['apps']
-
 managed_services = ['privoxy']
 
 managed_packages = ['privoxy']
 
-title = _('Web Proxy (Privoxy)')
+title = _('Web Proxy \n (Privoxy)')
 
 description = [
     _('Privoxy is a non-caching web proxy with advanced filtering '
@@ -53,27 +54,63 @@ description = [
           'While using Privoxy, you can see its configuration details and '
           'documentation at '
           '<a href="http://config.privoxy.org">http://config.privoxy.org/</a> '
-          'or <a href="http://p.p">http://p.p</a>.'), box_name=_(cfg.box_name))
+          'or <a href="http://p.p">http://p.p</a>.'),
+        box_name=_(cfg.box_name)),
 ]
+
+reserved_usernames = ['privoxy']
 
 service = None
 
 
 def init():
     """Intialize the module."""
-    menu = cfg.main_menu.get('apps:index')
+    menu = main_menu.get('apps')
     menu.add_urlname(title, 'glyphicon-cloud-upload', 'privoxy:index')
 
     global service
-    service = service_module.Service(
-        managed_services[0], title, ports=['privoxy'], is_external=False)
+    setup_helper = globals()['setup_helper']
+    if setup_helper.get_state() != 'needs-setup':
+        service = service_module.Service(
+            managed_services[0], title, ports=['privoxy'],
+            is_external=False,
+            enable=enable, disable=disable)
+
+        if service.is_enabled():
+            add_shortcut()
 
 
 def setup(helper, old_version=None):
     """Install and configure the module."""
     helper.call('pre', actions.superuser_run, 'privoxy', ['pre-install'])
     helper.install(managed_packages)
+    global service
+    if service is None:
+        service = service_module.Service(
+            managed_services[0], title, ports=['privoxy'],
+            is_external=False,
+            enable=enable, disable=disable)
     helper.call('post', service.notify_enabled, None, True)
+    helper.call('post', add_shortcut)
+
+
+def add_shortcut():
+    frontpage.add_shortcut('privoxy', title,
+                           details=description,
+                           configure_url=reverse_lazy('privoxy:index'),
+                           login_required=True)
+
+
+def enable():
+    """Enable the module."""
+    actions.superuser_run('service', ['enable', managed_services[0]])
+    add_shortcut()
+
+
+def disable():
+    """Disable the module."""
+    actions.superuser_run('service', ['disable', managed_services[0]])
+    frontpage.remove_shortcut('privoxy')
 
 
 class PrivoxyServiceView(ServiceView):
