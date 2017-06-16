@@ -170,13 +170,13 @@ def on_domainname_change(sender, old_domainname, new_domainname, **kwargs):
 def on_letsencrypt_cert_obtained(sender, domain, **kwargs):
     """Start using letsencrypt certificate if it matches configured domain."""
     actions.superuser_run(
-        'xmpp', ['add-letsencrypt', '--domain', domain], async=True)
+        'ejabberd', ['letsencrypt', 'add', '--domain', domain], async=True)
 
 
 def on_letsencrypt_cert_revoked(sender, domain, **kwargs):
     """Stop using letsencrypt certificate if it matches configured domain."""
     actions.superuser_run(
-        'xmpp', ['drop-letsencrypt', '--domain', domain], async=True)
+        'ejabberd', ['letsencrypt', 'drop', '--domain', domain], async=True)
 
 
 def diagnose():
