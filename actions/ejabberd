@@ -50,7 +50,6 @@ def parse_arguments():
         '--domainname',
         help='The domain name that will be used by the XMPP service.')
 
-    # Setup ejabberd configuration
     subparsers.add_parser('setup', help='Setup ejabberd configuration')
 
     subparsers.add_parser('enable', help='Enable XMPP service')
@@ -71,13 +70,11 @@ def parse_arguments():
     hostname_change.add_argument('--new-hostname',
                                  help='New hostname')
 
-    # Update ejabberd with new domainname
     domainname_change = subparsers.add_parser(
         'change-domainname',
         help='Update ejabberd with new domainname')
     domainname_change.add_argument('--domainname', help='New domainname')
 
-    # Switch/check Message Archive Management (MAM) in ejabberd config
     help_MAM = 'Switch or check Message Archive Management (MAM).'
     mam = subparsers.add_parser('mam', help=help_MAM)
     mam.add_argument('command',
