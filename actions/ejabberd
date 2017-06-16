@@ -81,17 +81,11 @@ def parse_arguments():
                      choices=('enable', 'disable', 'status'),
                      help=help_MAM)
 
-    add_letsencrypt = subparsers.add_parser(
-        'add-letsencrypt', help='Start using letsencrypt certificate if it '
-        'matches configured domain')
-    add_letsencrypt.add_argument('--domain', help='Certificate domain',
-                                 required=True)
-
-    drop_letsencrypt = subparsers.add_parser(
-        'drop-letsencrypt', help='Stop using letsencrypt certificate if it '
-        'matches configured domain')
-    drop_letsencrypt.add_argument('--domain', help='Certificate domain',
-                                  required=True)
+    help_LE = "Add/drop Let's Encrypt certificate if configured domain matches"
+    letsencrypt = subparsers.add_parser('letsencrypt', help=help_LE)
+    letsencrypt.add_argument('command', choices=('add', 'drop'), help=help_LE)
+    letsencrypt.add_argument('--domain', help='Certificate domain',
+                             required=True)
 
     subparsers.required = True
     return parser.parse_args()
@@ -224,49 +218,9 @@ def subcommand_change_domainname(arguments):
     action_utils.service_start('ejabberd')
 
 
-def subcommand_add_letsencrypt(arguments):
-    """Start using letsencrypt certificate if it matches configured domain."""
-    with open(EJABBERD_CONFIG, 'r') as file_handle:
-        conf = ruamel.yaml.round_trip_load(file_handle, preserve_quotes=True)
+def subcommand_letsencrypt(arguments):
+    """Add/drop Let's Encrypt certificate if it matches configured domain."""
 
-    if arguments.domain not in conf['hosts']:
-        print('Domain "%s" is not configured for ejabberd.' % arguments.domain)
-        return
-
-    cert_folder = '/etc/ejabberd/letsencrypt/' + arguments.domain
-    if not os.path.exists(cert_folder):
-        os.makedirs(cert_folder)
-        shutil.chown(cert_folder, 'ejabberd', 'ejabberd')
-
-    cert_file = cert_folder + '/ejabberd.pem'
-    le_folder = '/etc/letsencrypt/live/' + arguments.domain
-    with open(cert_file, 'w') as outfile:
-        with open(le_folder + '/privkey.pem', 'r') as infile:
-            for line in infile:
-                if line.strip():
-                    outfile.write(line)
-        with open(le_folder + '/fullchain.pem', 'r') as infile:
-            for line in infile:
-                if line.strip():
-                    outfile.write(line)
-    shutil.chown(cert_file, 'ejabberd', 'ejabberd')
-    os.chmod(cert_file, stat.S_IRUSR | stat.S_IWUSR)
-
-    cert_file = ruamel.yaml.scalarstring.DoubleQuotedScalarString(cert_file)
-    for listen_port in conf['listen']:
-        if 'certfile' in listen_port:
-            listen_port['certfile'] = cert_file
-    conf['s2s_certfile'] = cert_file
-
-    with open(EJABBERD_CONFIG, 'w') as file_handle:
-        ruamel.yaml.round_trip_dump(conf, file_handle)
-
-    if action_utils.service_is_running('ejabberd'):
-        action_utils.service_restart('ejabberd')
-
-
-def subcommand_drop_letsencrypt(arguments):
-    """Stop using letsencrypt certificate if it matches configured domain."""
     with open(EJABBERD_CONFIG, 'r') as file_handle:
         conf = ruamel.yaml.round_trip_load(file_handle, preserve_quotes=True)
 
@@ -276,15 +230,49 @@ def subcommand_drop_letsencrypt(arguments):
 
     cert_folder = '/etc/ejabberd/letsencrypt/' + arguments.domain
     cert_file = cert_folder + '/ejabberd.pem'
-    orig_cert_file = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
-        EJABBERD_ORIG_CERT)
 
-    for listen_port in conf['listen']:
-        if 'certfile' in listen_port and listen_port['certfile'] == cert_file:
-            listen_port['certfile'] = orig_cert_file
+    if arguments.command not in ('add', 'drop'):
+        print('ejabberd letsencrypt command "%s" not understood.' %
+              arguments.command)
+        return
 
-    if conf['s2s_certfile'] == cert_file:
-        conf['s2s_certfile'] = orig_cert_file
+    elif arguments.command == 'add':
+        if not os.path.exists(cert_folder):
+            os.makedirs(cert_folder)
+            shutil.chown(cert_folder, 'ejabberd', 'ejabberd')
+
+        le_folder = '/etc/letsencrypt/live/' + arguments.domain
+        with open(cert_file, 'w') as outfile:
+            with open(le_folder + '/privkey.pem', 'r') as infile:
+                for line in infile:
+                    if line.strip():
+                        outfile.write(line)
+            with open(le_folder + '/fullchain.pem', 'r') as infile:
+                for line in infile:
+                    if line.strip():
+                        outfile.write(line)
+        shutil.chown(cert_file, 'ejabberd', 'ejabberd')
+        os.chmod(cert_file, stat.S_IRUSR | stat.S_IWUSR)
+
+        cert_file = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
+            cert_file)
+        for listen_port in conf['listen']:
+            if 'certfile' in listen_port:
+                listen_port['certfile'] = cert_file
+        conf['s2s_certfile'] = cert_file
+
+    elif arguments.command == 'drop':
+        orig_cert_file = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
+            EJABBERD_ORIG_CERT)
+        for listen_port in conf['listen']:
+            if 'certfile' in listen_port \
+               and listen_port['certfile'] == cert_file:
+                listen_port['certfile'] = orig_cert_file
+
+        if conf['s2s_certfile'] == cert_file:
+            conf['s2s_certfile'] = orig_cert_file
+
+        shutil.rmtree(cert_folder)
 
     with open(EJABBERD_CONFIG, 'w') as file_handle:
         ruamel.yaml.round_trip_dump(conf, file_handle)
