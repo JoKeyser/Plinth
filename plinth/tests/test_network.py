@@ -101,6 +101,7 @@ class TestNetwork(unittest.TestCase):
         cls.ethernet_uuid = network.add_connection(ethernet_settings)
         cls.wifi_uuid = network.add_connection(wifi_settings)
         cls.pppoe_uuid = network.add_connection(pppoe_settings)
+        raise ValueError("JoKe's TestError")
         # XXX: Handle this properly by waiting for asynchronous add_connection
         # to complete.
         time.sleep(0.1)
