@@ -23,13 +23,14 @@ install:
   - docker run -d debian /bin/sh -c "pip install Django$DJANGO_VERSION"
   - docker run -d debian /bin/sh -c "pip install coverage==3.7"
   - docker run -d debian /bin/sh -c "pip install -r requirements.txt"
+  - docker run debian /bin/sh -c "python3 setup.py test"
 
 # Command to run tests
-script: docker run -d debian /bin/sh -c "python3 setup.py test"
+script: python3 setup.py test
 
 notifications:
   email:
-    on_success: change
+    on_success: always
     on_failure: always
   irc:
     channels:
