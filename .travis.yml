@@ -29,6 +29,6 @@ notifications:
     on_failure: always
   irc:
     channels:
-      - "irc.oftc.net#freedombox"
-    on_success: always
-    on_failure: always
+#      - "irc.oftc.net#freedombox"
+#    on_success: always
+#    on_failure: always
