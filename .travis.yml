@@ -13,19 +13,19 @@ env:
 # Debian packages required
 before_install:
   - docker pull debian:latest
-  - docker sudo apt-get update -qq
-  - docker sudo apt-get -y install augeas-tools python3-dev python3-gi libaugeas-dev
+  - docker run sudo apt-get update -qq
+  - docker run sudo apt-get -y install augeas-tools python3-dev python3-gi libaugeas-dev
 
 # Command to install dependencies
 install:
-  - docker virtualenv --python=python3 --system-site-packages _venv
-  - docker source _venv/bin/activate
-  - docker pip install Django$DJANGO_VERSION
-  - docker pip install coverage==3.7
-  - docker pip install -r requirements.txt
+  - docker run docker virtualenv --python=python3 --system-site-packages _venv
+  - docker run source _venv/bin/activate
+  - docker run pip install Django$DJANGO_VERSION
+  - docker run pip install coverage==3.7
+  - docker run pip install -r requirements.txt
 
 # Command to run tests
-script: docker python3 setup.py test
+script: docker run python3 setup.py test
 
 notifications:
   email:
