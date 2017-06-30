@@ -41,9 +41,10 @@
           <thead>
             <tr>
               <th>{% trans "Domain" %}</th>
-              <th>{% trans "Certificate Status" %}</th>
-              <th>{% trans "Website Security" %}</th>
-              <th>{% trans "Actions" %}</th>
+              <th>{% trans "Certificate<br>Status" %}</th>
+              <th>{% trans "Website<br>Security" %}</th>
+	      <th>{% trans "Actions" %}</th>
+	      <th>{% trans "Automatic<br>Renewal" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -120,6 +121,18 @@
                         {% trans "Obtain" %}</button>
                     </form>
                   {% endif %}
+                </td>
+                <td>
+                  <form class="form form-inline" method="post"
+                        action="{% url 'letsencrypt:index' %}">
+                    {% csrf_token %}
+		    <input type="checkbox" name="cBox" value="3"
+			   onchange="this.form.submit();"></input>
+		    <noscript>
+		      <button class="btn btn-sm btn-default" type="submit">
+		        {% trans "Set renewal" %}</button>
+		    </noscript>
+                  </form>
                 </td>
               </tr>
             {% endfor %}
